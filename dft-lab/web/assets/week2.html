@@ -1,0 +1,129 @@
+<section id="week2" class="chapter week-two">
+<div class="section-heading"><div><span class="eyebrow">NEW / WEEK TWO</span><h2>第二周 · 沿着一根线，读懂整颗芯片</h2></div><span class="pill success">v0 深读与结构实验 · 10 h</span></div>
+<p class="section-intro">第一周证明“功能可以跑通”，这一周要能说清楚：状态在哪里、由哪个边沿更新、故障能走到哪里、哪条路径会阻止测试。所有回放数值都来自交付包中的 VCD；没有用动画替代真实仿真。</p>
+<div class="week2-banner"><div><span class="tiny-label">完成标准</span><b>从输入到观察点，逐段解释因果</b><p>画出五类结构，复现故障与 X，区分可测性问题和功能问题。</p></div><div><span class="tiny-label">本周产出</span><b>结构报告 + 波形 + 审读笔记</b><p><code>structures.log / structures.vcd / week2.json</code></p></div></div>
+<div class="table-scroll"><table><thead><tr><th>单元 / 预计耗时</th><th>输入与动作</th><th>可验证的结果</th></tr></thead><tbody>
+<tr><td>1. 一笔事务 · 2 h</td><td>top / ingress / fsm / mix / cfg，追踪握手与写入</td><td>95 ns 的 result 正确，105 ns 才写 memory</td></tr>
+<tr><td>2. 两类逻辑锥 · 1.5 h</td><td>fault_cone，穷举五输入并逐个强制故障</td><td>32 组合：r/SA0=0，r/SA1=16，q/SA1=16</td></tr>
+<tr><td>3. 时钟与边沿 · 2 h</td><td>gate / rate / neg，对比锁存门控与直接 AND</td><td>18 ns 计数 0/1；28 ns 两个门控时钟不同</td></tr>
+<tr><td>4. CDC · 1 h</td><td>event_sync，数源事件与目标脉冲</td><td>本例 1 μs 内 4 次源事件、4 次目标事件</td></tr>
+<tr><td>5. 内部复位 · 1 h</td><td>clock_reset_mgr / cfg，追踪异步清零与解除</td><td>73 ns 内部复位有效，负沿寄存器与慢计数已清零</td></tr>
+<tr><td>6. Memory 边界 · 1.5 h</td><td>memory / shadow，对照同址读写与额外观察延迟</td><td>36 ns X/X → 46 ns 1/X → 56 ns 1/1</td></tr>
+<tr><td>7. 审读交付 · 1 h</td><td>clock 意图、风险清单、八题自测</td><td>写出位置、原因、反例、修复版本和验收证据</td></tr>
+</tbody></table></div>
+<div class="callout"><b>阶段边界：</b>本周沿用已运行的 v0，并增加结构测试、证据提取和时钟意图草案。v1 的测试时钟/复位接管和单链插入仍在第 4 周，不能把本周的“观察到问题”写成“DRC 已修复”。时间预算为学习规划值；实验时刻为给定 TB 的实际示例运行值。</div>
+
+<article class="module-atlas note-card">
+<div class="section-heading"><div><span class="eyebrow">SIGNAL ATLAS</span><h3>先选一个模块，看它接住了什么</h3></div><span class="pill">13 个模块 · 可跳转源码</span></div>
+<div class="atlas-layout"><div id="module-tabs" class="module-tabs" aria-label="选择 DUT 模块"></div><div id="module-info" aria-live="polite"></div></div>
+</article>
+
+<article class="lab-card replay-card">
+<div class="lab-heading"><span>VCD REPLAY · ACTUAL OBSERVATIONS</span><h3>把游标停在某一刻，再说发生了什么</h3><p>从实际 VCD 提取的 19 个快照。每个快照取该时刻所有事件（含非阻塞赋值）结束后的值，二进制 X 完整保留。</p></div>
+<div class="controls"><label>观察路线 <select id="w2-route"><option value="transaction">一笔事务与忙时隔离</option><option value="gate">门控时钟反例</option><option value="memory">Memory → Shadow</option><option value="reset">负沿采样与内部复位</option><option value="cdc">跨域事件终点</option></select></label><button id="w2-prev" class="btn">← 上一刻</button><button id="w2-next" class="btn primary">下一刻 →</button><button id="w2-replay-reset" class="btn">回到起点</button><span id="w2-time" class="pill"></span></div>
+<div id="w2-timeline" class="w2-timeline" aria-label="快照时刻"></div>
+<div id="w2-signals" class="signal-grid"></div>
+<div id="w2-replay-note" class="callout" aria-live="polite"></div>
+<p class="annotation">来源：<code>scripts/study_report.py → reports/week2.json</code>。这是离散快照回放；GTKWave 中的完整 VCD 仍是逐事件观察依据。</p>
+</article>
+
+<div class="lesson"><div class="lesson-num">01<small>2 小时</small></div><div>
+<h3>先把事务讲明白，别急着串链 <span class="difficulty">★★</span></h3>
+<p><b>为什么做：</b>如果把 <code>valid</code> 当成接收条件，忙时会重写数据；如果把 <code>commit</code> 提前，memory 会记录上一笔结果。功能语义不明确，DFT 改造前后就没有可靠的等价性基线。</p>
+<p><b>最小背景：</b>ready/valid 像生产者与消费者约定的提交协议：只有二者同时为 1 的采样边沿才成交。寄存器之间的组合逻辑像纯函数；多个寄存器的非阻塞赋值像一次原子状态提交。硬件不是从上到下逐行执行的函数调用。</p>
+<p><b>从上到下读：</b>在 <button class="inline-link" data-open-file="rtl/v0/dft_demo_top.sv">top</button> 找 <code>accept = data_valid & data_ready</code>；到 <button class="inline-link" data-open-file="rtl/v0/packet_ingress.sv">ingress</button> 确认只在 accept 装载；再读 <button class="inline-link" data-open-file="rtl/v0/control_fsm.sv">FSM</button> 的状态，最后看 <button class="inline-link" data-open-file="rtl/v0/packet_mix.sv">mix</button> 和 memory 的使能。</p>
+<div class="table-scroll"><table><thead><tr><th>模块 / 输入</th><th>负责做什么</th><th>不能越过的边界</th></tr></thead><tbody>
+<tr><td>ingress / accept、data_in</td><td>在握手边沿保存 32 位 word_q</td><td>不解码 cfg，不因 valid 单独更新</td></tr>
+<tr><td>FSM / accept</td><td>IDLE → EXEC → COMMIT → IDLE</td><td>不保存业务数据，不硬编码向量</td></tr>
+<tr><td>mix / word_q、key、execute</td><td>四路模 2³² 累加，异或为 result_q</td><td>不是 CRC 或加密；只在 execute 更新</td></tr>
+<tr><td>cfg / 配置写请求</td><td>保存 key、soft_reset、mem_raddr；组合读状态</td><td>不是 APB/AXI；key 仅允许空闲时改</td></tr>
+<tr><td>top / commit</td><td>连接 memory 写使能并推进写指针</td><td>不把 memory 宏内部当作 scan cell</td></tr>
+</tbody></table></div>
+<p><b>重点与难点：</b>在 95 ns 进入 COMMIT 时，组合 <code>data_out_valid</code> 变为 1；memory 的正沿过程已读取旧 commit=0，因此这拍不写。105 ns 正沿读取此前 commit=1，才写 result 和推进指针。不能只看“状态变成 COMMIT”的文字就认为同一边沿已经写入。</p>
+<details class="accordion"><summary>备选方案、错误写法与真实代价</summary><p><b>错误：</b>在 ingress 用 <code>if(data_valid)</code>；在 busy 时改变输入，会覆盖正在消费的事务。正确条件是已成交的 accept。<b>另一方案：</b>可增加 FIFO 提升吞吐，但要新添 full/empty、存储和背压验证，本周单事务协议不需要。</p><p><b>同拍更新误解：</b>结果与 lane 都使用 n0…n3 的组合值，而不是刚写入的 lane。若在参考模型里用旧 lane 的异或，就会少算本笔数据。独立参考应遵循事务规格，不能直接读取 DUT 内部 lane 充当预期。</p><p><b>★经验点：</b>本 DUT 的最短接收间隔为 3 个 sys 周期（协议推导值）；当前 TB 故意留有驱动间隔，不用它声称峰值吞吐。若需求是每拍接收，应先重做流水线/背压契约，再讨论 scan 代价。</p></details>
+<p><b>怎么验收：</b>路线“一笔事务”中，90 ns 的外部 data_in 已变为 <code>0xFFFFFFFF</code>，word_q 仍为 0；95 ns result=<code>0x8D60E266</code>；105 ns write_pointer=1。运行完整功能 TB 仍须得到 <code>PASS FUNCTIONAL_V0</code>。</p>
+<details class="tool-card"><summary>工业界工具对标卡 · 功能基线 ↗</summary><p>工业流程在 DFTCompiler/Tessent Scan 插入前后保留功能基线，并结合等价性/仿真确认改造。TetraMAX II/Tessent ATPG 消费的是可测试网表与协议，不替代事务规格验证。本例 Icarus 验证零延迟四态 RTL；未做 SDF、门级功能等价或工艺时序签核。此处只给流程对照，不提供本地不可执行的商业命令。</p></details>
+</div></div>
+
+<div class="lesson"><div class="lesson-num">02<small>1.5 小时</small></div><div>
+<h3>两个逻辑锥：一个要回溯，一个没有解 <span class="difficulty">★★★</span></h3>
+<p><b>为什么做：</b>ATPG 需要同时激活故障并把差异传出去。重汇聚的两条路径共享输入，局部传播条件可能互相冲突；冗余锥则可能根本不存在检测向量。把两者混为“多跑些随机数”会浪费时间，也会误报算法缺陷。</p>
+<p><b>最小背景：</b>故障激活是让正常节点值与 stuck-at 固定值相反。传播是让差异穿过下游门。例如 OR 的其他输入要为 0，AND 的其他输入要为 1。重汇聚像同一个变量在两条约束中反复出现，局部满足不保证全局满足。</p>
+<p><b>实际结构：</b><button class="inline-link" data-open-file="rtl/v0/fault_cone.sv">fault_cone.sv</button> 中 <code>p=a&b; q=~a&c; reconv=p|q</code>。对 q/SA1 取 a=1 激活 q=0，传播要求 p=0；若先选 a=0 就与已有 a=1 冲突，回退选 b=0。c 可任取；向量 abc=100 的正常/故障输出为 0/1。</p>
+<p><b>冗余证明：</b><code>r=d&e; redundant=d|r=d</code>。r/SA0 的激活需要 d=e=1，此时 d 已将 OR 输出固定为 1，差异永远出不去。r/SA1 则能在 d=0 时检测。因此“冗余逻辑”不等于“所有相关故障都不可测”。</p>
+<div class="table-scroll"><table><thead><tr><th>故障</th><th>检测输入的推导</th><th>32 个 abcde 组合中的实测数</th></tr></thead><tbody>
+<tr><td>r/SA0</td><td>激活与传播条件矛盾</td><td>0</td></tr><tr><td>r/SA1</td><td>d=0，a/b/c/e 自由</td><td>16</td></tr><tr><td>q/SA1</td><td>a=1,b=0,c 自由；或 a=0,c=0,b 自由；d/e 自由</td><td>16</td></tr>
+</tbody></table></div>
+<p class="annotation">这些是“检测一个故障的输入组合数”，不是全芯片故障覆盖率。对该有限组合锥，穷举 32 组合加上逻辑证明可以判定 r/SA0 不可测；不能把这一结论推广到未知时序网表。</p>
+<details class="accordion"><summary>为什么要使用独立 d/e，而不复用 a/b？</summary><p>若 r 和 p 都写成 a&b，综合器可能共享同一个 AND；于是“冗余节点”还能沿 reconv 被观测，本来的不可测证明不再成立。我们保留独立 d/e，并在 JSON 中检查 r 的 AND 驱动、吸收 OR 和唯一消费路径。只保留一个叫 r 的名字不够。</p><p><b>反模式：</b>使用 keep 属性后直接宣布故障对象还在。<b>正确做法：</b>检查最终实例和连接；属性是要求，不是检查结果。若用普通布尔优化可能消掉冗余，这对功能面积是好事，但教学靶点就要随之更新。</p><p><b>force/release 边界：</b>结构 TB 在真实模块的 wire 上注入一个故障，读取输出后立即 release，并为下一次正常基准留出事件传播时间。把强制值忘在网表中会污染后续实验；这不是完整 ATPG 引擎。</p></details>
+<p><b>怎么验收：</b><code>PASS W2_FAULT_TRUTH vectors=32 r_sa0=0 r_sa1=16 q_sa1=16</code>。再用页面既有的回溯实验核对 abc=100。图、RTL、TB 和数学关系必须说同一件事。</p>
+<details class="tool-card"><summary>工业界工具对标卡 · ATPG 思维的前置练习 ↗</summary><p>TetraMAX II/Tessent ATPG 在结构网表上做故障建模、激活与传播搜索并分类未检测故障；DFTCompiler/Tessent Scan 提供扫描可控性基础。本例只在一个已知小锥做穷举与单点强制，不包含工业故障折叠、多时钟协议、X 处理和大型搜索启发式。商业命令/分类字段需在真实授权版本的帮助与报告里确认。</p></details>
+</div></div>
+
+<div class="lesson"><div class="lesson-num">03<small>2 小时</small></div><div>
+<h3>先列时钟来源，再谈“混串铁律” <span class="difficulty">★★★</span></h3>
+<p><b>为什么做：</b>scan_en=1 只改变数据 MUX，不能让关闭的时钟自动出现；分频器还可能让移位期间少走几拍。时钟偏斜、边沿和门控方式影响数据是否在一个测试脉冲里被多推进一次。</p>
+<p><b>最小背景：</b>门控是决定时钟脉冲是否能到达寄存器，不等同寄存器 D 端的使能。正沿 ICG 的典型功能模型在低相位锁住 enable 的下一拍选择，高相位保持选择；这里的 latch+AND 只是等价行为结构，没有真实库 ICG 的时序与 TE 定义。</p>
+<div class="table-scroll"><table><thead><tr><th>实际结构</th><th>时钟 / 边沿</th><th>关系与预期改造</th></tr></thead><tbody>
+<tr><td>入口、FSM、mix、cfg、shadow</td><td>sys_clk 上升沿</td><td>主功能域；scan 时需要明确测试协议</td></tr>
+<tr><td>aux_count / toggle</td><td>aux_clk 上升沿</td><td>独立源，与 sys 不保证相位关系</td></tr>
+<tr><td>slow.ticks</td><td>divider[1] 上升沿</td><td>由 sys 逻辑 /4，示例周期 40 ns</td></tr>
+<tr><td>gated_counter.count</td><td>clk & enable_latched 上升沿</td><td>功能门控；v1 需要受控打开，不是另一个自由频率源</td></tr>
+<tr><td>neg_capture.sampled</td><td>sys_clk 下降沿</td><td>同一时钟的另一边沿，不等于异步域</td></tr>
+</tbody></table></div>
+<p><b>操作：</b>在回放的“门控时钟反例”看 17 ns 的 enable 改变。sys 在 15 ns 已经为高，直接 AND 立即产生额外上升沿，18 ns bad_count=1；低相位锁存仍关闭，good_count=0。到 25 ns 正常上升沿，才得到 good=1、bad=2。27 ns 再关 enable，直接 AND 把高脉冲截断；28 ns gated_clk=1、direct_clk=0。</p>
+<details class="accordion"><summary>TE、边沿顺序与 Lock-up 的判断边界</summary><p><b>反模式：</b>直接 <code>clk & (enable | test_mode)</code> 就称为无毛刺 ICG；test_mode 若高相位切换，仍可制造窄脉冲。<b>后续做法：</b>在被识别的门控结构上接测试使能，并把模式切换限定在安全协议窗口；真正工艺 ICG 的 TE 极性与时序看库模型。</p><p><b>边沿示例：</b>在同相且固定的扫描波形下，常见安排是下降沿段在前、上升沿段在后，同时明确 SI/SO 采样窗口。若上升沿段接下降沿段，状态可能在同一宏周期继续前进半拍，但不能脱离波形直接判成必错。最终依据是各段 active edge、Tclk、clock skew、setup/hold 和锁存器透明电平。</p><p><b>★经验点：</b>这一周不预设链数或每链 50/500/1000 的“标准答案”。工业切链取决于扫描管脚、ATE 时长、时钟域隔离、物理距离和库单元。给定库、管脚预算与测试频率之前，没有可照搬的安全长度范围；后续用这些输入算方案。</p></details>
+<p><b>怎么验收：</b><code>PASS W2_ICG latched_count=1 direct_count=2</code> 与 <code>divider_period_ns=40</code>；67 ns 负沿 sampled=0，71 ns sampled=A。STA 的 hold/setup 是否满足仍是未测项。</p>
+<details class="tool-card"><summary>工业界工具对标卡 · 时钟 DRC 与 Scan 规划 ↗</summary><p>DFTCompiler/Tessent Scan 根据测试时钟、门控测试使能与时钟域约束进行检查和串链；TetraMAX II/Tessent ATPG 使用该时钟协议生成测试过程。Icarus 能复现本例事件边沿，却不保证真实窄脉冲能否触发、毛刺滤除或 skew 签核。跨域 Lock-up 要结合实际时钟波形与库时序，本周仅验证问题来源。</p></details>
+</div></div>
+
+<div class="lesson"><div class="lesson-num">04<small>1 小时</small></div><div>
+<h3>跨域事件：同步到了，不等于永远不丢 <span class="difficulty">★★</span></h3>
+<p><b>为什么做：</b>直接把一个 aux 域窄脉冲送入 sys，可能整段脉冲发生在两个目标采样边沿之间。双级同步能给亚稳态恢复留时间，但不能凭空看到从未采到的事件。</p>
+<p><b>最小背景：</b>toggle 把事件编码为状态翻转，翻转后的电平保留到下次事件。像分布式系统里的版本 bit：只要目标足够快，就能用新旧 bit 不同检测一次更新；两次翻转在目标采样前发生会抵消。</p>
+<p><b>代码追踪：</b><button class="inline-link" data-open-file="rtl/v0/event_sync.sv">event_sync.sv</button> 依次是 aux_count、toggle、sync1、sync2、previous、event_pulse。<code>sync2 ^ previous</code> 产生一拍目标脉冲；第一同步级不能同时去驱动功能状态和第二同步级。</p>
+<details class="accordion"><summary>错误/正确/备选与经验依据</summary><p><b>错误：</b>把同步器数量=2 当作任意速率事件无损保证。<b>当前可行：</b>aux 每 16 拍翻转一次；示例 aux=14 ns，即事件间隔 224 ns，远大于 sys=10 ns 下的同步传播时间。<b>另一方案：</b>req/ack 握手能按协议避免覆盖，代价是返回路径和往返延迟；多位数据应采用明确的握手、异步 FIFO 等机制，不能给每个位各加两拍后就认为总线一致。</p><p><b>★经验点：</b>同步级数与允许 MTBF、工艺、频率和数据翻转率有关。本例“两级”是行为教学选择，不是安全认证结论；软件式的固定重试次数类比不能替代模拟电路恢复时间。</p></details>
+<p><b>怎么验收：</b>结构 TB 在 1000 ns 统计 <code>source_events=4 target_events=4</code>，完整功能 TB 的 events_seen 也增长。数字事件数相等只证明本次激励；未进行模拟亚稳态或任意相位穷举。</p>
+<details class="tool-card"><summary>工业界工具对标卡 · CDC 与测试协议接口 ↗</summary><p>CDC 审核与 DFTCompiler/Tessent 的测试协议规划相互衔接，职责不同。ATPG 必须知道同步寄存器是否扫描、如何捕获与屏蔽未知响应。当前脚本只数本例事件，不承担 CDC 静态签核；商业工具是否扫描某一级必须按项目策略和真实报告确认，不写成统一的 dont-touch 规则。</p></details>
+</div></div>
+
+<div class="lesson"><div class="lesson-num">05<small>1 小时</small></div><div>
+<h3>内部复位：谁清零了状态，谁能把它放开 <span class="difficulty">★★</span></h3>
+<p><b>为什么做：</b>如果扫描装载时 soft_reset 变为 1，core_rst_n 会立即变低，链中的状态被清掉；即使没有时钟边沿也会发生。单看正常上电仿真很容易漏掉这条路径。</p>
+<p><b>最小背景：</b>异步复位断言不等待时钟；撤销涉及 recovery/removal 要求。它像绕过事务提交的强制清空接口。功能上方便，不代表测试时可以随意触发或释放。</p>
+<p><b>实际路径：</b><code>cfg_wdata[0] → soft_reset → AND/NOT → core_rst_n → ingress/FSM/mix/count/slow/neg/shadow</code>。cfg、分频器和 CDC 使用 rst_n_ext；这是为了复位控制寄存器在核心被清零时仍能写回 0。新手若把 cfg 也接 core_rst_n，可能让控制位自清，改变复位脉冲语义。</p>
+<details class="accordion"><summary>原始问题与后续修复，分别验证</summary><p><b>v0 问题：</b><code>core_rst_n = rst_n_ext & ~soft_reset</code> 的内部来源不能保证测试时一直保持非活动。<b>v1 方向：</b>显式测试复位选择，让测试协议接管；还要说明 test_mode 何时切换及如何保证撤销安全。此处只是修复计划，不把一行三元表达式当作已实现、已签核的复位电路。</p><p><b>复现：</b>72 ns 拉高 soft_reset，当时没有 sys/aux 活动边沿；73 ns 观察 neg_sample=0 和 slow_ticks=0。74 ns 释放后，80 ns 下降沿恢复采样，81 ns neg_sample=A。波形证明异步断言，不能证明真实 recovery/removal 裕量。</p></details>
+<p><b>怎么验收：</b>路线“负沿采样与内部复位”复现 67/71/73/81 ns 的 0/A/0/A；完整功能 TB 保留 <code>PASS SOFT_RESET_RECOVERY</code>，证明通过配置端口解除复位仍可接受新事务。</p>
+<details class="tool-card"><summary>工业界工具对标卡 · 异步控制可测性 ↗</summary><p>DFTCompiler/Tessent 的检查需要理解异步控制在 shift/capture 中是否可控，ATPG 协议也要指定复位如何保持。本例 TB 只证明内部复位会清零、能恢复，不能替代门级工业 DRC 或恢复/移除时序检查。后续自研 DRC 会把受支持的规则逐条编码并附反例。</p></details>
+</div></div>
+
+<div class="lesson"><div class="lesson-num">06<small>1.5 小时</small></div><div>
+<h3>Memory 输出不再是 X，不代表外围都测到了 <span class="difficulty">★★★</span></h3>
+<p><b>为什么做：</b>SRAM 宏没有普通 DFF 的可串接接口；未初始化内容会产生未知值。如果为消掉波形的 X 而强制初始化或屏蔽全部输出，既可能改变真实硬件边界，又可能遮住外围故障。</p>
+<p><b>最小背景：</b>黑盒只承诺端口和行为契约，内部实现由宏库提供。read-first 表示同址读写时先返回旧内容。Shadow Logic 是被宏挡在不易控制/观察位置的周边组合与状态逻辑，像被外部依赖隔住的代码路径。</p>
+<p><b>读源码：</b><button class="inline-link" data-open-file="rtl/v0/packet_mem.sv">packet_mem.sv</button> 在仿真时有数组和读寄存器；定义 SYNTHESIS 后只保留带 blackbox 属性的端口壳。<button class="inline-link" data-open-file="rtl/v0/memory_shadow.sv">memory_shadow.sv</button> 在 sys 正沿计算 <code>^rdata</code>，读取的是本沿之前的 rdata。</p>
+<div class="table-scroll"><table><thead><tr><th>观察时刻</th><th>memory rdata</th><th>shadow parity</th><th>因果</th></tr></thead><tbody>
+<tr><td>36 ns</td><td>X</td><td>X</td><td>35 ns 写入地址 3 的数据 1，但同址 read-first 仍返回未初始化旧值</td></tr>
+<tr><td>46 ns</td><td>0x00000001</td><td>X</td><td>45 ns memory 更新读寄存器；shadow 同沿仍读取之前的 X</td></tr>
+<tr><td>56 ns</td><td>0x00000001</td><td>1</td><td>55 ns shadow 才计算已知数据的奇偶校验</td></tr>
+</tbody></table></div>
+<details class="accordion"><summary>错误写法 vs 正确边界：三种容易混淆的“修复”</summary><p><b>错误 1：</b>给仿真数组全部写零，声称解决 X。<b>后果：</b>从测试中隐藏未初始化风险；综合黑盒并不会自动获得这个复位能力。<b>当前正确边界：</b>保留 X，用四态比较断言它确实出现。</p><p><b>错误 2：</b>把 memory 输出统一 AND 成 0，声称提高 coverage。<b>后果：</b>观察路径也可能被遮住。<b>v2 方向：</b>bypass 提供可控数据，额外观察路径覆盖 Shadow Logic；重新计算新增测试结构的故障分母。</p><p><b>错误 3：</b>只加 bypass、不管写使能。<b>后果：</b>移位状态可能伪造 commit，破坏 memory 内容。<b>v2 方向：</b>根据 shift/capture 协议门控写使能，并独立验证功能模式下仍正常写入。</p><p><b>★经验点：</b>bypass 位置需要兼顾面积、功能时序与周边覆盖。只在宏输出附近加 MUX 可以隔离 X，但不能自动保证地址/写数据锥可观察。本例宏内部故障排除在 Scan/ATPG 主线之外；MBIST 仅在最后的工业全景介绍。</p></details>
+<p><b>怎么验收：</b><code>PASS W2_MEMORY read_first=1 shadow_extra_cycle=1</code>，加上 JSON 中 <code>memory_blackbox_instances=1</code>。必须同时保留功能模型与综合黑盒这两类证据。</p>
+<details class="tool-card"><summary>工业界工具对标卡 · Memory 边界与 X 管理 ↗</summary><p>DFTCompiler/Tessent 的插入规划与 ATPG 的 X 处理/测试点策略共同决定外围可测性。TetraMAX II/Tessent ATPG 的模型应明确宏边界和非扫描对象。开源本例只验证 read-first 与 X 传播，未实现宏内部测试、工业 X-bounding 或自动测试点优化；这些能力差距必须在报告中保留。</p></details>
+</div></div>
+
+<div class="lesson"><div class="lesson-num">07<small>1 小时</small></div><div>
+<h3>交一份可执行的审读结果，而不是一串术语 <span class="difficulty">★★</span></h3>
+<p><b>为什么做：</b>“有 CDC、有 memory、有门控”还不足以指导下一步。DFT 工程师需要可定位的位置、测试阶段、失败症状和修复后的可观测判据。</p>
+<p><b>最小背景：</b>时钟约束是给 STA 的环境契约，不是 testbench 的延迟代码。<button class="inline-link" data-open-file="constraints/v0.sdc">constraints/v0.sdc</button> 只定义两个根时钟的示例意图；派生时钟、I/O、uncertainty 等未完成，且本批没有运行 OpenSTA。文件清楚标注“意图草案”，不以存在 SDC 文件冒充签核。</p>
+<div class="command" data-command="python scripts/run.py sim&#10;python scripts/run.py structures&#10;python scripts/study_report.py"><code>python scripts/run.py sim<br>python scripts/run.py structures<br>python scripts/study_report.py</code><button class="copy-command">复制</button></div>
+<p><b>操作：</b>先回归 v0 功能，再跑独立结构实验，然后提取证据。无工具时应显示失败，不能跳过检查输出 PASS。<button class="inline-link" data-open-file="tb/structures_tb.sv">structures_tb.sv</button> 解释如何复现；<button class="inline-link" data-open-file="scripts/study_report.py">study_report.py</button> 解释如何从波形取证。</p>
+<div class="evidence-log"><div><i></i> 第二周结构实验 · 实际日志</div><pre id="w2-log"></pre></div>
+<p><b>怎么验收：</b>日志必须到达 <code>PASS STRUCTURES_V0</code> 和 <code>PASS WEEK2_EVIDENCE</code>；报告有 19 个快照，保留 x。八题自测全部理解后，导出一份至少包含五类结构的审读笔记。</p>
+<details class="tool-card"><summary>工业界工具对标卡 · 从审读到 DRC 输入 ↗</summary><p>本周结果相当于进入 DFTCompiler/Tessent 前的设计测试意图与风险清单，供后续规则检查和协议规划使用。TetraMAX II/Tessent ATPG 最终验证故障可检测性。工业流程可能使用不同版本的工具命名和命令；这里只列职责，具体命令、报告字段与约束集合必须查看安装环境 help/man。当前 Python 只是本项目 VCD 提取器，不是厂商 DRC 替代品。</p></details>
+</div></div>
+
+<article class="note-card w2-quiz"><span class="eyebrow">REVIEW / EXPLAIN IT YOURSELF</span><h3>八道入职自测：选择之后，再看原因</h3><p>得分只反映本页答题，不代表实验已在你的机器运行。参考解析会说明另外两个选项为什么不合适。</p><div id="w2-quiz-items"></div><div class="controls"><button id="w2-check-quiz" class="btn primary">核对答案</button><button id="w2-reset-quiz" class="btn">重新作答</button><strong id="w2-score" aria-live="polite"></strong></div></article>
+<div class="self-check" id="w2-checks"><h3>本周完成标记</h3><label><input type="checkbox" data-check="w2-transaction" data-week="2"> 我能解释握手、计算、提交三个边沿。</label><label><input type="checkbox" data-check="w2-faults" data-week="2"> 我能分别证明 q/SA1 可测与 r/SA0 不可测。</label><label><input type="checkbox" data-check="w2-clock-reset" data-week="2"> 我能指出时钟门控、负沿、CDC、复位各自的边界。</label><label><input type="checkbox" data-check="w2-memory" data-week="2"> 我已复现 read-first 与 Shadow Logic 多一拍的 X 传播。</label><label><input type="checkbox" data-check="w2-evidence" data-week="2"> 我已保留真实日志、波形并写出审读结论。</label><p id="w2-progress" class="annotation"></p></div>
+<article class="note-card w2-notebook"><span class="eyebrow">YOUR ENGINEERING NOTES</span><h3>把判断写成别人能接手的笔记</h3><label for="w2-notes">按“模块/信号 → 不做会怎样 → 对照证据 → 后续修复 → 验收标准”记录，至少五类结构。</label><textarea id="w2-notes" rows="7" placeholder="例如：u_count.gated_clk → enable=0 时无法移位 → 18ns 门控计数=0 → v1 接受控测试使能 → 功能门控正常且测试脉冲可达…"></textarea><div class="controls"><button id="w2-export-notes" class="btn">导出我的审读笔记 ↓</button><button id="w2-export-evidence" class="btn">下载实际 week2.json ↓</button><span id="w2-note-save" class="annotation" role="status"></span></div><p class="annotation">笔记仅保存到当前浏览器；下载后才能随工程一起归档。</p></article>
+</section>

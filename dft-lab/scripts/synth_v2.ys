@@ -1,0 +1,8 @@
+# 用途：验证v2四链及跨域lockup生成网表可被真实综合工具重新展开。
+# 锁存器是预期结构，不能把所有latch警告一律删除；memory继续保持黑盒。
+# 该步骤只有语义/连接检查；物理setup/hold和时钟树需要工艺库与STA。
+read_verilog -sv -DSYNTHESIS rtl/v1/scan_dff.sv rtl/v2/lockup_latch.sv rtl/v0/packet_mem.sv netlist/v2/design.v
+hierarchy -check -top dft_demo_top_v2
+proc
+check -assert
+stat

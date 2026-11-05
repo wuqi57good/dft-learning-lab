@@ -1,0 +1,4464 @@
+{
+  "cell_counts": {
+    "$_AND_": 609,
+    "$_DFFE_PN0P_": 244,
+    "$_DFF_NN0_": 4,
+    "$_DFF_PN0_": 44,
+    "$_DFF_PN1_": 1,
+    "$_DLATCH_N_": 1,
+    "$_MUX_": 32,
+    "$_NOT_": 43,
+    "$_OR_": 325,
+    "$_XOR_": 457,
+    "packet_mem": 1
+  },
+  "register_count": 293,
+  "negative_edge_count": 4,
+  "clock_groups": [
+    {
+      "bit": 2,
+      "aliases": [
+        "sys_clk",
+        "u_cdc.sys_clk",
+        "u_cfg.clk",
+        "u_clock.sys_clk",
+        "u_control.clk",
+        "u_count.clk",
+        "u_ingress.clk",
+        "u_mix.clk",
+        "u_neg.clk",
+        "u_shadow.clk"
+      ],
+      "count": 256
+    },
+    {
+      "bit": 3,
+      "aliases": [
+        "aux_clk",
+        "u_cdc.aux_clk"
+      ],
+      "count": 5
+    },
+    {
+      "bit": 647,
+      "aliases": [
+        "u_count.gated_clk"
+      ],
+      "count": 16
+    },
+    {
+      "bit": 205,
+      "aliases": [
+        "div_clk",
+        "u_clock.div_clk",
+        "u_clock.divider[1]",
+        "u_slow.div_clk"
+      ],
+      "count": 16
+    }
+  ],
+  "reset_groups": [
+    {
+      "bit": 204,
+      "aliases": [
+        "core_rst_n",
+        "u_clock.core_rst_n",
+        "u_control.rst_n",
+        "u_count.rst_n",
+        "u_ingress.rst_n",
+        "u_mix.rst_n",
+        "u_neg.rst_n",
+        "u_shadow.rst_n",
+        "u_slow.rst_n"
+      ],
+      "count": 245
+    },
+    {
+      "bit": 4,
+      "aliases": [
+        "rst_n_ext",
+        "u_cdc.rst_n",
+        "u_cfg.rst_n_ext",
+        "u_clock.rst_n_ext"
+      ],
+      "count": 48
+    }
+  ],
+  "memory_instances": [
+    "u_memory"
+  ],
+  "registers": [
+    {
+      "name": "$auto$ff.cc:337:slice$1283",
+      "q": 186,
+      "d": 191,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 114,
+      "aliases": [
+        "write_pointer[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1284",
+      "q": 192,
+      "d": 196,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 114,
+      "aliases": [
+        "write_pointer[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1285",
+      "q": 193,
+      "d": 197,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 114,
+      "aliases": [
+        "write_pointer[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1286",
+      "q": 194,
+      "d": 198,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 114,
+      "aliases": [
+        "write_pointer[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1287",
+      "q": 195,
+      "d": 199,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 114,
+      "aliases": [
+        "write_pointer[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1288",
+      "q": 163,
+      "d": 171,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 206,
+      "aliases": [
+        "events_seen[0]",
+        "status[8]",
+        "u_cfg.status[8]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1289",
+      "q": 172,
+      "d": 179,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 206,
+      "aliases": [
+        "events_seen[1]",
+        "status[9]",
+        "u_cfg.status[9]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1290",
+      "q": 173,
+      "d": 180,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 206,
+      "aliases": [
+        "events_seen[2]",
+        "status[10]",
+        "u_cfg.status[10]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1291",
+      "q": 174,
+      "d": 181,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 206,
+      "aliases": [
+        "events_seen[3]",
+        "status[11]",
+        "u_cfg.status[11]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1292",
+      "q": 175,
+      "d": 182,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 206,
+      "aliases": [
+        "events_seen[4]",
+        "status[12]",
+        "u_cfg.status[12]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1293",
+      "q": 176,
+      "d": 183,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 206,
+      "aliases": [
+        "events_seen[5]",
+        "status[13]",
+        "u_cfg.status[13]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1294",
+      "q": 177,
+      "d": 184,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 206,
+      "aliases": [
+        "events_seen[6]",
+        "status[14]",
+        "u_cfg.status[14]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "$auto$ff.cc:337:slice$1295",
+      "q": 178,
+      "d": 185,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 206,
+      "aliases": [
+        "events_seen[7]",
+        "status[15]",
+        "u_cfg.status[15]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cdc.$auto$ff.cc:337:slice$1512",
+      "q": 356,
+      "d": 352,
+      "clock": 3,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 351,
+      "aliases": [
+        "u_cdc.toggle"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cdc.$auto$ff.cc:337:slice$1530",
+      "q": 354,
+      "d": 356,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "u_cdc.sync1"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_cdc.$auto$ff.cc:337:slice$1531",
+      "q": 355,
+      "d": 354,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "u_cdc.sync2"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_cdc.$auto$ff.cc:337:slice$1532",
+      "q": 353,
+      "d": 355,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "u_cdc.previous"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_cdc.$auto$ff.cc:337:slice$1533",
+      "q": 334,
+      "d": 338,
+      "clock": 3,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "u_cdc.aux_count[0]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_cdc.$auto$ff.cc:337:slice$1534",
+      "q": 339,
+      "d": 342,
+      "clock": 3,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "u_cdc.aux_count[1]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_cdc.$auto$ff.cc:337:slice$1535",
+      "q": 340,
+      "d": 343,
+      "clock": 3,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "u_cdc.aux_count[2]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_cdc.$auto$ff.cc:337:slice$1536",
+      "q": 341,
+      "d": 344,
+      "clock": 3,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "u_cdc.aux_count[3]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$376",
+      "q": 301,
+      "d": 15,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 362,
+      "aliases": [
+        "soft_reset",
+        "u_cfg.soft_reset",
+        "u_clock.soft_reset"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$379",
+      "q": 272,
+      "d": 15,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 361,
+      "aliases": [
+        "mem_raddr[0]",
+        "u_cfg.mem_raddr[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$380",
+      "q": 273,
+      "d": 16,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 361,
+      "aliases": [
+        "mem_raddr[1]",
+        "u_cfg.mem_raddr[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$381",
+      "q": 274,
+      "d": 17,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 361,
+      "aliases": [
+        "mem_raddr[2]",
+        "u_cfg.mem_raddr[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$382",
+      "q": 275,
+      "d": 18,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 361,
+      "aliases": [
+        "mem_raddr[3]",
+        "u_cfg.mem_raddr[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$383",
+      "q": 276,
+      "d": 19,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 361,
+      "aliases": [
+        "mem_raddr[4]",
+        "u_cfg.mem_raddr[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$386",
+      "q": 208,
+      "d": 15,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[0]",
+        "u_cfg.key[0]",
+        "u_mix.key[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$387",
+      "q": 209,
+      "d": 16,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[1]",
+        "u_cfg.key[1]",
+        "u_mix.key[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$388",
+      "q": 210,
+      "d": 17,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[2]",
+        "u_cfg.key[2]",
+        "u_mix.key[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$389",
+      "q": 211,
+      "d": 18,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[3]",
+        "u_cfg.key[3]",
+        "u_mix.key[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$390",
+      "q": 212,
+      "d": 19,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[4]",
+        "u_cfg.key[4]",
+        "u_mix.key[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$391",
+      "q": 213,
+      "d": 20,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[5]",
+        "u_cfg.key[5]",
+        "u_mix.key[5]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$392",
+      "q": 214,
+      "d": 21,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[6]",
+        "u_cfg.key[6]",
+        "u_mix.key[6]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$393",
+      "q": 215,
+      "d": 22,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[7]",
+        "u_cfg.key[7]",
+        "u_mix.key[7]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$394",
+      "q": 216,
+      "d": 23,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[8]",
+        "u_cfg.key[8]",
+        "u_mix.key[8]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$395",
+      "q": 217,
+      "d": 24,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[9]",
+        "u_cfg.key[9]",
+        "u_mix.key[9]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$396",
+      "q": 218,
+      "d": 25,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[10]",
+        "u_cfg.key[10]",
+        "u_mix.key[10]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$397",
+      "q": 219,
+      "d": 26,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[11]",
+        "u_cfg.key[11]",
+        "u_mix.key[11]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$398",
+      "q": 220,
+      "d": 27,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[12]",
+        "u_cfg.key[12]",
+        "u_mix.key[12]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$399",
+      "q": 221,
+      "d": 28,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[13]",
+        "u_cfg.key[13]",
+        "u_mix.key[13]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$400",
+      "q": 222,
+      "d": 29,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[14]",
+        "u_cfg.key[14]",
+        "u_mix.key[14]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$401",
+      "q": 223,
+      "d": 30,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[15]",
+        "u_cfg.key[15]",
+        "u_mix.key[15]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$402",
+      "q": 224,
+      "d": 31,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[16]",
+        "u_cfg.key[16]",
+        "u_mix.key[16]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$403",
+      "q": 225,
+      "d": 32,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[17]",
+        "u_cfg.key[17]",
+        "u_mix.key[17]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$404",
+      "q": 226,
+      "d": 33,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[18]",
+        "u_cfg.key[18]",
+        "u_mix.key[18]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$405",
+      "q": 227,
+      "d": 34,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[19]",
+        "u_cfg.key[19]",
+        "u_mix.key[19]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$406",
+      "q": 228,
+      "d": 35,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[20]",
+        "u_cfg.key[20]",
+        "u_mix.key[20]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$407",
+      "q": 229,
+      "d": 36,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[21]",
+        "u_cfg.key[21]",
+        "u_mix.key[21]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$408",
+      "q": 230,
+      "d": 37,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[22]",
+        "u_cfg.key[22]",
+        "u_mix.key[22]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$409",
+      "q": 231,
+      "d": 38,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[23]",
+        "u_cfg.key[23]",
+        "u_mix.key[23]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$410",
+      "q": 232,
+      "d": 39,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[24]",
+        "u_cfg.key[24]",
+        "u_mix.key[24]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$411",
+      "q": 233,
+      "d": 40,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[25]",
+        "u_cfg.key[25]",
+        "u_mix.key[25]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$412",
+      "q": 234,
+      "d": 41,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[26]",
+        "u_cfg.key[26]",
+        "u_mix.key[26]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$413",
+      "q": 235,
+      "d": 42,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[27]",
+        "u_cfg.key[27]",
+        "u_mix.key[27]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$414",
+      "q": 236,
+      "d": 43,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[28]",
+        "u_cfg.key[28]",
+        "u_mix.key[28]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$415",
+      "q": 237,
+      "d": 44,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[29]",
+        "u_cfg.key[29]",
+        "u_mix.key[29]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$416",
+      "q": 238,
+      "d": 45,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[30]",
+        "u_cfg.key[30]",
+        "u_mix.key[30]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_cfg.$auto$ff.cc:337:slice$417",
+      "q": 239,
+      "d": 46,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 360,
+      "aliases": [
+        "key[31]",
+        "u_cfg.key[31]",
+        "u_mix.key[31]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_clock.$auto$ff.cc:337:slice$1235",
+      "q": 602,
+      "d": 599,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "u_clock.divider[0]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_clock.$auto$ff.cc:337:slice$1236",
+      "q": 205,
+      "d": 600,
+      "clock": 2,
+      "reset": 4,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "div_clk",
+        "u_clock.div_clk",
+        "u_clock.divider[1]",
+        "u_slow.div_clk"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_control.$auto$ff.cc:337:slice$1274",
+      "q": 297,
+      "d": 605,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 1,
+      "enable": "1",
+      "aliases": [
+        "ready",
+        "status[0]",
+        "u_cfg.status[0]",
+        "u_control.ready",
+        "u_control.state[0]"
+      ],
+      "original_type": "$_DFF_PN1_"
+    },
+    {
+      "name": "u_control.$auto$ff.cc:337:slice$1275",
+      "q": 114,
+      "d": 207,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "commit",
+        "data_out_valid",
+        "irq",
+        "u_control.commit",
+        "u_control.state[1]",
+        "u_count.enable",
+        "u_neg.status[0]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_control.$auto$ff.cc:337:slice$1276",
+      "q": 207,
+      "d": 604,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "execute",
+        "u_control.execute",
+        "u_control.state[2]",
+        "u_mix.execute"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1612",
+      "q": 281,
+      "d": 622,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[0]",
+        "u_cfg.packet_count[0]",
+        "u_count.count[0]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1613",
+      "q": 282,
+      "d": 623,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[1]",
+        "u_cfg.packet_count[1]",
+        "u_count.count[1]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1614",
+      "q": 283,
+      "d": 624,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[2]",
+        "u_cfg.packet_count[2]",
+        "u_count.count[2]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1615",
+      "q": 284,
+      "d": 625,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[3]",
+        "u_cfg.packet_count[3]",
+        "u_count.count[3]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1616",
+      "q": 285,
+      "d": 626,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[4]",
+        "u_cfg.packet_count[4]",
+        "u_count.count[4]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1617",
+      "q": 286,
+      "d": 627,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[5]",
+        "u_cfg.packet_count[5]",
+        "u_count.count[5]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1618",
+      "q": 287,
+      "d": 628,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[6]",
+        "u_cfg.packet_count[6]",
+        "u_count.count[6]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1619",
+      "q": 288,
+      "d": 629,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[7]",
+        "u_cfg.packet_count[7]",
+        "u_count.count[7]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1620",
+      "q": 289,
+      "d": 630,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[8]",
+        "u_cfg.packet_count[8]",
+        "u_count.count[8]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1621",
+      "q": 290,
+      "d": 631,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[9]",
+        "u_cfg.packet_count[9]",
+        "u_count.count[9]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1622",
+      "q": 291,
+      "d": 632,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[10]",
+        "u_cfg.packet_count[10]",
+        "u_count.count[10]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1623",
+      "q": 292,
+      "d": 633,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[11]",
+        "u_cfg.packet_count[11]",
+        "u_count.count[11]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1624",
+      "q": 293,
+      "d": 634,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[12]",
+        "u_cfg.packet_count[12]",
+        "u_count.count[12]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1625",
+      "q": 294,
+      "d": 635,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[13]",
+        "u_cfg.packet_count[13]",
+        "u_count.count[13]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1626",
+      "q": 295,
+      "d": 636,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[14]",
+        "u_cfg.packet_count[14]",
+        "u_count.count[14]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_count.$auto$ff.cc:337:slice$1627",
+      "q": 296,
+      "d": 637,
+      "clock": 647,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "packet_count[15]",
+        "u_cfg.packet_count[15]",
+        "u_count.count[15]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1949",
+      "q": 302,
+      "d": 81,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[0]",
+        "u_fault.a",
+        "u_ingress.word_q[0]",
+        "u_mix.word[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1950",
+      "q": 303,
+      "d": 82,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[1]",
+        "u_fault.b",
+        "u_ingress.word_q[1]",
+        "u_mix.word[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1951",
+      "q": 304,
+      "d": 83,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[2]",
+        "u_fault.c",
+        "u_ingress.word_q[2]",
+        "u_mix.word[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1952",
+      "q": 305,
+      "d": 84,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[3]",
+        "u_fault.d",
+        "u_ingress.word_q[3]",
+        "u_mix.word[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1953",
+      "q": 306,
+      "d": 85,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[4]",
+        "u_fault.e",
+        "u_ingress.word_q[4]",
+        "u_mix.word[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1954",
+      "q": 307,
+      "d": 86,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[5]",
+        "u_ingress.word_q[5]",
+        "u_mix.word[5]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1955",
+      "q": 308,
+      "d": 87,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[6]",
+        "u_ingress.word_q[6]",
+        "u_mix.word[6]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1956",
+      "q": 309,
+      "d": 88,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[7]",
+        "u_ingress.word_q[7]",
+        "u_mix.word[7]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1957",
+      "q": 310,
+      "d": 89,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[8]",
+        "u_ingress.word_q[8]",
+        "u_mix.word[8]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1958",
+      "q": 311,
+      "d": 90,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[9]",
+        "u_ingress.word_q[9]",
+        "u_mix.word[9]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1959",
+      "q": 312,
+      "d": 91,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[10]",
+        "u_ingress.word_q[10]",
+        "u_mix.word[10]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1960",
+      "q": 313,
+      "d": 92,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[11]",
+        "u_ingress.word_q[11]",
+        "u_mix.word[11]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1961",
+      "q": 314,
+      "d": 93,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[12]",
+        "u_ingress.word_q[12]",
+        "u_mix.word[12]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1962",
+      "q": 315,
+      "d": 94,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[13]",
+        "u_ingress.word_q[13]",
+        "u_mix.word[13]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1963",
+      "q": 316,
+      "d": 95,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[14]",
+        "u_ingress.word_q[14]",
+        "u_mix.word[14]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1964",
+      "q": 317,
+      "d": 96,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[15]",
+        "u_ingress.word_q[15]",
+        "u_mix.word[15]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1965",
+      "q": 318,
+      "d": 97,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[16]",
+        "u_ingress.word_q[16]",
+        "u_mix.word[16]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1966",
+      "q": 319,
+      "d": 98,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[17]",
+        "u_ingress.word_q[17]",
+        "u_mix.word[17]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1967",
+      "q": 320,
+      "d": 99,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[18]",
+        "u_ingress.word_q[18]",
+        "u_mix.word[18]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1968",
+      "q": 321,
+      "d": 100,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[19]",
+        "u_ingress.word_q[19]",
+        "u_mix.word[19]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1969",
+      "q": 322,
+      "d": 101,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[20]",
+        "u_ingress.word_q[20]",
+        "u_mix.word[20]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1970",
+      "q": 323,
+      "d": 102,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[21]",
+        "u_ingress.word_q[21]",
+        "u_mix.word[21]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1971",
+      "q": 324,
+      "d": 103,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[22]",
+        "u_ingress.word_q[22]",
+        "u_mix.word[22]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1972",
+      "q": 325,
+      "d": 104,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[23]",
+        "u_ingress.word_q[23]",
+        "u_mix.word[23]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1973",
+      "q": 326,
+      "d": 105,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[24]",
+        "u_ingress.word_q[24]",
+        "u_mix.word[24]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1974",
+      "q": 327,
+      "d": 106,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[25]",
+        "u_ingress.word_q[25]",
+        "u_mix.word[25]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1975",
+      "q": 328,
+      "d": 107,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[26]",
+        "u_ingress.word_q[26]",
+        "u_mix.word[26]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1976",
+      "q": 329,
+      "d": 108,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[27]",
+        "u_ingress.word_q[27]",
+        "u_mix.word[27]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1977",
+      "q": 330,
+      "d": 109,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[28]",
+        "u_ingress.word_q[28]",
+        "u_mix.word[28]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1978",
+      "q": 331,
+      "d": 110,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[29]",
+        "u_ingress.word_q[29]",
+        "u_mix.word[29]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1979",
+      "q": 332,
+      "d": 111,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[30]",
+        "u_ingress.word_q[30]",
+        "u_mix.word[30]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_ingress.$auto$ff.cc:337:slice$1980",
+      "q": 333,
+      "d": 112,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 203,
+      "aliases": [
+        "word_q[31]",
+        "u_ingress.word_q[31]",
+        "u_mix.word[31]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1984",
+      "q": 1564,
+      "d": 894,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1985",
+      "q": 1565,
+      "d": 1723,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1986",
+      "q": 1566,
+      "d": 1724,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1987",
+      "q": 1567,
+      "d": 1725,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1988",
+      "q": 1568,
+      "d": 1726,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1989",
+      "q": 1569,
+      "d": 1727,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[5]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1990",
+      "q": 1570,
+      "d": 1728,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[6]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1991",
+      "q": 1571,
+      "d": 1729,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[7]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1992",
+      "q": 1572,
+      "d": 1730,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[8]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1993",
+      "q": 1573,
+      "d": 1731,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[9]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1994",
+      "q": 1574,
+      "d": 1732,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[10]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1995",
+      "q": 1575,
+      "d": 1733,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[11]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1996",
+      "q": 1576,
+      "d": 1734,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[12]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1997",
+      "q": 1577,
+      "d": 1735,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[13]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1998",
+      "q": 1578,
+      "d": 1736,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[14]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$1999",
+      "q": 1579,
+      "d": 1737,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[15]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2000",
+      "q": 1580,
+      "d": 1738,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[16]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2001",
+      "q": 1581,
+      "d": 1739,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[17]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2002",
+      "q": 1582,
+      "d": 1740,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[18]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2003",
+      "q": 1583,
+      "d": 1741,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[19]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2004",
+      "q": 1584,
+      "d": 1742,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[20]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2005",
+      "q": 1585,
+      "d": 1743,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[21]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2006",
+      "q": 1586,
+      "d": 1744,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[22]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2007",
+      "q": 1587,
+      "d": 1745,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[23]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2008",
+      "q": 1588,
+      "d": 1746,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[24]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2009",
+      "q": 1589,
+      "d": 1747,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[25]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2010",
+      "q": 1590,
+      "d": 1748,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[26]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2011",
+      "q": 1591,
+      "d": 1749,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[27]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2012",
+      "q": 1592,
+      "d": 1750,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[28]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2013",
+      "q": 1593,
+      "d": 1751,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[29]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2014",
+      "q": 1594,
+      "d": 1752,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[30]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2015",
+      "q": 1595,
+      "d": 1753,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane1[31]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2016",
+      "q": 115,
+      "d": 1660,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[0]",
+        "u_mix.result_q[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2017",
+      "q": 116,
+      "d": 1661,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[1]",
+        "u_mix.result_q[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2018",
+      "q": 117,
+      "d": 1662,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[2]",
+        "u_mix.result_q[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2019",
+      "q": 118,
+      "d": 1663,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[3]",
+        "u_mix.result_q[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2020",
+      "q": 119,
+      "d": 1664,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[4]",
+        "u_mix.result_q[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2021",
+      "q": 120,
+      "d": 1665,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[5]",
+        "u_mix.result_q[5]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2022",
+      "q": 121,
+      "d": 1666,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[6]",
+        "u_mix.result_q[6]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2023",
+      "q": 122,
+      "d": 1667,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[7]",
+        "u_mix.result_q[7]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2024",
+      "q": 123,
+      "d": 1668,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[8]",
+        "u_mix.result_q[8]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2025",
+      "q": 124,
+      "d": 1669,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[9]",
+        "u_mix.result_q[9]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2026",
+      "q": 125,
+      "d": 1670,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[10]",
+        "u_mix.result_q[10]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2027",
+      "q": 126,
+      "d": 1671,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[11]",
+        "u_mix.result_q[11]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2028",
+      "q": 127,
+      "d": 1672,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[12]",
+        "u_mix.result_q[12]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2029",
+      "q": 128,
+      "d": 1673,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[13]",
+        "u_mix.result_q[13]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2030",
+      "q": 129,
+      "d": 1674,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[14]",
+        "u_mix.result_q[14]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2031",
+      "q": 130,
+      "d": 1675,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[15]",
+        "u_mix.result_q[15]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2032",
+      "q": 131,
+      "d": 1676,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[16]",
+        "u_mix.result_q[16]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2033",
+      "q": 132,
+      "d": 1677,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[17]",
+        "u_mix.result_q[17]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2034",
+      "q": 133,
+      "d": 1678,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[18]",
+        "u_mix.result_q[18]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2035",
+      "q": 134,
+      "d": 1679,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[19]",
+        "u_mix.result_q[19]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2036",
+      "q": 135,
+      "d": 1680,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[20]",
+        "u_mix.result_q[20]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2037",
+      "q": 136,
+      "d": 1681,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[21]",
+        "u_mix.result_q[21]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2038",
+      "q": 137,
+      "d": 1682,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[22]",
+        "u_mix.result_q[22]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2039",
+      "q": 138,
+      "d": 1683,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[23]",
+        "u_mix.result_q[23]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2040",
+      "q": 139,
+      "d": 1684,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[24]",
+        "u_mix.result_q[24]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2041",
+      "q": 140,
+      "d": 1685,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[25]",
+        "u_mix.result_q[25]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2042",
+      "q": 141,
+      "d": 1686,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[26]",
+        "u_mix.result_q[26]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2043",
+      "q": 142,
+      "d": 1687,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[27]",
+        "u_mix.result_q[27]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2044",
+      "q": 143,
+      "d": 1688,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[28]",
+        "u_mix.result_q[28]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2045",
+      "q": 144,
+      "d": 1689,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[29]",
+        "u_mix.result_q[29]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2046",
+      "q": 145,
+      "d": 1690,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[30]",
+        "u_mix.result_q[30]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2047",
+      "q": 146,
+      "d": 1691,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "data_out[31]",
+        "u_mix.result_q[31]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2048",
+      "q": 1628,
+      "d": 684,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2049",
+      "q": 1629,
+      "d": 1785,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2050",
+      "q": 1630,
+      "d": 1786,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2051",
+      "q": 1631,
+      "d": 1787,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2052",
+      "q": 1632,
+      "d": 1788,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2053",
+      "q": 1633,
+      "d": 1789,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[5]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2054",
+      "q": 1634,
+      "d": 1790,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[6]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2055",
+      "q": 1635,
+      "d": 1791,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[7]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2056",
+      "q": 1636,
+      "d": 1792,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[8]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2057",
+      "q": 1637,
+      "d": 1793,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[9]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2058",
+      "q": 1638,
+      "d": 1794,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[10]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2059",
+      "q": 1639,
+      "d": 1795,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[11]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2060",
+      "q": 1640,
+      "d": 1796,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[12]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2061",
+      "q": 1641,
+      "d": 1797,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[13]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2062",
+      "q": 1642,
+      "d": 1798,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[14]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2063",
+      "q": 1643,
+      "d": 1799,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[15]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2064",
+      "q": 1644,
+      "d": 1800,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[16]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2065",
+      "q": 1645,
+      "d": 1801,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[17]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2066",
+      "q": 1646,
+      "d": 1802,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[18]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2067",
+      "q": 1647,
+      "d": 1803,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[19]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2068",
+      "q": 1648,
+      "d": 1804,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[20]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2069",
+      "q": 1649,
+      "d": 1805,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[21]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2070",
+      "q": 1650,
+      "d": 1806,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[22]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2071",
+      "q": 1651,
+      "d": 1807,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[23]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2072",
+      "q": 1652,
+      "d": 1808,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[24]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2073",
+      "q": 1653,
+      "d": 1809,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[25]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2074",
+      "q": 1654,
+      "d": 1810,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[26]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2075",
+      "q": 1655,
+      "d": 1811,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[27]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2076",
+      "q": 1656,
+      "d": 1812,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[28]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2077",
+      "q": 1657,
+      "d": 1813,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[29]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2078",
+      "q": 1658,
+      "d": 1814,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[30]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2079",
+      "q": 1659,
+      "d": 1815,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane3[31]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2080",
+      "q": 1532,
+      "d": 1021,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2081",
+      "q": 1533,
+      "d": 1692,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2082",
+      "q": 1534,
+      "d": 1693,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2083",
+      "q": 1535,
+      "d": 1694,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2084",
+      "q": 1536,
+      "d": 1695,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2085",
+      "q": 1537,
+      "d": 1696,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[5]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2086",
+      "q": 1538,
+      "d": 1697,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[6]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2087",
+      "q": 1539,
+      "d": 1698,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[7]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2088",
+      "q": 1540,
+      "d": 1699,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[8]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2089",
+      "q": 1541,
+      "d": 1700,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[9]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2090",
+      "q": 1542,
+      "d": 1701,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[10]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2091",
+      "q": 1543,
+      "d": 1702,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[11]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2092",
+      "q": 1544,
+      "d": 1703,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[12]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2093",
+      "q": 1545,
+      "d": 1704,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[13]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2094",
+      "q": 1546,
+      "d": 1705,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[14]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2095",
+      "q": 1547,
+      "d": 1706,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[15]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2096",
+      "q": 1548,
+      "d": 1707,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[16]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2097",
+      "q": 1549,
+      "d": 1708,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[17]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2098",
+      "q": 1550,
+      "d": 1709,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[18]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2099",
+      "q": 1551,
+      "d": 1710,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[19]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2100",
+      "q": 1552,
+      "d": 1711,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[20]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2101",
+      "q": 1553,
+      "d": 1712,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[21]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2102",
+      "q": 1554,
+      "d": 1713,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[22]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2103",
+      "q": 1555,
+      "d": 1714,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[23]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2104",
+      "q": 1556,
+      "d": 1715,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[24]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2105",
+      "q": 1557,
+      "d": 1716,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[25]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2106",
+      "q": 1558,
+      "d": 1717,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[26]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2107",
+      "q": 1559,
+      "d": 1718,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[27]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2108",
+      "q": 1560,
+      "d": 1719,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[28]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2109",
+      "q": 1561,
+      "d": 1720,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[29]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2110",
+      "q": 1562,
+      "d": 1721,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[30]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2111",
+      "q": 1563,
+      "d": 1722,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane0[31]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2112",
+      "q": 1596,
+      "d": 799,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[0]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2113",
+      "q": 1597,
+      "d": 1754,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[1]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2114",
+      "q": 1598,
+      "d": 1755,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[2]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2115",
+      "q": 1599,
+      "d": 1756,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[3]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2116",
+      "q": 1600,
+      "d": 1757,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[4]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2117",
+      "q": 1601,
+      "d": 1758,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[5]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2118",
+      "q": 1602,
+      "d": 1759,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[6]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2119",
+      "q": 1603,
+      "d": 1760,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[7]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2120",
+      "q": 1604,
+      "d": 1761,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[8]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2121",
+      "q": 1605,
+      "d": 1762,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[9]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2122",
+      "q": 1606,
+      "d": 1763,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[10]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2123",
+      "q": 1607,
+      "d": 1764,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[11]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2124",
+      "q": 1608,
+      "d": 1765,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[12]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2125",
+      "q": 1609,
+      "d": 1766,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[13]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2126",
+      "q": 1610,
+      "d": 1767,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[14]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2127",
+      "q": 1611,
+      "d": 1768,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[15]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2128",
+      "q": 1612,
+      "d": 1769,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[16]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2129",
+      "q": 1613,
+      "d": 1770,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[17]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2130",
+      "q": 1614,
+      "d": 1771,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[18]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2131",
+      "q": 1615,
+      "d": 1772,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[19]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2132",
+      "q": 1616,
+      "d": 1773,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[20]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2133",
+      "q": 1617,
+      "d": 1774,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[21]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2134",
+      "q": 1618,
+      "d": 1775,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[22]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2135",
+      "q": 1619,
+      "d": 1776,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[23]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2136",
+      "q": 1620,
+      "d": 1777,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[24]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2137",
+      "q": 1621,
+      "d": 1778,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[25]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2138",
+      "q": 1622,
+      "d": 1779,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[26]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2139",
+      "q": 1623,
+      "d": 1780,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[27]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2140",
+      "q": 1624,
+      "d": 1781,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[28]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2141",
+      "q": 1625,
+      "d": 1782,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[29]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2142",
+      "q": 1626,
+      "d": 1783,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[30]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_mix.$auto$ff.cc:337:slice$2143",
+      "q": 1627,
+      "d": 1784,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": 207,
+      "aliases": [
+        "u_mix.lane2[31]"
+      ],
+      "original_type": "$_DFFE_PN0P_"
+    },
+    {
+      "name": "u_neg.$auto$ff.cc:337:slice$1945",
+      "q": 277,
+      "d": 114,
+      "clock": 2,
+      "reset": 204,
+      "edge": "negative",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "neg_status[0]",
+        "status[4]",
+        "u_cfg.status[4]",
+        "u_neg.sampled[0]"
+      ],
+      "original_type": "$_DFF_NN0_"
+    },
+    {
+      "name": "u_neg.$auto$ff.cc:337:slice$1946",
+      "q": 278,
+      "d": 298,
+      "clock": 2,
+      "reset": 204,
+      "edge": "negative",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "neg_status[1]",
+        "status[5]",
+        "u_cfg.status[5]",
+        "u_neg.sampled[1]"
+      ],
+      "original_type": "$_DFF_NN0_"
+    },
+    {
+      "name": "u_neg.$auto$ff.cc:337:slice$1947",
+      "q": 279,
+      "d": 299,
+      "clock": 2,
+      "reset": 204,
+      "edge": "negative",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "neg_status[2]",
+        "status[6]",
+        "u_cfg.status[6]",
+        "u_neg.sampled[2]"
+      ],
+      "original_type": "$_DFF_NN0_"
+    },
+    {
+      "name": "u_neg.$auto$ff.cc:337:slice$1948",
+      "q": 280,
+      "d": 300,
+      "clock": 2,
+      "reset": 204,
+      "edge": "negative",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "neg_status[3]",
+        "status[7]",
+        "u_cfg.status[7]",
+        "u_neg.sampled[3]"
+      ],
+      "original_type": "$_DFF_NN0_"
+    },
+    {
+      "name": "u_shadow.$auto$ff.cc:337:slice$1944",
+      "q": 300,
+      "d": 1816,
+      "clock": 2,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "shadow_parity",
+        "status[3]",
+        "u_cfg.status[3]",
+        "u_neg.status[3]",
+        "u_shadow.parity_q"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4067",
+      "q": 147,
+      "d": 1862,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[0]",
+        "u_slow.ticks[0]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4068",
+      "q": 148,
+      "d": 1863,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[1]",
+        "u_slow.ticks[1]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4069",
+      "q": 149,
+      "d": 1864,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[2]",
+        "u_slow.ticks[2]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4070",
+      "q": 150,
+      "d": 1865,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[3]",
+        "u_slow.ticks[3]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4071",
+      "q": 151,
+      "d": 1866,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[4]",
+        "u_slow.ticks[4]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4072",
+      "q": 152,
+      "d": 1867,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[5]",
+        "u_slow.ticks[5]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4073",
+      "q": 153,
+      "d": 1868,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[6]",
+        "u_slow.ticks[6]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4074",
+      "q": 154,
+      "d": 1869,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[7]",
+        "u_slow.ticks[7]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4075",
+      "q": 155,
+      "d": 1870,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[8]",
+        "u_slow.ticks[8]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4076",
+      "q": 156,
+      "d": 1871,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[9]",
+        "u_slow.ticks[9]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4077",
+      "q": 157,
+      "d": 1872,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[10]",
+        "u_slow.ticks[10]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4078",
+      "q": 158,
+      "d": 1873,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[11]",
+        "u_slow.ticks[11]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4079",
+      "q": 159,
+      "d": 1874,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[12]",
+        "u_slow.ticks[12]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4080",
+      "q": 160,
+      "d": 1875,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[13]",
+        "u_slow.ticks[13]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4081",
+      "q": 161,
+      "d": 1876,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[14]",
+        "u_slow.ticks[14]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    },
+    {
+      "name": "u_slow.$auto$ff.cc:337:slice$4082",
+      "q": 162,
+      "d": 1877,
+      "clock": 205,
+      "reset": 204,
+      "edge": "positive",
+      "reset_value": 0,
+      "enable": "1",
+      "aliases": [
+        "slow_ticks[15]",
+        "u_slow.ticks[15]"
+      ],
+      "original_type": "$_DFF_PN0_"
+    }
+  ],
+  "source": "netlist/v0/design.json",
+  "area_nand2_equivalent": null
+}

@@ -1,0 +1,6 @@
+VCD info: dumpfile build/atpg/cases/net_10_SA0/scan_atpg.vcd opened for output.
+PASS ATPG_SCAN_LOAD cells_per_dut=293
+ATPG_SCAN_OBS cycle=72 chain=1 good=1 bad=0
+PASS ATPG_SCAN_UNLOAD cells_per_dut=293 compared_so_bits=586
+PASS ATPG_FULL_DUT_SCAN
+tb/atpg_pattern_tb.sv:94: $finish called at 1800000 (1ps)

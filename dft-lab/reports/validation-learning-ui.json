@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-11-05T17:15:51.604807+00:00",
+  "checks": {
+    "search_filters_and_escaping": "PASS: 多词、大小写、范围、空结果、特殊字符",
+    "keyboard_and_close_focus": "PASS: Ctrl+K、上下箭头、Escape、关闭后恢复焦点",
+    "source_navigation": "PASS: rtl/v1/scan_dff.sv:6 与磁盘源码独立核对并保留焦点",
+    "course_navigation": "PASS: 课程标题、多词正文、折叠答案、Enter 定位与焦点",
+    "record_export_and_merge": "PASS: 导出、只合并 true、保留两处笔记、未知项忽略、重复导入去重",
+    "invalid_import_atomicity": "PASS: 11 种无效 JSON/字段均无状态改变",
+    "plain_text_and_persistence": "PASS: HTML 仅作为文字，刷新后进度与笔记保留",
+    "mobile_layout": "PASS: 390×844 弹窗完整可见、无页面横向溢出、关闭后焦点正确",
+    "offline_and_javascript": "PASS: 无外部网络请求，无 JavaScript 异常"
+  },
+  "tested_html": "web/dft_course.html",
+  "ui_source_sha256": {
+    "web/build.py": "a27376e254d2ecfb56a26587ef9cf0a3b69660db2e5e6c64cea4ce18c9f90546",
+    "web/assets/advanced.css": "0adadeec8ac33087839e43cdbe74566b15deaa2609bf75c899984377cbc6ae25",
+    "web/assets/advanced.js": "c075a77872907cd58ad740e241dc3f7f570982a2568c8b8090857cf960d576dc",
+    "web/assets/course-extra.js": "cd6d76c0a6feb54bbe18877cba59d8c1122afe53853638be79b1f4a134bedc0d",
+    "web/assets/course-main.js": "7cbaa58e6802e59061c27a9e38ae2a45062fea6695c89f234ffc8eedf76f689f",
+    "web/assets/course.css": "7dacf1fa52890a6278b404caf92f1b5ff1d920133b9e0795475d6998a17b8d0a",
+    "web/assets/course.template.html": "669506b85a0a090709fb45e7b44adcae5a707282fb9fe48b0dcbb7fc39ebe925",
+    "web/assets/learning.css": "948863af4261d2e0189323fc86a3a387e4869e29cba71b7b58f852f189ffcad6",
+    "web/assets/learning.js": "8c5be220743a948fc75a19d6924a9915439ae649627011a726ffec654fb15657",
+    "web/assets/polish.css": "de85af1b0cf5ee30da97bec317ce5184806d3bc2a96ba926c0f8373ce4ea7b0b",
+    "web/assets/week2.css": "c7eb810802a40a7bc0d51371e777a9be82928cadf3f8fed6b5b9db04d80e507b",
+    "web/assets/week2.html": "c9b68e692acc0e46a49d9de2edfba7d520c3e04b53935890f0fa2ac6cc15b718",
+    "web/assets/week2.js": "43f47d3f22da2533947036f2ac31cca1804fd5e9e41f3d199a3bc02318a25ac0",
+    "web/assets/weeks3-7.css": "1ae6af5d01b562282628005615f2e1a27e294266dbc43d4f64e594838faff1f7",
+    "web/assets/weeks3-7.html": "818b7fd5ca6f7dbd450a7e35e538b9b675b0686e57e2a6c01d4a178416887ff8"
+  },
+  "javascript_errors": [],
+  "external_network_requests": []
+}

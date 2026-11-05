@@ -1,0 +1,1136 @@
+{
+  "schema": "dft-lab.week2.v0",
+  "status": "PASS",
+  "timescale": "1ps",
+  "fault_detection_input_counts": {
+    "vectors": 32,
+    "r_sa0": 0,
+    "r_sa1": 16,
+    "q_sa1": 16
+  },
+  "transaction": [
+    {
+      "ns": 80,
+      "values": {
+        "valid": {
+          "bits": "1",
+          "display": "1"
+        },
+        "ready": {
+          "bits": "1",
+          "display": "1"
+        },
+        "data_in": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "word_q": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "execute": {
+          "bits": "0",
+          "display": "0"
+        },
+        "commit": {
+          "bits": "0",
+          "display": "0"
+        },
+        "result": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "write_pointer": {
+          "bits": "00000",
+          "display": "0x00"
+        },
+        "mem_data": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        }
+      }
+    },
+    {
+      "ns": 85,
+      "values": {
+        "valid": {
+          "bits": "1",
+          "display": "1"
+        },
+        "ready": {
+          "bits": "0",
+          "display": "0"
+        },
+        "data_in": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "word_q": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "execute": {
+          "bits": "1",
+          "display": "1"
+        },
+        "commit": {
+          "bits": "0",
+          "display": "0"
+        },
+        "result": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "write_pointer": {
+          "bits": "00000",
+          "display": "0x00"
+        },
+        "mem_data": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        }
+      }
+    },
+    {
+      "ns": 90,
+      "values": {
+        "valid": {
+          "bits": "1",
+          "display": "1"
+        },
+        "ready": {
+          "bits": "0",
+          "display": "0"
+        },
+        "data_in": {
+          "bits": "11111111111111111111111111111111",
+          "display": "0xFFFFFFFF"
+        },
+        "word_q": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "execute": {
+          "bits": "1",
+          "display": "1"
+        },
+        "commit": {
+          "bits": "0",
+          "display": "0"
+        },
+        "result": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "write_pointer": {
+          "bits": "00000",
+          "display": "0x00"
+        },
+        "mem_data": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        }
+      }
+    },
+    {
+      "ns": 95,
+      "values": {
+        "valid": {
+          "bits": "1",
+          "display": "1"
+        },
+        "ready": {
+          "bits": "0",
+          "display": "0"
+        },
+        "data_in": {
+          "bits": "11111111111111111111111111111111",
+          "display": "0xFFFFFFFF"
+        },
+        "word_q": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "execute": {
+          "bits": "0",
+          "display": "0"
+        },
+        "commit": {
+          "bits": "1",
+          "display": "1"
+        },
+        "result": {
+          "bits": "10001101011000001110001001100110",
+          "display": "0x8D60E266"
+        },
+        "write_pointer": {
+          "bits": "00000",
+          "display": "0x00"
+        },
+        "mem_data": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        }
+      }
+    },
+    {
+      "ns": 100,
+      "values": {
+        "valid": {
+          "bits": "0",
+          "display": "0"
+        },
+        "ready": {
+          "bits": "0",
+          "display": "0"
+        },
+        "data_in": {
+          "bits": "11111111111111111111111111111111",
+          "display": "0xFFFFFFFF"
+        },
+        "word_q": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "execute": {
+          "bits": "0",
+          "display": "0"
+        },
+        "commit": {
+          "bits": "1",
+          "display": "1"
+        },
+        "result": {
+          "bits": "10001101011000001110001001100110",
+          "display": "0x8D60E266"
+        },
+        "write_pointer": {
+          "bits": "00000",
+          "display": "0x00"
+        },
+        "mem_data": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        }
+      }
+    },
+    {
+      "ns": 105,
+      "values": {
+        "valid": {
+          "bits": "0",
+          "display": "0"
+        },
+        "ready": {
+          "bits": "1",
+          "display": "1"
+        },
+        "data_in": {
+          "bits": "11111111111111111111111111111111",
+          "display": "0xFFFFFFFF"
+        },
+        "word_q": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "execute": {
+          "bits": "0",
+          "display": "0"
+        },
+        "commit": {
+          "bits": "0",
+          "display": "0"
+        },
+        "result": {
+          "bits": "10001101011000001110001001100110",
+          "display": "0x8D60E266"
+        },
+        "write_pointer": {
+          "bits": "00001",
+          "display": "0x01"
+        },
+        "mem_data": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        }
+      }
+    },
+    {
+      "ns": 115,
+      "values": {
+        "valid": {
+          "bits": "1",
+          "display": "1"
+        },
+        "ready": {
+          "bits": "0",
+          "display": "0"
+        },
+        "data_in": {
+          "bits": "11111111111111111111111111111111",
+          "display": "0xFFFFFFFF"
+        },
+        "word_q": {
+          "bits": "11111111111111111111111111111111",
+          "display": "0xFFFFFFFF"
+        },
+        "execute": {
+          "bits": "1",
+          "display": "1"
+        },
+        "commit": {
+          "bits": "0",
+          "display": "0"
+        },
+        "result": {
+          "bits": "10001101011000001110001001100110",
+          "display": "0x8D60E266"
+        },
+        "write_pointer": {
+          "bits": "00001",
+          "display": "0x01"
+        },
+        "mem_data": {
+          "bits": "10001101011000001110001001100110",
+          "display": "0x8D60E266"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        }
+      }
+    },
+    {
+      "ns": 125,
+      "values": {
+        "valid": {
+          "bits": "1",
+          "display": "1"
+        },
+        "ready": {
+          "bits": "0",
+          "display": "0"
+        },
+        "data_in": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "word_q": {
+          "bits": "11111111111111111111111111111111",
+          "display": "0xFFFFFFFF"
+        },
+        "execute": {
+          "bits": "0",
+          "display": "0"
+        },
+        "commit": {
+          "bits": "1",
+          "display": "1"
+        },
+        "result": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "write_pointer": {
+          "bits": "00001",
+          "display": "0x01"
+        },
+        "mem_data": {
+          "bits": "10001101011000001110001001100110",
+          "display": "0x8D60E266"
+        },
+        "shadow": {
+          "bits": "0",
+          "display": "0"
+        }
+      }
+    }
+  ],
+  "structures": [
+    {
+      "ns": 18,
+      "values": {
+        "clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "enable": {
+          "bits": "1",
+          "display": "1"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "good_count": {
+          "bits": "0000000000000000",
+          "display": "0x0000"
+        },
+        "bad_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000000",
+          "display": "0x0000"
+        },
+        "status": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "neg_sample": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 26,
+      "values": {
+        "clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "enable": {
+          "bits": "1",
+          "display": "1"
+        },
+        "gated_clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "direct_clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "status": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "neg_sample": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 28,
+      "values": {
+        "clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "status": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "neg_sample": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 36,
+      "values": {
+        "clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "1",
+          "display": "1"
+        },
+        "mem_rdata": {
+          "bits": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "display": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "status": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "neg_sample": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 46,
+      "values": {
+        "clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "00000000000000000000000000000001",
+          "display": "0x00000001"
+        },
+        "shadow": {
+          "bits": "x",
+          "display": "X"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "status": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "neg_sample": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 56,
+      "values": {
+        "clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "00000000000000000000000000000001",
+          "display": "0x00000001"
+        },
+        "shadow": {
+          "bits": "1",
+          "display": "1"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "status": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "neg_sample": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 67,
+      "values": {
+        "clk": {
+          "bits": "1",
+          "display": "1"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "00000000000000000000000000000001",
+          "display": "0x00000001"
+        },
+        "shadow": {
+          "bits": "1",
+          "display": "1"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "status": {
+          "bits": "1010",
+          "display": "10"
+        },
+        "neg_sample": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 71,
+      "values": {
+        "clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "00000000000000000000000000000001",
+          "display": "0x00000001"
+        },
+        "shadow": {
+          "bits": "1",
+          "display": "1"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "status": {
+          "bits": "1010",
+          "display": "10"
+        },
+        "neg_sample": {
+          "bits": "1010",
+          "display": "10"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 73,
+      "values": {
+        "clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "00000000000000000000000000000001",
+          "display": "0x00000001"
+        },
+        "shadow": {
+          "bits": "1",
+          "display": "1"
+        },
+        "soft_reset": {
+          "bits": "1",
+          "display": "1"
+        },
+        "core_rst_n": {
+          "bits": "0",
+          "display": "0"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000000",
+          "display": "0x0000"
+        },
+        "status": {
+          "bits": "1010",
+          "display": "10"
+        },
+        "neg_sample": {
+          "bits": "0000",
+          "display": "0"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 81,
+      "values": {
+        "clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "00000000000000000000000000000001",
+          "display": "0x00000001"
+        },
+        "shadow": {
+          "bits": "1",
+          "display": "1"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000000000",
+          "display": "0x0000"
+        },
+        "status": {
+          "bits": "1010",
+          "display": "10"
+        },
+        "neg_sample": {
+          "bits": "1010",
+          "display": "10"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000000",
+          "display": "0x00000000"
+        }
+      }
+    },
+    {
+      "ns": 1000,
+      "values": {
+        "clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "enable": {
+          "bits": "0",
+          "display": "0"
+        },
+        "gated_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "direct_clk": {
+          "bits": "0",
+          "display": "0"
+        },
+        "good_count": {
+          "bits": "0000000000000001",
+          "display": "0x0001"
+        },
+        "bad_count": {
+          "bits": "0000000000000010",
+          "display": "0x0002"
+        },
+        "mem_we": {
+          "bits": "0",
+          "display": "0"
+        },
+        "mem_rdata": {
+          "bits": "00000000000000000000000000000001",
+          "display": "0x00000001"
+        },
+        "shadow": {
+          "bits": "1",
+          "display": "1"
+        },
+        "soft_reset": {
+          "bits": "0",
+          "display": "0"
+        },
+        "core_rst_n": {
+          "bits": "1",
+          "display": "1"
+        },
+        "slow_ticks": {
+          "bits": "0000000000010111",
+          "display": "0x0017"
+        },
+        "status": {
+          "bits": "1010",
+          "display": "10"
+        },
+        "neg_sample": {
+          "bits": "1010",
+          "display": "10"
+        },
+        "source_events": {
+          "bits": "00000000000000000000000000000100",
+          "display": "0x00000004"
+        },
+        "target_events": {
+          "bits": "00000000000000000000000000000100",
+          "display": "0x00000004"
+        }
+      }
+    }
+  ],
+  "log": "VCD info: dumpfile build/v0/structures.vcd opened for output.\nOBS W2_GATE ns=18 latched=0 direct=1\nPASS W2_ICG latched_count=1 direct_count=2\nOBS W2_MEMORY ns=36 rdata=X shadow=X\nOBS W2_MEMORY ns=46 rdata=00000001 shadow=X\nOBS W2_MEMORY ns=56 rdata=00000001 shadow=1\nPASS W2_MEMORY read_first=1 shadow_extra_cycle=1\nOBS W2_RESET ns=73 core_rst_n=0 neg_sample=0 slow_ticks=0\nPASS W2_CLOCK_RESET divider_period_ns=40 negedge_value=A\nPASS W2_FAULT_TRUTH vectors=32 r_sa0=0 r_sa1=16 q_sa1=16\nPASS W2_CDC source_events=4 target_events=4\nPASS STRUCTURES_V0\ntb/structures_tb.sv:144: $finish called at 1000000 (1ps)\n",
+  "limits": "RTL 四态示例实测；非完整 ATPG、非 STA、非 NAND2 等效面积。"
+}

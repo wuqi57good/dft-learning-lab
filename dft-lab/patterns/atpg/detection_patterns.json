@@ -1,0 +1,202 @@
+{
+  "input_order": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e"
+  ],
+  "scope": "实际 DUT 的 fault_cone 组合 cut；不是全芯片覆盖率",
+  "patterns": [
+    {
+      "fault": "a/SA0",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "a/SA1",
+      "pattern": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "b/SA0",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "b/SA1",
+      "pattern": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "c/SA0",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "c/SA1",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "d/SA0",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "e": 0
+      }
+    },
+    {
+      "fault": "d/SA1",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 1
+      }
+    },
+    {
+      "fault": "reconv/SA0",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "reconv/SA1",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "redundant/SA0",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "e": 0
+      }
+    },
+    {
+      "fault": "redundant/SA1",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "p/SA0",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "p/SA1",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "net_10/SA0",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "net_10/SA1",
+      "pattern": {
+        "a": 1,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "q/SA0",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "q/SA1",
+      "pattern": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    },
+    {
+      "fault": "r/SA1",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      }
+    }
+  ]
+}

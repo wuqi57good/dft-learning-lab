@@ -1,0 +1,2479 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+
+-- Executing script file `scripts/synth_v0.ys' --
+
+1. Executing Verilog-2005 frontend: rtl/v0/cfg_regfile.sv
+Parsing SystemVerilog input from `rtl/v0/cfg_regfile.sv' to AST representation.
+Generating RTLIL representation for module `\cfg_regfile'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/v0/clock_reset_mgr.sv
+Parsing SystemVerilog input from `rtl/v0/clock_reset_mgr.sv' to AST representation.
+Generating RTLIL representation for module `\clock_reset_mgr'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/v0/control_fsm.sv
+Parsing SystemVerilog input from `rtl/v0/control_fsm.sv' to AST representation.
+Generating RTLIL representation for module `\control_fsm'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/v0/dft_demo_top.sv
+Parsing SystemVerilog input from `rtl/v0/dft_demo_top.sv' to AST representation.
+Generating RTLIL representation for module `\dft_demo_top'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/v0/event_sync.sv
+Parsing SystemVerilog input from `rtl/v0/event_sync.sv' to AST representation.
+Generating RTLIL representation for module `\event_sync'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/v0/fault_cone.sv
+Parsing SystemVerilog input from `rtl/v0/fault_cone.sv' to AST representation.
+Generating RTLIL representation for module `\fault_cone'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/v0/gated_counter.sv
+Parsing SystemVerilog input from `rtl/v0/gated_counter.sv' to AST representation.
+Generating RTLIL representation for module `\gated_counter'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: rtl/v0/memory_shadow.sv
+Parsing SystemVerilog input from `rtl/v0/memory_shadow.sv' to AST representation.
+Generating RTLIL representation for module `\memory_shadow'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: rtl/v0/neg_capture.sv
+Parsing SystemVerilog input from `rtl/v0/neg_capture.sv' to AST representation.
+Generating RTLIL representation for module `\neg_capture'.
+Successfully finished Verilog frontend.
+
+10. Executing Verilog-2005 frontend: rtl/v0/packet_ingress.sv
+Parsing SystemVerilog input from `rtl/v0/packet_ingress.sv' to AST representation.
+Generating RTLIL representation for module `\packet_ingress'.
+Successfully finished Verilog frontend.
+
+11. Executing Verilog-2005 frontend: rtl/v0/packet_mem.sv
+Parsing SystemVerilog input from `rtl/v0/packet_mem.sv' to AST representation.
+Generating RTLIL representation for module `\packet_mem'.
+Successfully finished Verilog frontend.
+
+12. Executing Verilog-2005 frontend: rtl/v0/packet_mix.sv
+Parsing SystemVerilog input from `rtl/v0/packet_mix.sv' to AST representation.
+Generating RTLIL representation for module `\packet_mix'.
+Successfully finished Verilog frontend.
+
+13. Executing Verilog-2005 frontend: rtl/v0/rate_counter.sv
+Parsing SystemVerilog input from `rtl/v0/rate_counter.sv' to AST representation.
+Generating RTLIL representation for module `\rate_counter'.
+Successfully finished Verilog frontend.
+
+14. Executing HIERARCHY pass (managing design hierarchy).
+
+14.1. Analyzing design hierarchy..
+Top module:  \dft_demo_top
+Used module:     \memory_shadow
+Used module:     \neg_capture
+Used module:     \rate_counter
+Used module:     \gated_counter
+Used module:     \event_sync
+Used module:     \fault_cone
+Used module:     \packet_mix
+Used module:     \packet_ingress
+Used module:     \control_fsm
+Used module:     \clock_reset_mgr
+Used module:     \cfg_regfile
+
+14.2. Analyzing design hierarchy..
+Top module:  \dft_demo_top
+Used module:     \memory_shadow
+Used module:     \neg_capture
+Used module:     \rate_counter
+Used module:     \gated_counter
+Used module:     \event_sync
+Used module:     \fault_cone
+Used module:     \packet_mix
+Used module:     \packet_ingress
+Used module:     \control_fsm
+Used module:     \clock_reset_mgr
+Used module:     \cfg_regfile
+Removed 0 unused modules.
+
+15. Executing SYNTH pass.
+
+15.1. Executing HIERARCHY pass (managing design hierarchy).
+
+15.1.1. Analyzing design hierarchy..
+Top module:  \dft_demo_top
+Used module:     \memory_shadow
+Used module:     \neg_capture
+Used module:     \rate_counter
+Used module:     \gated_counter
+Used module:     \event_sync
+Used module:     \fault_cone
+Used module:     \packet_mix
+Used module:     \packet_ingress
+Used module:     \control_fsm
+Used module:     \clock_reset_mgr
+Used module:     \cfg_regfile
+
+15.1.2. Analyzing design hierarchy..
+Top module:  \dft_demo_top
+Used module:     \memory_shadow
+Used module:     \neg_capture
+Used module:     \rate_counter
+Used module:     \gated_counter
+Used module:     \event_sync
+Used module:     \fault_cone
+Used module:     \packet_mix
+Used module:     \packet_ingress
+Used module:     \control_fsm
+Used module:     \clock_reset_mgr
+Used module:     \cfg_regfile
+Removed 0 unused modules.
+
+15.2. Executing PROC pass (convert processes to netlists).
+
+15.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+15.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$rtl/v0/rate_counter.sv:8$59 in module rate_counter.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/packet_mix.sv:17$57 in module packet_mix.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/packet_ingress.sv:12$46 in module packet_ingress.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/neg_capture.sv:11$44 in module neg_capture.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/memory_shadow.sv:10$41 in module memory_shadow.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/gated_counter.sv:15$38 in module gated_counter.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/gated_counter.sv:13$35 in module gated_counter.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/event_sync.sv:21$26 in module event_sync.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/event_sync.sv:14$21 in module event_sync.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/dft_demo_top.sv:65$17 in module dft_demo_top.
+Marked 2 switch rules as full_case in process $proc$rtl/v0/control_fsm.sv:15$13 in module control_fsm.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/clock_reset_mgr.sv:11$5 in module clock_reset_mgr.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/cfg_regfile.sv:27$4 in module cfg_regfile.
+Marked 1 switch rules as full_case in process $proc$rtl/v0/cfg_regfile.sv:18$1 in module cfg_regfile.
+Removed a total of 0 dead cases.
+
+15.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 9 redundant assignments.
+Promoted 2 assignments to connections.
+
+15.2.4. Executing PROC_INIT pass (extract init attributes).
+
+15.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\rate_counter.$proc$rtl/v0/rate_counter.sv:8$59'.
+Found async reset \rst_n in `\packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+Found async reset \rst_n in `\packet_ingress.$proc$rtl/v0/packet_ingress.sv:12$46'.
+Found async reset \rst_n in `\neg_capture.$proc$rtl/v0/neg_capture.sv:11$44'.
+Found async reset \rst_n in `\memory_shadow.$proc$rtl/v0/memory_shadow.sv:10$41'.
+Found async reset \rst_n in `\gated_counter.$proc$rtl/v0/gated_counter.sv:15$38'.
+Found async reset \rst_n in `\event_sync.$proc$rtl/v0/event_sync.sv:21$26'.
+Found async reset \rst_n in `\event_sync.$proc$rtl/v0/event_sync.sv:14$21'.
+Found async reset \core_rst_n in `\dft_demo_top.$proc$rtl/v0/dft_demo_top.sv:65$17'.
+Found async reset \rst_n in `\control_fsm.$proc$rtl/v0/control_fsm.sv:15$13'.
+Found async reset \rst_n_ext in `\clock_reset_mgr.$proc$rtl/v0/clock_reset_mgr.sv:11$5'.
+Found async reset \rst_n_ext in `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:18$1'.
+
+15.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~11 debug messages>
+
+15.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\rate_counter.$proc$rtl/v0/rate_counter.sv:8$59'.
+     1/1: $0\ticks[15:0]
+Creating decoders for process `\packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+     1/5: $0\lane3[31:0]
+     2/5: $0\lane2[31:0]
+     3/5: $0\lane1[31:0]
+     4/5: $0\lane0[31:0]
+     5/5: $0\result_q[31:0]
+Creating decoders for process `\packet_ingress.$proc$rtl/v0/packet_ingress.sv:12$46'.
+     1/1: $0\word_q[31:0]
+Creating decoders for process `\neg_capture.$proc$rtl/v0/neg_capture.sv:11$44'.
+     1/1: $0\sampled[3:0]
+Creating decoders for process `\memory_shadow.$proc$rtl/v0/memory_shadow.sv:10$41'.
+     1/1: $0\parity_q[0:0]
+Creating decoders for process `\gated_counter.$proc$rtl/v0/gated_counter.sv:15$38'.
+     1/1: $0\count[15:0]
+Creating decoders for process `\gated_counter.$proc$rtl/v0/gated_counter.sv:13$35'.
+     1/1: $1\enable_latched[0:0]
+Creating decoders for process `\event_sync.$proc$rtl/v0/event_sync.sv:21$26'.
+     1/3: $0\previous[0:0]
+     2/3: $0\sync2[0:0]
+     3/3: $0\sync1[0:0]
+Creating decoders for process `\event_sync.$proc$rtl/v0/event_sync.sv:14$21'.
+     1/2: $0\aux_count[3:0]
+     2/2: $0\toggle[0:0]
+Creating decoders for process `\dft_demo_top.$proc$rtl/v0/dft_demo_top.sv:65$17'.
+     1/2: $0\events_seen[7:0]
+     2/2: $0\write_pointer[4:0]
+Creating decoders for process `\control_fsm.$proc$rtl/v0/control_fsm.sv:15$13'.
+     1/1: $0\state[1:0]
+Creating decoders for process `\clock_reset_mgr.$proc$rtl/v0/clock_reset_mgr.sv:11$5'.
+     1/1: $0\divider[1:0]
+Creating decoders for process `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:27$4'.
+     1/1: $1\cfg_rdata[31:0]
+Creating decoders for process `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:18$1'.
+     1/3: $0\mem_raddr[4:0]
+     2/3: $0\soft_reset[0:0]
+     3/3: $0\key[31:0]
+
+15.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+Warning: Latch inferred for signal `\gated_counter.\enable_latched' from process `\gated_counter.$proc$rtl/v0/gated_counter.sv:13$35': $auto$proc_dlatch.cc:559:proc_dlatch$123
+No latch inferred for signal `\cfg_regfile.\cfg_rdata' from process `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:27$4'.
+
+15.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\rate_counter.\ticks' using process `\rate_counter.$proc$rtl/v0/rate_counter.sv:8$59'.
+  created $adff cell `$procdff$128' with positive edge clock and positive level reset.
+Creating register for signal `\packet_mix.\result_q' using process `\packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+  created $adff cell `$procdff$133' with positive edge clock and positive level reset.
+Creating register for signal `\packet_mix.\lane0' using process `\packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+  created $adff cell `$procdff$138' with positive edge clock and positive level reset.
+Creating register for signal `\packet_mix.\lane1' using process `\packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+  created $adff cell `$procdff$143' with positive edge clock and positive level reset.
+Creating register for signal `\packet_mix.\lane2' using process `\packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+  created $adff cell `$procdff$148' with positive edge clock and positive level reset.
+Creating register for signal `\packet_mix.\lane3' using process `\packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+  created $adff cell `$procdff$153' with positive edge clock and positive level reset.
+Creating register for signal `\packet_ingress.\word_q' using process `\packet_ingress.$proc$rtl/v0/packet_ingress.sv:12$46'.
+  created $adff cell `$procdff$158' with positive edge clock and positive level reset.
+Creating register for signal `\neg_capture.\sampled' using process `\neg_capture.$proc$rtl/v0/neg_capture.sv:11$44'.
+  created $adff cell `$procdff$163' with negative edge clock and positive level reset.
+Creating register for signal `\memory_shadow.\parity_q' using process `\memory_shadow.$proc$rtl/v0/memory_shadow.sv:10$41'.
+  created $adff cell `$procdff$168' with positive edge clock and positive level reset.
+Creating register for signal `\gated_counter.\count' using process `\gated_counter.$proc$rtl/v0/gated_counter.sv:15$38'.
+  created $adff cell `$procdff$173' with positive edge clock and positive level reset.
+Creating register for signal `\event_sync.\sync1' using process `\event_sync.$proc$rtl/v0/event_sync.sv:21$26'.
+  created $adff cell `$procdff$178' with positive edge clock and positive level reset.
+Creating register for signal `\event_sync.\sync2' using process `\event_sync.$proc$rtl/v0/event_sync.sv:21$26'.
+  created $adff cell `$procdff$183' with positive edge clock and positive level reset.
+Creating register for signal `\event_sync.\previous' using process `\event_sync.$proc$rtl/v0/event_sync.sv:21$26'.
+  created $adff cell `$procdff$188' with positive edge clock and positive level reset.
+Creating register for signal `\event_sync.\aux_count' using process `\event_sync.$proc$rtl/v0/event_sync.sv:14$21'.
+  created $adff cell `$procdff$193' with positive edge clock and positive level reset.
+Creating register for signal `\event_sync.\toggle' using process `\event_sync.$proc$rtl/v0/event_sync.sv:14$21'.
+  created $adff cell `$procdff$198' with positive edge clock and positive level reset.
+Creating register for signal `\dft_demo_top.\write_pointer' using process `\dft_demo_top.$proc$rtl/v0/dft_demo_top.sv:65$17'.
+  created $adff cell `$procdff$203' with positive edge clock and positive level reset.
+Creating register for signal `\dft_demo_top.\events_seen' using process `\dft_demo_top.$proc$rtl/v0/dft_demo_top.sv:65$17'.
+  created $adff cell `$procdff$208' with positive edge clock and positive level reset.
+Creating register for signal `\control_fsm.\state' using process `\control_fsm.$proc$rtl/v0/control_fsm.sv:15$13'.
+  created $adff cell `$procdff$213' with positive edge clock and positive level reset.
+Creating register for signal `\clock_reset_mgr.\divider' using process `\clock_reset_mgr.$proc$rtl/v0/clock_reset_mgr.sv:11$5'.
+  created $adff cell `$procdff$218' with positive edge clock and positive level reset.
+Creating register for signal `\cfg_regfile.\key' using process `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:18$1'.
+  created $adff cell `$procdff$223' with positive edge clock and positive level reset.
+Creating register for signal `\cfg_regfile.\soft_reset' using process `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:18$1'.
+  created $adff cell `$procdff$228' with positive edge clock and positive level reset.
+Creating register for signal `\cfg_regfile.\mem_raddr' using process `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:18$1'.
+  created $adff cell `$procdff$233' with positive edge clock and positive level reset.
+
+15.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+15.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `rate_counter.$proc$rtl/v0/rate_counter.sv:8$59'.
+Found and cleaned up 1 empty switch in `\packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+Removing empty process `packet_mix.$proc$rtl/v0/packet_mix.sv:17$57'.
+Found and cleaned up 1 empty switch in `\packet_ingress.$proc$rtl/v0/packet_ingress.sv:12$46'.
+Removing empty process `packet_ingress.$proc$rtl/v0/packet_ingress.sv:12$46'.
+Removing empty process `neg_capture.$proc$rtl/v0/neg_capture.sv:11$44'.
+Removing empty process `memory_shadow.$proc$rtl/v0/memory_shadow.sv:10$41'.
+Removing empty process `gated_counter.$proc$rtl/v0/gated_counter.sv:15$38'.
+Found and cleaned up 1 empty switch in `\gated_counter.$proc$rtl/v0/gated_counter.sv:13$35'.
+Removing empty process `gated_counter.$proc$rtl/v0/gated_counter.sv:13$35'.
+Removing empty process `event_sync.$proc$rtl/v0/event_sync.sv:21$26'.
+Found and cleaned up 1 empty switch in `\event_sync.$proc$rtl/v0/event_sync.sv:14$21'.
+Removing empty process `event_sync.$proc$rtl/v0/event_sync.sv:14$21'.
+Found and cleaned up 2 empty switches in `\dft_demo_top.$proc$rtl/v0/dft_demo_top.sv:65$17'.
+Removing empty process `dft_demo_top.$proc$rtl/v0/dft_demo_top.sv:65$17'.
+Found and cleaned up 2 empty switches in `\control_fsm.$proc$rtl/v0/control_fsm.sv:15$13'.
+Removing empty process `control_fsm.$proc$rtl/v0/control_fsm.sv:15$13'.
+Removing empty process `clock_reset_mgr.$proc$rtl/v0/clock_reset_mgr.sv:11$5'.
+Found and cleaned up 1 empty switch in `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:27$4'.
+Removing empty process `cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:27$4'.
+Found and cleaned up 2 empty switches in `\cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:18$1'.
+Removing empty process `cfg_regfile.$proc$rtl/v0/cfg_regfile.sv:18$1'.
+Cleaned up 11 empty switches.
+
+15.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+<suppressed ~2 debug messages>
+Optimizing module packet_mix.
+<suppressed ~11 debug messages>
+Optimizing module packet_ingress.
+<suppressed ~2 debug messages>
+Optimizing module neg_capture.
+<suppressed ~2 debug messages>
+Optimizing module memory_shadow.
+<suppressed ~2 debug messages>
+Optimizing module gated_counter.
+<suppressed ~9 debug messages>
+Optimizing module fault_cone.
+Optimizing module event_sync.
+<suppressed ~10 debug messages>
+Optimizing module dft_demo_top.
+<suppressed ~4 debug messages>
+Optimizing module control_fsm.
+<suppressed ~4 debug messages>
+Optimizing module clock_reset_mgr.
+<suppressed ~2 debug messages>
+Optimizing module cfg_regfile.
+<suppressed ~8 debug messages>
+
+15.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.4. Executing CHECK pass (checking for obvious problems).
+Checking module rate_counter...
+Checking module packet_mix...
+Checking module packet_ingress...
+Checking module neg_capture...
+Checking module memory_shadow...
+Checking module gated_counter...
+Checking module fault_cone...
+Checking module event_sync...
+Checking module dft_demo_top...
+Checking module control_fsm...
+Checking module clock_reset_mgr...
+Checking module cfg_regfile...
+Found and reported 0 problems.
+
+15.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+Removed 36 unused cells and 123 unused wires.
+<suppressed ~48 debug messages>
+
+15.6. Executing OPT pass (performing simple optimizations).
+
+15.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 19 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 2 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 10 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 20 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 8 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Computing hashes of 6 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 20 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Computing hashes of 17 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+<suppressed ~9 debug messages>
+Removed a total of 5 cells.
+
+15.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rate_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_mix..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_ingress..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \neg_capture..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memory_shadow..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \gated_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \fault_cone..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \event_sync..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \dft_demo_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_fsm..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \clock_reset_mgr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cfg_regfile..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~32 debug messages>
+
+15.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rate_counter.
+  Optimizing cells in module \packet_mix.
+  Optimizing cells in module \packet_ingress.
+  Optimizing cells in module \neg_capture.
+  Optimizing cells in module \memory_shadow.
+  Optimizing cells in module \gated_counter.
+  Optimizing cells in module \fault_cone.
+  Optimizing cells in module \event_sync.
+  Optimizing cells in module \dft_demo_top.
+  Optimizing cells in module \control_fsm.
+  Optimizing cells in module \clock_reset_mgr.
+  Optimizing cells in module \cfg_regfile.
+Performed a total of 0 changes.
+
+15.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 19 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 2 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 10 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 20 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 6 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 17 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+Removed 0 unused cells and 5 unused wires.
+<suppressed ~2 debug messages>
+
+15.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rate_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_mix..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_ingress..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \neg_capture..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memory_shadow..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \gated_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \fault_cone..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \event_sync..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \dft_demo_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_fsm..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \clock_reset_mgr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cfg_regfile..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~32 debug messages>
+
+15.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rate_counter.
+  Optimizing cells in module \packet_mix.
+  Optimizing cells in module \packet_ingress.
+  Optimizing cells in module \neg_capture.
+  Optimizing cells in module \memory_shadow.
+  Optimizing cells in module \gated_counter.
+  Optimizing cells in module \fault_cone.
+  Optimizing cells in module \event_sync.
+  Optimizing cells in module \dft_demo_top.
+  Optimizing cells in module \control_fsm.
+  Optimizing cells in module \clock_reset_mgr.
+  Optimizing cells in module \cfg_regfile.
+Performed a total of 0 changes.
+
+15.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 19 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 2 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 10 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 20 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 6 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 17 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+
+15.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.6.16. Finished fast OPT passes. (There is nothing left to do.)
+
+15.7. Executing FSM pass (extract and optimize FSM).
+
+15.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register control_fsm.state.
+
+15.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\control_fsm'.
+  found $adff cell for state register: $procdff$213
+  root of input selection tree: $0\state[1:0]
+  found reset state: 2'00 (from async reset)
+  found ctrl input: \execute
+  found ctrl input: \ready
+  found state code: 2'10
+  found ctrl input: \in_valid
+  found state code: 2'01
+  found ctrl output: \commit
+  found ctrl output: \execute
+  found ctrl output: \ready
+  ctrl inputs: \in_valid
+  ctrl outputs: { $0\state[1:0] \commit \execute \ready }
+  transition:       2'00 1'0 ->       2'00 5'00001
+  transition:       2'00 1'1 ->       2'01 5'01001
+  transition:       2'10 1'- ->       2'00 5'00100
+  transition:       2'01 1'- ->       2'10 5'10010
+
+15.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$236' from module `\control_fsm'.
+
+15.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+Removed 6 unused cells and 6 unused wires.
+<suppressed ~7 debug messages>
+
+15.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$236' from module `\control_fsm'.
+  Removing unused output signal $0\state[1:0] [0].
+  Removing unused output signal $0\state[1:0] [1].
+
+15.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$236' from module `\control_fsm' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  00 -> --1
+  10 -> -1-
+  01 -> 1--
+
+15.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$236' from module `control_fsm':
+-------------------------------------
+
+  Information on FSM $fsm$\state$236 (\state):
+
+  Number of input signals:    1
+  Number of output signals:   3
+  Number of state bits:       3
+
+  Input signals:
+    0: \in_valid
+
+  Output signals:
+    0: \ready
+    1: \execute
+    2: \commit
+
+  State encoding:
+    0:      3'--1  <RESET STATE>
+    1:      3'-1-
+    2:      3'1--
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 1'0   ->     0 3'001
+      1:     0 1'1   ->     2 3'001
+      2:     1 1'-   ->     0 3'100
+      3:     2 1'-   ->     1 3'010
+
+-------------------------------------
+
+15.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$236' from module `\control_fsm'.
+
+15.8. Executing OPT pass (performing simple optimizations).
+
+15.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+<suppressed ~2 debug messages>
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 19 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 2 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 10 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 20 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 5 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 17 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rate_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_mix..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \packet_ingress..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \neg_capture..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memory_shadow..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \gated_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \fault_cone..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \event_sync..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \dft_demo_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \control_fsm..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \clock_reset_mgr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cfg_regfile..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~29 debug messages>
+
+15.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rate_counter.
+  Optimizing cells in module \packet_mix.
+  Optimizing cells in module \packet_ingress.
+  Optimizing cells in module \neg_capture.
+  Optimizing cells in module \memory_shadow.
+  Optimizing cells in module \gated_counter.
+  Optimizing cells in module \fault_cone.
+  Optimizing cells in module \event_sync.
+  Optimizing cells in module \dft_demo_top.
+  Optimizing cells in module \control_fsm.
+  Optimizing cells in module \clock_reset_mgr.
+  Optimizing cells in module \cfg_regfile.
+Performed a total of 0 changes.
+
+15.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 19 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 2 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 10 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 20 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 5 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 17 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$148 ($adff) from module packet_mix (D = \n2, Q = \lane2).
+Adding EN signal on $procdff$138 ($adff) from module packet_mix (D = \n0, Q = \lane0).
+Adding EN signal on $procdff$153 ($adff) from module packet_mix (D = \n3, Q = \lane3).
+Adding EN signal on $procdff$133 ($adff) from module packet_mix (D = \mixed, Q = \result_q).
+Adding EN signal on $procdff$143 ($adff) from module packet_mix (D = \n1, Q = \lane1).
+Adding EN signal on $procdff$158 ($adff) from module packet_ingress (D = \data_in, Q = \word_q).
+Adding EN signal on $procdff$198 ($adff) from module event_sync (D = $not$rtl/v0/event_sync.sv:18$25_Y, Q = \toggle).
+Adding EN signal on $procdff$208 ($adff) from module dft_demo_top (D = $add$rtl/v0/dft_demo_top.sv:70$20_Y, Q = \events_seen).
+Adding EN signal on $procdff$203 ($adff) from module dft_demo_top (D = $add$rtl/v0/dft_demo_top.sv:69$19_Y, Q = \write_pointer).
+Adding EN signal on $procdff$223 ($adff) from module cfg_regfile (D = \cfg_wdata, Q = \key).
+Adding EN signal on $procdff$233 ($adff) from module cfg_regfile (D = \cfg_wdata [4:0], Q = \mem_raddr).
+Adding EN signal on $procdff$228 ($adff) from module cfg_regfile (D = \cfg_wdata [0], Q = \soft_reset).
+
+15.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+Removed 15 unused cells and 19 unused wires.
+<suppressed ~21 debug messages>
+
+15.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rate_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_mix..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_ingress..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \neg_capture..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memory_shadow..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \gated_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \fault_cone..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \event_sync..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \dft_demo_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \control_fsm..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \clock_reset_mgr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cfg_regfile..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+15.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rate_counter.
+  Optimizing cells in module \packet_mix.
+  Optimizing cells in module \packet_ingress.
+  Optimizing cells in module \neg_capture.
+  Optimizing cells in module \memory_shadow.
+  Optimizing cells in module \gated_counter.
+  Optimizing cells in module \fault_cone.
+  Optimizing cells in module \event_sync.
+  Optimizing cells in module \dft_demo_top.
+  Optimizing cells in module \control_fsm.
+  Optimizing cells in module \clock_reset_mgr.
+  Optimizing cells in module \cfg_regfile.
+Performed a total of 0 changes.
+
+15.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 14 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 1 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 9 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 18 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 5 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 14 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+
+15.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.8.16. Finished fast OPT passes. (There is nothing left to do.)
+
+15.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 16 bits (of 32) from wire dft_demo_top.status.
+Removed top 3 bits (of 8) from port B of cell cfg_regfile.$procmux$92_CMP0 ($eq).
+Removed top 3 bits (of 8) from port B of cell cfg_regfile.$procmux$93_CMP0 ($eq).
+Removed top 4 bits (of 8) from port B of cell cfg_regfile.$procmux$95_CMP0 ($eq).
+Removed top 4 bits (of 8) from port B of cell cfg_regfile.$procmux$99_CMP0 ($eq).
+Removed top 5 bits (of 8) from port B of cell cfg_regfile.$procmux$104_CMP0 ($eq).
+
+15.10. Executing PEEPOPT pass (run peephole optimizers).
+
+15.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+15.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module rate_counter:
+  creating $macc model for $add$rtl/v0/rate_counter.sv:10$61 ($add).
+  creating $alu model for $macc $add$rtl/v0/rate_counter.sv:10$61.
+  creating $alu cell for $add$rtl/v0/rate_counter.sv:10$61: $auto$alumacc.cc:578:replace_alu$273
+  created 1 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module packet_mix:
+  creating $macc model for $add$rtl/v0/packet_mix.sv:14$53 ($add).
+  creating $macc model for $add$rtl/v0/packet_mix.sv:13$52 ($add).
+  creating $macc model for $add$rtl/v0/packet_mix.sv:12$50 ($add).
+  creating $macc model for $add$rtl/v0/packet_mix.sv:11$49 ($add).
+  creating $alu model for $macc $add$rtl/v0/packet_mix.sv:11$49.
+  creating $alu model for $macc $add$rtl/v0/packet_mix.sv:12$50.
+  creating $alu model for $macc $add$rtl/v0/packet_mix.sv:13$52.
+  creating $alu model for $macc $add$rtl/v0/packet_mix.sv:14$53.
+  creating $alu cell for $add$rtl/v0/packet_mix.sv:14$53: $auto$alumacc.cc:578:replace_alu$276
+  creating $alu cell for $add$rtl/v0/packet_mix.sv:13$52: $auto$alumacc.cc:578:replace_alu$279
+  creating $alu cell for $add$rtl/v0/packet_mix.sv:12$50: $auto$alumacc.cc:578:replace_alu$282
+  creating $alu cell for $add$rtl/v0/packet_mix.sv:11$49: $auto$alumacc.cc:578:replace_alu$285
+  created 4 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module packet_ingress:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module neg_capture:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module memory_shadow:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module gated_counter:
+  creating $macc model for $add$rtl/v0/gated_counter.sv:17$40 ($add).
+  creating $alu model for $macc $add$rtl/v0/gated_counter.sv:17$40.
+  creating $alu cell for $add$rtl/v0/gated_counter.sv:17$40: $auto$alumacc.cc:578:replace_alu$288
+  created 1 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module fault_cone:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module event_sync:
+  creating $macc model for $add$rtl/v0/event_sync.sv:17$23 ($add).
+  creating $alu model for $macc $add$rtl/v0/event_sync.sv:17$23.
+  creating $alu cell for $add$rtl/v0/event_sync.sv:17$23: $auto$alumacc.cc:578:replace_alu$291
+  created 1 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module dft_demo_top:
+  creating $macc model for $add$rtl/v0/dft_demo_top.sv:70$20 ($add).
+  creating $macc model for $add$rtl/v0/dft_demo_top.sv:69$19 ($add).
+  creating $alu model for $macc $add$rtl/v0/dft_demo_top.sv:69$19.
+  creating $alu model for $macc $add$rtl/v0/dft_demo_top.sv:70$20.
+  creating $alu cell for $add$rtl/v0/dft_demo_top.sv:70$20: $auto$alumacc.cc:578:replace_alu$294
+  creating $alu cell for $add$rtl/v0/dft_demo_top.sv:69$19: $auto$alumacc.cc:578:replace_alu$297
+  created 2 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module control_fsm:
+  created 0 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module clock_reset_mgr:
+  creating $macc model for $add$rtl/v0/clock_reset_mgr.sv:13$7 ($add).
+  creating $alu model for $macc $add$rtl/v0/clock_reset_mgr.sv:13$7.
+  creating $alu cell for $add$rtl/v0/clock_reset_mgr.sv:13$7: $auto$alumacc.cc:578:replace_alu$300
+  created 1 $alu and 0 $macc cells.
+Extracting $alu and $macc cells in module cfg_regfile:
+  created 0 $alu and 0 $macc cells.
+
+15.13. Executing SHARE pass (SAT-based resource sharing).
+
+15.14. Executing OPT pass (performing simple optimizations).
+
+15.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 14 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 1 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 9 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 18 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 5 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 14 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rate_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_mix..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_ingress..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \neg_capture..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memory_shadow..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \gated_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \fault_cone..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \event_sync..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \dft_demo_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \control_fsm..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \clock_reset_mgr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cfg_regfile..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+15.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rate_counter.
+  Optimizing cells in module \packet_mix.
+  Optimizing cells in module \packet_ingress.
+  Optimizing cells in module \neg_capture.
+  Optimizing cells in module \memory_shadow.
+  Optimizing cells in module \gated_counter.
+  Optimizing cells in module \fault_cone.
+  Optimizing cells in module \event_sync.
+  Optimizing cells in module \dft_demo_top.
+  Optimizing cells in module \control_fsm.
+  Optimizing cells in module \clock_reset_mgr.
+  Optimizing cells in module \cfg_regfile.
+Performed a total of 0 changes.
+
+15.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 14 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 1 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 9 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 18 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 5 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 14 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+
+15.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.14.9. Finished fast OPT passes. (There is nothing left to do.)
+
+15.15. Executing MEMORY pass.
+
+15.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+15.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+15.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+15.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+15.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+15.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+
+15.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+15.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+15.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+
+15.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+15.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+
+15.17. Executing OPT pass (performing simple optimizations).
+
+15.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 14 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 1 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 9 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 18 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 5 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 14 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+
+15.17.5. Finished fast OPT passes.
+
+15.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+15.19. Executing OPT pass (performing simple optimizations).
+
+15.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 14 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 1 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 9 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 18 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 5 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 14 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \rate_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_mix..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \packet_ingress..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \neg_capture..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \memory_shadow..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \gated_counter..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \fault_cone..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \event_sync..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \dft_demo_top..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \control_fsm..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \clock_reset_mgr..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cfg_regfile..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~2 debug messages>
+
+15.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \rate_counter.
+  Optimizing cells in module \packet_mix.
+  Optimizing cells in module \packet_ingress.
+  Optimizing cells in module \neg_capture.
+  Optimizing cells in module \memory_shadow.
+  Optimizing cells in module \gated_counter.
+  Optimizing cells in module \fault_cone.
+  Optimizing cells in module \event_sync.
+  Optimizing cells in module \dft_demo_top.
+  Optimizing cells in module \control_fsm.
+  Optimizing cells in module \clock_reset_mgr.
+  Optimizing cells in module \cfg_regfile.
+Performed a total of 0 changes.
+
+15.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 2 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 14 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 1 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 1 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 2 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 4 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 9 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 18 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 5 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 4 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 14 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Removed a total of 0 cells.
+
+15.19.6. Executing OPT_SHARE pass.
+
+15.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+
+15.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+Optimizing module packet_mix.
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+Optimizing module fault_cone.
+Optimizing module event_sync.
+Optimizing module dft_demo_top.
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+Optimizing module cfg_regfile.
+
+15.19.10. Finished fast OPT passes. (There is nothing left to do.)
+
+15.20. Executing TECHMAP pass (map to technology primitives).
+
+15.20.1. Executing Verilog-2005 frontend: /share/techmap.v
+Parsing Verilog input from `/share/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+15.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_or.
+Using template $paramod$672a140277c71df8314410f22acc08d55222c3c7\_90_alu for cells of type $alu.
+Using template $paramod$c3cd1564c35d873179656addd6052d7ea8b6d991\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000101 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000001000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000001000 for cells of type $lcu.
+Using template $paramod$32a7b7b86c07519b7537abc18e96f0331f97914d\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000100 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000100 for cells of type $lcu.
+Using template $paramod$2af30114e9bd4ccb04dad757b3f0a8f6bf0615b0\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $dlatch.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using extmapper simplemap for cells of type $reduce_xor.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000100000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~1758 debug messages>
+
+15.21. Executing OPT pass (performing simple optimizations).
+
+15.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module rate_counter.
+<suppressed ~137 debug messages>
+Optimizing module packet_mix.
+<suppressed ~528 debug messages>
+Optimizing module packet_ingress.
+Optimizing module neg_capture.
+Optimizing module memory_shadow.
+Optimizing module gated_counter.
+<suppressed ~137 debug messages>
+Optimizing module fault_cone.
+Optimizing module event_sync.
+<suppressed ~37 debug messages>
+Optimizing module dft_demo_top.
+<suppressed ~107 debug messages>
+Optimizing module control_fsm.
+Optimizing module clock_reset_mgr.
+<suppressed ~17 debug messages>
+Optimizing module cfg_regfile.
+<suppressed ~188 debug messages>
+
+15.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\rate_counter'.
+Computing hashes of 74 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+Computing hashes of 73 cells of `\rate_counter'.
+Finding duplicate cells in `\rate_counter'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\packet_mix'.
+Computing hashes of 1376 cells of `\packet_mix'.
+Finding duplicate cells in `\packet_mix'.
+Finding identical cells in module `\packet_ingress'.
+Computing hashes of 32 cells of `\packet_ingress'.
+Finding duplicate cells in `\packet_ingress'.
+Finding identical cells in module `\neg_capture'.
+Computing hashes of 4 cells of `\neg_capture'.
+Finding duplicate cells in `\neg_capture'.
+Finding identical cells in module `\memory_shadow'.
+Computing hashes of 32 cells of `\memory_shadow'.
+Finding duplicate cells in `\memory_shadow'.
+Finding identical cells in module `\gated_counter'.
+Computing hashes of 76 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+Computing hashes of 75 cells of `\gated_counter'.
+Finding duplicate cells in `\gated_counter'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\fault_cone'.
+Computing hashes of 6 cells of `\fault_cone'.
+Finding duplicate cells in `\fault_cone'.
+Finding identical cells in module `\event_sync'.
+Computing hashes of 30 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+Computing hashes of 25 cells of `\event_sync'.
+Finding duplicate cells in `\event_sync'.
+<suppressed ~15 debug messages>
+Finding identical cells in module `\dft_demo_top'.
+Computing hashes of 69 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+Computing hashes of 67 cells of `\dft_demo_top'.
+Finding duplicate cells in `\dft_demo_top'.
+<suppressed ~6 debug messages>
+Finding identical cells in module `\control_fsm'.
+Computing hashes of 7 cells of `\control_fsm'.
+Finding duplicate cells in `\control_fsm'.
+Finding identical cells in module `\clock_reset_mgr'.
+Computing hashes of 9 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+Computing hashes of 8 cells of `\clock_reset_mgr'.
+Finding duplicate cells in `\clock_reset_mgr'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\cfg_regfile'.
+Computing hashes of 338 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Computing hashes of 320 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Computing hashes of 314 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+Computing hashes of 312 cells of `\cfg_regfile'.
+Finding duplicate cells in `\cfg_regfile'.
+<suppressed ~78 debug messages>
+Removed a total of 36 cells.
+
+15.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \rate_counter..
+Finding unused cells or wires in module \packet_mix..
+Finding unused cells or wires in module \packet_ingress..
+Finding unused cells or wires in module \neg_capture..
+Finding unused cells or wires in module \memory_shadow..
+Finding unused cells or wires in module \gated_counter..
+Finding unused cells or wires in module \fault_cone..
+Finding unused cells or wires in module \event_sync..
+Finding unused cells or wires in module \dft_demo_top..
+Finding unused cells or wires in module \control_fsm..
+Finding unused cells or wires in module \clock_reset_mgr..
+Finding unused cells or wires in module \cfg_regfile..
+Removed 245 unused cells and 739 unused wires.
+<suppressed ~254 debug messages>
+
+15.21.5. Finished fast OPT passes.
+
+15.22. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `dft_demo_top'. Setting top module to dft_demo_top.
+
+15.22.1. Analyzing design hierarchy..
+Top module:  \dft_demo_top
+Used module:     \memory_shadow
+Used module:     \neg_capture
+Used module:     \rate_counter
+Used module:     \gated_counter
+Used module:     \event_sync
+Used module:     \fault_cone
+Used module:     \packet_mix
+Used module:     \packet_ingress
+Used module:     \control_fsm
+Used module:     \clock_reset_mgr
+Used module:     \cfg_regfile
+
+15.22.2. Analyzing design hierarchy..
+Top module:  \dft_demo_top
+Used module:     \memory_shadow
+Used module:     \neg_capture
+Used module:     \rate_counter
+Used module:     \gated_counter
+Used module:     \event_sync
+Used module:     \fault_cone
+Used module:     \packet_mix
+Used module:     \packet_ingress
+Used module:     \control_fsm
+Used module:     \clock_reset_mgr
+Used module:     \cfg_regfile
+Removed 0 unused modules.
+
+15.23. Printing statistics.
+
+=== rate_counter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       14 wires
+       74 wire bits
+        3 public wires
+       18 public wire bits
+        3 ports
+       18 port bits
+       54 cells
+       22   $_AND_
+       16   $_DFF_PN0_
+        1   $_NOT_
+       15   $_XOR_
+
+=== packet_mix ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      415 wires
+     1283 wire bits
+       15 public wires
+      387 public wire bits
+        6 ports
+       99 port bits
+     1188 cells
+      420   $_AND_
+      160   $_DFFE_PN0P_
+       20   $_NOT_
+      208   $_OR_
+      380   $_XOR_
+
+=== packet_ingress ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        5 wires
+       67 wire bits
+        5 public wires
+       67 public wire bits
+        5 ports
+       67 port bits
+       32 cells
+       32   $_DFFE_PN0P_
+
+=== neg_capture ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        4 wires
+       10 wire bits
+        4 public wires
+       10 public wire bits
+        4 ports
+       10 port bits
+        4 cells
+        4   $_DFF_NN0_
+
+=== memory_shadow ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        9 wires
+       66 wire bits
+        4 public wires
+       35 public wire bits
+        4 ports
+       35 port bits
+       32 cells
+        1   $_DFF_PN0_
+       31   $_XOR_
+
+=== gated_counter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       17 wires
+       77 wire bits
+        6 public wires
+       21 public wire bits
+        4 ports
+       19 port bits
+       56 cells
+       23   $_AND_
+       16   $_DFF_PN0_
+        1   $_DLATCH_N_
+        1   $_NOT_
+       15   $_XOR_
+
+=== fault_cone ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       11 wires
+       11 wire bits
+       10 public wires
+       10 public wire bits
+        7 ports
+        7 port bits
+        6 cells
+        3   $_AND_
+        1   $_NOT_
+        2   $_OR_
+
+=== event_sync ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       19 wires
+       32 wire bits
+        9 public wires
+       12 public wire bits
+        4 ports
+        4 port bits
+       23 cells
+        2   $_AND_
+        1   $_DFFE_PN0P_
+        7   $_DFF_PN0_
+        6   $_NOT_
+        3   $_OR_
+        4   $_XOR_
+
+=== dft_demo_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       45 wires
+      365 wire bits
+       36 public wires
+      323 public wire bits
+       16 ports
+      162 port bits
+       41 cells
+       14   $_AND_
+       13   $_DFFE_PN0P_
+        2   $_NOT_
+       11   $_XOR_
+        1   packet_mem
+       11 submodules
+        1   cfg_regfile
+        1   clock_reset_mgr
+        1   control_fsm
+        1   event_sync
+        1   fault_cone
+        1   gated_counter
+        1   memory_shadow
+        1   neg_capture
+        1   packet_ingress
+        1   packet_mix
+        1   rate_counter
+
+=== control_fsm ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       11 wires
+       15 wire bits
+        7 public wires
+        9 public wire bits
+        6 ports
+        6 port bits
+        7 cells
+        2   $_AND_
+        2   $_DFF_PN0_
+        1   $_DFF_PN1_
+        1   $_NOT_
+        1   $_OR_
+
+=== clock_reset_mgr ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        9 wires
+       12 wire bits
+        6 public wires
+        7 public wire bits
+        5 ports
+        5 port bits
+        6 cells
+        1   $_AND_
+        2   $_DFF_PN0_
+        2   $_NOT_
+        1   $_XOR_
+
+=== cfg_regfile ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      184 wires
+      447 wire bits
+       14 public wires
+      195 public wire bits
+       14 ports
+      195 port bits
+      312 cells
+      122   $_AND_
+       38   $_DFFE_PN0P_
+       32   $_MUX_
+        9   $_NOT_
+      111   $_OR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+     1761 dft_demo_top
+      312 cfg_regfile
+        6 clock_reset_mgr
+        7 control_fsm
+       23 event_sync
+        6 fault_cone
+       56 gated_counter
+       32 memory_shadow
+        4 neg_capture
+       32 packet_ingress
+     1188 packet_mix
+       54 rate_counter
+
+        +----------Count including submodules.
+        | 
+      743 wires
+     2459 wire bits
+      119 public wires
+     1094 public wire bits
+       78 ports
+      627 port bits
+        - memories
+        - memory bits
+        - processes
+     1761 cells
+      609   $_AND_
+      244   $_DFFE_PN0P_
+        4   $_DFF_NN0_
+       44   $_DFF_PN0_
+        1   $_DFF_PN1_
+        1   $_DLATCH_N_
+       32   $_MUX_
+       43   $_NOT_
+      325   $_OR_
+      457   $_XOR_
+        1   packet_mem
+       11 submodules
+        1   cfg_regfile
+        1   clock_reset_mgr
+        1   control_fsm
+        1   event_sync
+        1   fault_cone
+        1   gated_counter
+        1   memory_shadow
+        1   neg_capture
+        1   packet_ingress
+        1   packet_mix
+        1   rate_counter
+
+15.24. Executing CHECK pass (checking for obvious problems).
+Checking module rate_counter...
+Checking module packet_mix...
+Checking module packet_ingress...
+Checking module neg_capture...
+Checking module memory_shadow...
+Checking module gated_counter...
+Checking module fault_cone...
+Checking module event_sync...
+Checking module dft_demo_top...
+Checking module control_fsm...
+Checking module clock_reset_mgr...
+Checking module cfg_regfile...
+Found and reported 0 problems.
+
+16. Executing CHECK pass (checking for obvious problems).
+Checking module rate_counter...
+Checking module packet_mix...
+Checking module packet_ingress...
+Checking module neg_capture...
+Checking module memory_shadow...
+Checking module gated_counter...
+Checking module fault_cone...
+Checking module event_sync...
+Checking module dft_demo_top...
+Checking module control_fsm...
+Checking module clock_reset_mgr...
+Checking module cfg_regfile...
+Found and reported 0 problems.
+
+17. Printing statistics.
+
+=== rate_counter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       14 wires
+       74 wire bits
+        3 public wires
+       18 public wire bits
+        3 ports
+       18 port bits
+       54 cells
+       22   $_AND_
+       16   $_DFF_PN0_
+        1   $_NOT_
+       15   $_XOR_
+
+=== packet_mix ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      415 wires
+     1283 wire bits
+       15 public wires
+      387 public wire bits
+        6 ports
+       99 port bits
+     1188 cells
+      420   $_AND_
+      160   $_DFFE_PN0P_
+       20   $_NOT_
+      208   $_OR_
+      380   $_XOR_
+
+=== packet_ingress ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        5 wires
+       67 wire bits
+        5 public wires
+       67 public wire bits
+        5 ports
+       67 port bits
+       32 cells
+       32   $_DFFE_PN0P_
+
+=== neg_capture ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        4 wires
+       10 wire bits
+        4 public wires
+       10 public wire bits
+        4 ports
+       10 port bits
+        4 cells
+        4   $_DFF_NN0_
+
+=== memory_shadow ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        9 wires
+       66 wire bits
+        4 public wires
+       35 public wire bits
+        4 ports
+       35 port bits
+       32 cells
+        1   $_DFF_PN0_
+       31   $_XOR_
+
+=== gated_counter ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       17 wires
+       77 wire bits
+        6 public wires
+       21 public wire bits
+        4 ports
+       19 port bits
+       56 cells
+       23   $_AND_
+       16   $_DFF_PN0_
+        1   $_DLATCH_N_
+        1   $_NOT_
+       15   $_XOR_
+
+=== fault_cone ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       11 wires
+       11 wire bits
+       10 public wires
+       10 public wire bits
+        7 ports
+        7 port bits
+        6 cells
+        3   $_AND_
+        1   $_NOT_
+        2   $_OR_
+
+=== event_sync ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       19 wires
+       32 wire bits
+        9 public wires
+       12 public wire bits
+        4 ports
+        4 port bits
+       23 cells
+        2   $_AND_
+        1   $_DFFE_PN0P_
+        7   $_DFF_PN0_
+        6   $_NOT_
+        3   $_OR_
+        4   $_XOR_
+
+=== dft_demo_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       45 wires
+      365 wire bits
+       36 public wires
+      323 public wire bits
+       16 ports
+      162 port bits
+       41 cells
+       14   $_AND_
+       13   $_DFFE_PN0P_
+        2   $_NOT_
+       11   $_XOR_
+        1   packet_mem
+       11 submodules
+        1   cfg_regfile
+        1   clock_reset_mgr
+        1   control_fsm
+        1   event_sync
+        1   fault_cone
+        1   gated_counter
+        1   memory_shadow
+        1   neg_capture
+        1   packet_ingress
+        1   packet_mix
+        1   rate_counter
+
+=== control_fsm ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       11 wires
+       15 wire bits
+        7 public wires
+        9 public wire bits
+        6 ports
+        6 port bits
+        7 cells
+        2   $_AND_
+        2   $_DFF_PN0_
+        1   $_DFF_PN1_
+        1   $_NOT_
+        1   $_OR_
+
+=== clock_reset_mgr ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        9 wires
+       12 wire bits
+        6 public wires
+        7 public wire bits
+        5 ports
+        5 port bits
+        6 cells
+        1   $_AND_
+        2   $_DFF_PN0_
+        2   $_NOT_
+        1   $_XOR_
+
+=== cfg_regfile ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      184 wires
+      447 wire bits
+       14 public wires
+      195 public wire bits
+       14 ports
+      195 port bits
+      312 cells
+      122   $_AND_
+       38   $_DFFE_PN0P_
+       32   $_MUX_
+        9   $_NOT_
+      111   $_OR_
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+     1761 dft_demo_top
+      312 cfg_regfile
+        6 clock_reset_mgr
+        7 control_fsm
+       23 event_sync
+        6 fault_cone
+       56 gated_counter
+       32 memory_shadow
+        4 neg_capture
+       32 packet_ingress
+     1188 packet_mix
+       54 rate_counter
+
+        +----------Count including submodules.
+        | 
+      743 wires
+     2459 wire bits
+      119 public wires
+     1094 public wire bits
+       78 ports
+      627 port bits
+        - memories
+        - memory bits
+        - processes
+     1761 cells
+      609   $_AND_
+      244   $_DFFE_PN0P_
+        4   $_DFF_NN0_
+       44   $_DFF_PN0_
+        1   $_DFF_PN1_
+        1   $_DLATCH_N_
+       32   $_MUX_
+       43   $_NOT_
+      325   $_OR_
+      457   $_XOR_
+        1   packet_mem
+       11 submodules
+        1   cfg_regfile
+        1   clock_reset_mgr
+        1   control_fsm
+        1   event_sync
+        1   fault_cone
+        1   gated_counter
+        1   memory_shadow
+        1   neg_capture
+        1   packet_ingress
+        1   packet_mix
+        1   rate_counter
+
+18. Executing Verilog backend.
+
+18.1. Executing BMUXMAP pass.
+
+18.2. Executing DEMUXMAP pass.
+Dumping module `\cfg_regfile'.
+Dumping module `\clock_reset_mgr'.
+Dumping module `\control_fsm'.
+Dumping module `\dft_demo_top'.
+Dumping module `\event_sync'.
+Dumping module `\fault_cone'.
+Dumping module `\gated_counter'.
+Dumping module `\memory_shadow'.
+Dumping module `\neg_capture'.
+Dumping module `\packet_ingress'.
+Dumping module `\packet_mix'.
+Dumping module `\rate_counter'.
+
+19. Executing JSON backend.
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: c235d2c299, time: 0.28s, user: 0.28s, system: 0.00s
+Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+Time spent: 20% 1x techmap (0 sec), 14% 15x read_verilog (0 sec), ...

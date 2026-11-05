@@ -1,0 +1,1685 @@
+{
+  "version": "v0",
+  "pass": false,
+  "counts": {
+    "errors": 278,
+    "warnings": 1
+  },
+  "violations": [
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1283",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1284",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1285",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1286",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1287",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1288",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1289",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1290",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1291",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1292",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1293",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1294",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "$auto$ff.cc:337:slice$1295",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_control.$auto$ff.cc:337:slice$1274",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_control.$auto$ff.cc:337:slice$1275",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_control.$auto$ff.cc:337:slice$1276",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1612",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1612",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1613",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1613",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1614",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1614",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1615",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1615",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1616",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1616",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1617",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1617",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1618",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1618",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1619",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1619",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1620",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1620",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1621",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1621",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1622",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1622",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1623",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1623",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1624",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1624",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1625",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1625",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1626",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1626",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1627",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_count.$auto$ff.cc:337:slice$1627",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1949",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1950",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1951",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1952",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1953",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1954",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1955",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1956",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1957",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1958",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1959",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1960",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1961",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1962",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1963",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1964",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1965",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1966",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1967",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1968",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1969",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1970",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1971",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1972",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1973",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1974",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1975",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1976",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1977",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1978",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1979",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_ingress.$auto$ff.cc:337:slice$1980",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1984",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1985",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1986",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1987",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1988",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1989",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1990",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1991",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1992",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1993",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1994",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1995",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1996",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1997",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1998",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$1999",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2000",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2001",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2002",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2003",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2004",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2005",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2006",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2007",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2008",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2009",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2010",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2011",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2012",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2013",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2014",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2015",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2016",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2017",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2018",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2019",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2020",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2021",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2022",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2023",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2024",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2025",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2026",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2027",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2028",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2029",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2030",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2031",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2032",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2033",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2034",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2035",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2036",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2037",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2038",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2039",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2040",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2041",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2042",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2043",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2044",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2045",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2046",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2047",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2048",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2049",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2050",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2051",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2052",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2053",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2054",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2055",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2056",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2057",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2058",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2059",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2060",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2061",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2062",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2063",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2064",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2065",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2066",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2067",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2068",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2069",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2070",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2071",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2072",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2073",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2074",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2075",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2076",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2077",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2078",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2079",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2080",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2081",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2082",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2083",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2084",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2085",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2086",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2087",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2088",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2089",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2090",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2091",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2092",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2093",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2094",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2095",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2096",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2097",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2098",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2099",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2100",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2101",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2102",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2103",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2104",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2105",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2106",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2107",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2108",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2109",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2110",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2111",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2112",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2113",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2114",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2115",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2116",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2117",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2118",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2119",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2120",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2121",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2122",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2123",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2124",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2125",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2126",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2127",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2128",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2129",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2130",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2131",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2132",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2133",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2134",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2135",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2136",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2137",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2138",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2139",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2140",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2141",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2142",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_mix.$auto$ff.cc:337:slice$2143",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_neg.$auto$ff.cc:337:slice$1945",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_neg.$auto$ff.cc:337:slice$1946",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_neg.$auto$ff.cc:337:slice$1947",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_neg.$auto$ff.cc:337:slice$1948",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_shadow.$auto$ff.cc:337:slice$1944",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4067",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4067",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4068",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4068",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4069",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4069",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4070",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4070",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4071",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4071",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4072",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4072",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4073",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4073",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4074",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4074",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4075",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4075",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4076",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4076",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4077",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4077",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4078",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4078",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4079",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4079",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4080",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4080",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4081",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4081",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "CLOCK_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4082",
+      "detail": "内部派生/门控时钟没有测试接管路径"
+    },
+    {
+      "rule": "RESET_NOT_TEST_CONTROLLABLE",
+      "severity": "error",
+      "cell": "u_slow.$auto$ff.cc:337:slice$4082",
+      "detail": "内部异步复位未接test MUX"
+    },
+    {
+      "rule": "SCAN_PORTS_MISSING",
+      "severity": "error",
+      "cell": "top",
+      "detail": "v0未提供SI/SO/SE测试端口"
+    },
+    {
+      "rule": "MEMORY_X_BOUNDARY",
+      "severity": "warning",
+      "cell": "u_memory",
+      "detail": "memory输出X可进入shadow逻辑；无写保护/旁路"
+    }
+  ],
+  "scope": "本课程单向端口连接级规则；不等价商业DFT DRC或物理setup/hold签核"
+}

@@ -1,0 +1,8 @@
+# 用途：用真实Yosys重新读入Python生成的v1网表，验证单元定义与综合语义。
+# 输入：netlist/v1/design.v、SDFF教学模型及memory黑盒；输出标准check/stat日志。
+# scan_insert.py负责插链；此脚本不声称自动识别工艺SDFF，也不做面积/时序签核。
+read_verilog -sv -DSYNTHESIS rtl/v1/scan_dff.sv rtl/v0/packet_mem.sv netlist/v1/design.v
+hierarchy -check -top dft_demo_top_v1
+proc
+check -assert
+stat

@@ -1,0 +1,13 @@
+VCD info: dumpfile build/v0/structures.vcd opened for output.
+OBS W2_GATE ns=18 latched=0 direct=1
+PASS W2_ICG latched_count=1 direct_count=2
+OBS W2_MEMORY ns=36 rdata=X shadow=X
+OBS W2_MEMORY ns=46 rdata=00000001 shadow=X
+OBS W2_MEMORY ns=56 rdata=00000001 shadow=1
+PASS W2_MEMORY read_first=1 shadow_extra_cycle=1
+OBS W2_RESET ns=73 core_rst_n=0 neg_sample=0 slow_ticks=0
+PASS W2_CLOCK_RESET divider_period_ns=40 negedge_value=A
+PASS W2_FAULT_TRUTH vectors=32 r_sa0=0 r_sa1=16 q_sa1=16
+PASS W2_CDC source_events=4 target_events=4
+PASS STRUCTURES_V0
+tb/structures_tb.sv:144: $finish called at 1000000 (1ps)

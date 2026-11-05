@@ -1,0 +1,4 @@
+VCD info: dumpfile build/atpg/scan_atpg.vcd opened for output.
+ATPG_SCAN_OBS cycle=72 chain=1 good=0 bad=0
+FATAL: tb/atpg_pattern_tb.sv:56: ATPG_CAPTURE_OR_SHIFT_MISMATCH
+       Time: 1774000  Scope: atpg_pattern_tb

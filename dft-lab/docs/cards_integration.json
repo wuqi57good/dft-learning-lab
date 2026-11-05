@@ -1,0 +1,153 @@
+{
+  "README.md": {
+    "purpose": "说明七周工程入口、运行顺序、实测结果和能力边界；删掉会失去独立复现路线。",
+    "layout": [
+      "阅读入口",
+      "工具与完整命令",
+      "逐周复现",
+      "数字口径",
+      "边界与目录"
+    ],
+    "boundary": "不把教学scope写成工业签核，也不重复算法实现。",
+    "dependencies": [
+      "scripts/run_all.py",
+      "web/dft_course.html"
+    ],
+    "decision": "让命令和证据贴近，先说明范围再看百分比。",
+    "alternate": "把所有说明只放网页会使终端使用者缺少入口。",
+    "failure": "旧命令或错误分母会导致无法复现或误判覆盖率。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合"
+  },
+  "Makefile": {
+    "purpose": "提供Linux/WSL的短命令入口；真正流程只在Python维护。",
+    "layout": [
+      "Python可覆盖变量",
+      "all完整流程",
+      "sim/synth/structures",
+      "scan/atpg目标"
+    ],
+    "boundary": "不在Makefile复制Python中的依赖和验收判断。",
+    "dependencies": [
+      "scripts/run.py",
+      "scripts/run_all.py",
+      "scripts/run_scan.py",
+      "scripts/run_atpg.py"
+    ],
+    "decision": "thin wrapper让Windows与Linux共享真实实现。",
+    "alternate": "每个平台各写一套EDA流水线会逐渐漂移。",
+    "failure": "目标漏掉依赖时可能读到旧网表，优先用make all。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合"
+  },
+  "run.ps1": {
+    "purpose": "让Windows用户从PowerShell调用同一完整流程并保留失败码。",
+    "layout": [
+      "错误策略",
+      "固定工程目录",
+      "传递参数",
+      "恢复原目录"
+    ],
+    "boundary": "不硬编码本机工具目录，不吞掉非零退出码。",
+    "dependencies": [
+      "scripts/run_all.py"
+    ],
+    "decision": "进入工程根后转发参数，finally恢复调用者目录。",
+    "alternate": "用Shell重复实现算法会使验证结果和Python入口不一致。",
+    "failure": "忽略LASTEXITCODE会把失败显示成成功。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合"
+  },
+  "scripts/run_all.py": {
+    "purpose": "顺序复跑各阶段并记录真实结果与源码哈希；任何必要步骤失败即停止。",
+    "layout": [
+      "工具路径解析",
+      "子进程环境",
+      "13项检查的依赖顺序",
+      "日志/通过标志",
+      "源码哈希和总报告"
+    ],
+    "boundary": "不并发修改同一网表，不把浏览器模型当作硬件验证。",
+    "dependencies": [
+      "scripts/run.py",
+      "scripts/study_report.py",
+      "scripts/run_scan.py",
+      "scripts/run_atpg.py",
+      "dft_tools/cost_timing.py",
+      "tests/test_drc.py",
+      "tests/test_atpg_replay.py",
+      "tests/test_pipeline.py",
+      "tests/test_web_build.py"
+    ],
+    "decision": "工具发现前使旧PASS失效，退出码和最终标志同时核对；仅在全部检查完成后记录源码哈希与PASS。",
+    "alternate": "只看日志中任意PASS可能忽略后续失败；只看旧报告可能误用历史状态。",
+    "failure": "依赖顺序错误会让ATPG用过期chain map，移出比特位置错误。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合"
+  },
+  "dft_tools/cost_timing.py": {
+    "purpose": "读取三版本真实叶单元数量，计算有明确假设的Setup/Hold与布线教学示例。",
+    "layout": [
+      "层次按实例统计",
+      "Setup/Hold预算",
+      "同域坐标重排",
+      "报告输出"
+    ],
+    "boundary": "无Liberty不报NAND2面积；无PVT/寄生不称STA；不改真实布局。",
+    "dependencies": [
+      "netlist/v0/design.json",
+      "netlist/v1/design.json",
+      "netlist/v2/design.json"
+    ],
+    "decision": "把实测结构与示例延迟分别标注，表达不确定性的来源。",
+    "alternate": "把所有cell按一门计面积很简单但物理含义错误；签核应走真实库与STA。",
+    "failure": "skew符号写反会误以为晚到capture同时改善Hold；降频也不能治同边沿Hold。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合"
+  },
+  "tests/test_learning_ui.py": {
+    "purpose": "用独立浏览器会话检查离线搜索、源码定位、学习记录合并和窄屏可用性。",
+    "layout": [
+      "学习状态快照与文件导入",
+      "搜索与键盘导航",
+      "导出/合并/无效数据回归",
+      "移动布局与离线检查",
+      "命令行入口及JSON报告"
+    ],
+    "boundary": "需要Playwright和兼容浏览器；不属于EDA主流程，不以网页交互通过代替硬件验收。",
+    "dependencies": [
+      "web/dft_course.html",
+      "web/assets/learning.js",
+      "rtl/v1/scan_dff.sv"
+    ],
+    "decision": "源码行号由磁盘源码独立计算；无效导入逐次比对完整学习状态，测试结果写入独立报告。",
+    "alternate": "只检查按钮存在不能证明搜索落点、数据合并和失败原子性正确。",
+    "failure": "搜索关闭抢走焦点、折叠答案未展开、导入半途写入或把笔记当HTML执行都会被拦截。",
+    "scale": "覆盖真实用户路径与边界，不依赖固定机器路径；默认检查已生成HTML，可通过命令行指定浏览器。",
+    "version": "v3 · 浏览器回归"
+  },
+  "web/build.py": {
+    "purpose": "把当前源码、档案和真实报告合并为离线HTML；总报告或必要子报告失败、源码与已验哈希不同则拒绝构建。",
+    "layout": [
+      "读取逐文件档案",
+      "收集当前源码",
+      "核对源码哈希和必要子报告",
+      "转义并内嵌JSON",
+      "单文件输出"
+    ],
+    "boundary": "不手填证据，不把script结束标签原样嵌入数据，不读取机器私密目录。",
+    "dependencies": [
+      "docs/cards_baseline.json",
+      "docs/cards_scan.json",
+      "docs/cards_atpg.json",
+      "docs/cards_integration.json",
+      "web/assets/",
+      "reports/validation-full.json"
+    ],
+    "decision": "以交付工程内容为唯一来源，使展示代码与可运行代码完全一致。",
+    "alternate": "把代码另抄一份到HTML会出现注释/实现漂移；外部fetch破坏双击离线。",
+    "failure": "漏转义</script>可破坏页面；源码未重建会让学员复制旧版本。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合"
+  }
+}

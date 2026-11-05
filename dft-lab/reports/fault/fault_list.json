@@ -1,0 +1,200 @@
+[
+  {
+    "fault": "a/SA0",
+    "fault_bits": [
+      2,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "a/SA1",
+    "fault_bits": [
+      2,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "b/SA0",
+    "fault_bits": [
+      3,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "b/SA1",
+    "fault_bits": [
+      3,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "c/SA0",
+    "fault_bits": [
+      4,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "c/SA1",
+    "fault_bits": [
+      4,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "d/SA0",
+    "fault_bits": [
+      5,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  },
+  {
+    "fault": "d/SA1",
+    "fault_bits": [
+      5,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  },
+  {
+    "fault": "e/SA0",
+    "fault_bits": [
+      6,
+      0
+    ],
+    "status": "PROVEN_UNTESTABLE_IN_CUT",
+    "detecting_vectors": 0
+  },
+  {
+    "fault": "e/SA1",
+    "fault_bits": [
+      6,
+      1
+    ],
+    "status": "PROVEN_UNTESTABLE_IN_CUT",
+    "detecting_vectors": 0
+  },
+  {
+    "fault": "reconv/SA0",
+    "fault_bits": [
+      7,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  },
+  {
+    "fault": "reconv/SA1",
+    "fault_bits": [
+      7,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  },
+  {
+    "fault": "redundant/SA0",
+    "fault_bits": [
+      8,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  },
+  {
+    "fault": "redundant/SA1",
+    "fault_bits": [
+      8,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  },
+  {
+    "fault": "p/SA0",
+    "fault_bits": [
+      9,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "p/SA1",
+    "fault_bits": [
+      9,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  },
+  {
+    "fault": "net_10/SA0",
+    "fault_bits": [
+      10,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "net_10/SA1",
+    "fault_bits": [
+      10,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 4
+  },
+  {
+    "fault": "q/SA0",
+    "fault_bits": [
+      11,
+      0
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 8
+  },
+  {
+    "fault": "q/SA1",
+    "fault_bits": [
+      11,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  },
+  {
+    "fault": "r/SA0",
+    "fault_bits": [
+      12,
+      0
+    ],
+    "status": "PROVEN_UNTESTABLE_IN_CUT",
+    "detecting_vectors": 0
+  },
+  {
+    "fault": "r/SA1",
+    "fault_bits": [
+      12,
+      1
+    ],
+    "status": "DETECTED",
+    "detecting_vectors": 16
+  }
+]

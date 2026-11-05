@@ -1,0 +1,22 @@
+{
+  "version": "v1",
+  "pass": true,
+  "counts": {
+    "errors": 0,
+    "warnings": 1
+  },
+  "violations": [
+    {
+      "rule": "MEMORY_X_BOUNDARY",
+      "severity": "warning",
+      "cell": "u_memory",
+      "detail": "v1允许memory X；v2才增加写保护和输出旁路"
+    }
+  ],
+  "scope": "本课程单向端口连接级规则；不等价商业DFT DRC或物理setup/hold签核",
+  "functional_preservation": {
+    "reference": "netlist/v0/design.json",
+    "register_count": 293,
+    "scope": "逐FF核对Q/D/E、复位值、触发沿与功能时钟/复位MUX；非整芯片形式等价证明"
+  }
+}

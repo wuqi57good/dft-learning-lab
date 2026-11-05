@@ -1,0 +1,85 @@
+{
+  "schema": "dft-lab.scan-validation.v1",
+  "status": "PASS",
+  "versions": {
+    "v1": {
+      "scan_cells": 293,
+      "chain_lengths": [
+        293
+      ],
+      "lockup_count": 0,
+      "waveform": "build/scan/v1.vcd",
+      "functional": {
+        "status": "PASS",
+        "markers": [
+          "PASS RESET_AND_MEMORY_X",
+          "PASS DATA_PATH_AND_BUSY_HANDSHAKE transactions=40",
+          "PASS MEMORY_WRAP_GATING_AND_CDC",
+          "PASS SOFT_RESET_RECOVERY",
+          "PASS FUNCTIONAL_V1"
+        ]
+      },
+      "scan": {
+        "status": "PASS",
+        "markers": [
+          "PASS SHIFT_V1 cells=293 cycles=586",
+          "PASS CAPTURE_AND_SHIFT_OUT_V1",
+          "PASS SCAN_V1"
+        ]
+      }
+    },
+    "v2": {
+      "scan_cells": 293,
+      "chain_lengths": [
+        74,
+        73,
+        73,
+        73
+      ],
+      "lockup_count": 4,
+      "waveform": "build/scan/v2.vcd",
+      "functional": {
+        "status": "PASS",
+        "markers": [
+          "PASS RESET_AND_MEMORY_X",
+          "PASS DATA_PATH_AND_BUSY_HANDSHAKE transactions=40",
+          "PASS MEMORY_WRAP_GATING_AND_CDC",
+          "PASS SOFT_RESET_RECOVERY",
+          "PASS FUNCTIONAL_V2"
+        ]
+      },
+      "scan": {
+        "status": "PASS",
+        "markers": [
+          "PASS SHIFT_V2 cells=293 cycles=148",
+          "PASS CAPTURE_AND_SHIFT_OUT_V2",
+          "PASS SCAN_V2"
+        ]
+      }
+    }
+  },
+  "negative_tests": [
+    {
+      "name": "broken_scan_link",
+      "drc_rejected": true,
+      "simulation_rejected": true,
+      "waveform": "build/scan/broken_scan_link.vcd",
+      "failure": "FATAL: build/scan/broken_scan_link_tb.sv:48: state mismatch chain=0 step=3"
+    },
+    {
+      "name": "missing_lockup",
+      "drc_rejected": true,
+      "simulation_rejected": true,
+      "waveform": "build/scan/missing_lockup.vcd",
+      "failure": "FATAL: build/scan/missing_lockup_tb.sv:49: state mismatch chain=1 step=55"
+    },
+    {
+      "name": "memory_write_unguarded",
+      "drc_rejected": true,
+      "simulation_rejected": true,
+      "waveform": "build/scan/memory_write_unguarded.vcd",
+      "failure": "FATAL: build/scan/memory_write_unguarded_tb.sv:75: test corrupted memory addr=0"
+    }
+  ],
+  "lockup_waveform_report": "reports/scan/lockup_wave.json"
+}

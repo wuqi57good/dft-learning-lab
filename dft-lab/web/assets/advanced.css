@@ -1,0 +1,39 @@
+/* 全课程继续使用纸张、陶土与鼠尾草色；证据区与正文共享字号。 */
+nav a{padding:7px 9px;margin:1px 0}#sidebar{padding-top:24px}.course-label{margin-top:24px}.file-index{margin-top:16px}
+#file-list{max-height:460px;overflow:auto}
+.evidence-banner{margin:20px 0;padding:18px 20px;background:#edf1e6;border:1px solid #d6dfcb;border-radius:12px;font-size:1.0625rem}.evidence-banner p{margin:5px 0;color:#515b44}
+.evidence-json pre{max-height:350px;overflow:auto;margin:0 16px 14px;font-size:0.875rem;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;color:#6b675c}.evidence-json>.btn{margin:0 16px 16px}.evidence-json summary{overflow-wrap:anywhere}
+.chain-bars{display:grid;gap:10px;margin:18px 0}.chain-bars>div{display:grid;grid-template-columns:105px minmax(0,1fr) 85px;align-items:center;gap:12px;font-size:0.875rem;color:var(--muted)}.chain-bars i{height:10px;background:#a9b8a0;border-radius:20px;display:block}.chain-bars b{font-weight:400}
+.chain-cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:6px;max-height:320px;overflow:auto;margin:18px 0;padding:3px}.chain-cells button{background:#f5f2e9;border:1px solid #dfdccf;border-radius:8px;padding:9px 7px;color:#696750;font-size:1.0625rem;text-align:left;min-width:0}.chain-cells small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.875rem}.chain-cells button.negative{background:#f7e8da;border-color:#d7b597}.chain-cells button[aria-pressed=true]{outline:2px solid #8b9d78;outline-offset:-2px}.controls input[type=search]{border:1px solid var(--line);background:var(--card);border-radius:7px;padding:6px 8px;max-width:210px;font-size:0.9375rem}
+.actual-tree{max-height:410px;overflow:auto;margin-top:16px;padding:3px}.actual-tree .tree-node{opacity:1;border-style:dashed}.actual-tree .visible{opacity:1;border-style:solid}#actual-coverage-svg,#reorder-svg{display:block;width:100%;height:auto;background:#fbf7f0;border:1px solid var(--line);border-radius:12px;margin-top:18px}#actual-coverage-note,#reorder-note{font-size:0.9375rem;color:var(--muted)}
+#budget-results{margin-top:18px}#budget-results .proof-card b{font-size:1.375rem}.lesson ul,.lesson ol{color:#4f473f;font-size:1.0625rem;padding-left:21px}.lesson li{margin:7px 0}.lesson h4{font-size:1.125rem;margin:21px 0 8px}.lesson .accordion{font-size:1.0625rem}.lesson .accordion>div{padding:0 17px 14px}.chapter a{overflow-wrap:anywhere}.chapter .table-scroll{margin:14px 0}
+#lock-real-svg{display:block;width:100%;height:auto;background:#fbf7f0;border:1px solid var(--line);border-radius:12px;margin:18px 0}
+@media(max-width:1120px){.chain-cells{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));max-height:270px}.evidence-banner{padding:15px}.controls{align-items:flex-start}.controls label{max-width:100%}.controls select{max-width:100%}.lab-card h3{font-size:1.3125rem}.lab-card p{font-size:0.9375rem}.evidence-json summary{font-size:0.875rem}.chapter{scroll-margin-top:60px}}
+
+/* 图表保留可读坐标尺寸；窄屏在图内滚动，不缩成难辨的小字。 */
+.diagram-scroll{max-width:100%;overflow-x:auto;border-radius:12px;margin:18px 0}
+.diagram-scroll svg[id]{width:100%;min-width:925px;margin:0}
+.diagram-scroll svg text{fill:#554b40}
+.diagram-scroll svg text[font-size="10"],.diagram-scroll svg text[font-size="11"],.diagram-scroll svg text[font-size="12"]{font-size:14px}
+.diagram-scroll:focus-visible{outline:2px solid var(--clay);outline-offset:3px}
+.lesson,.lab-card,.note-card,.hero>div{min-width:0}
+.lesson h3,.note-card h3,.lab-heading h3{line-height:1.55}
+.hero-art text{fill:#596047}
+input::placeholder,textarea::placeholder{color:#706254;opacity:1}
+@media(max-width:1120px){
+  .lesson,.week-two .lesson{grid-template-columns:minmax(0,1fr);gap:12px}
+  .lesson-num{display:flex;align-items:center;gap:12px}
+  .lesson-num small{margin:0}
+  .mobile-bar{min-height:54px;flex-wrap:wrap}
+  #sidebar.mobile-open{top:54px}
+  .pill{white-space:normal;max-width:100%}
+  .hero{padding:28px 20px}
+  .hero h1{line-height:1.35}
+}
+
+.week2-banner p{overflow-wrap:anywhere}
+.controls label{max-width:100%;overflow-wrap:anywhere}
+.week-two .controls label{flex-wrap:wrap}
+.chapter{overflow-wrap:anywhere}
+
+@media(max-width:380px){.mobile-bar{min-height:76px}#sidebar.mobile-open{top:76px}.chapter{scroll-margin-top:84px}}

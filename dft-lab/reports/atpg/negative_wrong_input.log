@@ -1,0 +1,3 @@
+VCD info: dumpfile build/atpg/negative_wrong_input.vcd opened for output.
+FATAL: build/atpg/atpg_checks.svh:2: ATPG_LOAD_MISMATCH chain=0 dut=good
+       Time: 894000  Scope: atpg_pattern_tb.check_loaded

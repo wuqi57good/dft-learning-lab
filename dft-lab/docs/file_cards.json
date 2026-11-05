@@ -1,0 +1,1704 @@
+{
+  "Makefile": {
+    "purpose": "提供Linux/WSL的短命令入口；真正流程只在Python维护。",
+    "layout": [
+      "Python可覆盖变量",
+      "all完整流程",
+      "sim/synth/structures",
+      "scan/atpg目标"
+    ],
+    "boundary": "不在Makefile复制Python中的依赖和验收判断。",
+    "dependencies": [
+      "scripts/run.py",
+      "scripts/run_all.py",
+      "scripts/run_scan.py",
+      "scripts/run_atpg.py"
+    ],
+    "decision": "thin wrapper让Windows与Linux共享真实实现。",
+    "alternate": "每个平台各写一套EDA流水线会逐渐漂移。",
+    "failure": "目标漏掉依赖时可能读到旧网表，优先用make all。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合",
+    "path": "Makefile",
+    "lines": 18
+  },
+  "README.md": {
+    "purpose": "说明七周工程入口、运行顺序、实测结果和能力边界；删掉会失去独立复现路线。",
+    "layout": [
+      "阅读入口",
+      "工具与完整命令",
+      "逐周复现",
+      "数字口径",
+      "边界与目录"
+    ],
+    "boundary": "不把教学scope写成工业签核，也不重复算法实现。",
+    "dependencies": [
+      "scripts/run_all.py",
+      "web/dft_course.html"
+    ],
+    "decision": "让命令和证据贴近，先说明范围再看百分比。",
+    "alternate": "把所有说明只放网页会使终端使用者缺少入口。",
+    "failure": "旧命令或错误分母会导致无法复现或误判覆盖率。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合",
+    "path": "README.md",
+    "lines": 64
+  },
+  "constraints/v0.sdc": {
+    "purpose": "记录两个根时钟的功能意图与尚缺的STA条件；删掉会失去时钟周期/波形的明确入口。",
+    "layout": [
+      "用途、单位与未验证边界",
+      "检查两个根端口",
+      "定义SYS/AUX时钟",
+      "派生/门控/负沿意图",
+      "缺项与真实环境验证路径"
+    ],
+    "boundary": "这是未执行的时钟意图草案，不作为完整约束或STA通过证据；不编造映射后引脚路径。",
+    "dependencies": [
+      "已link的dft_demo_top网表",
+      "支持SDC的STA环境",
+      "真实工艺库和最终时钟引脚待补"
+    ],
+    "decision": "只约束稳定顶层端口，显式报告缺少端口；派生关系待真实映射结构确认后编写。",
+    "alternate": "先猜generated-clock引脚会产生空集合或错误关系；直接false-path两域可能掩盖未审核的CDC。",
+    "failure": "单位、波形或派生关系写错会使STA分析对象错误，即使工具读入成功也不能视为签核。",
+    "version": "第二周 · SDC意图草案",
+    "scale": "只有两个已知根时钟定义；其余保留说明与验收方法，不增加未验证的约束命令。",
+    "path": "constraints/v0.sdc",
+    "lines": 23
+  },
+  "constraints/v1.sdc": {
+    "path": "constraints/v1.sdc",
+    "purpose": "记录v1单测试时钟移位模式的时钟和case analysis意图",
+    "layout": [
+      "边界说明",
+      "示例clock",
+      "模式控制",
+      "待补物理条件"
+    ],
+    "boundary": "未运行OpenSTA，不能把意图草案称为完整约束",
+    "dependencies": [
+      "netlist/v1/design.v"
+    ],
+    "decision": "扫描模式单独建立约束，不用功能模式报告解释shift",
+    "alternate": "在未给库和ATE I/O条件时填一组延迟会制造虚假的确定性",
+    "failure": "漏约束端点可能让报告看似无违例但根本没分析",
+    "lines": 13,
+    "scale": "实际13行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "constraints/v2.sdc": {
+    "path": "constraints/v2.sdc",
+    "purpose": "记录v2两个有确定相位关系的测试时钟意图",
+    "layout": [
+      "相位示例",
+      "模式控制",
+      "跨域和物理边界"
+    ],
+    "boundary": "不能用异步false path掩盖实际shift hold路径",
+    "dependencies": [
+      "netlist/v2/design.v"
+    ],
+    "decision": "shift的main/aux有测试协议关系，需要检查跨域数据路径",
+    "alternate": "把它们当功能异步域会跳过lockup需要保护的路径",
+    "failure": "错误false path可能隐藏真实链错位",
+    "lines": 13,
+    "scale": "实际13行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "dft_tools/atpg.py": {
+    "purpose": "让学员看到从故障激活到路径敏化、门 cube 解释和冲突撤销的真实算法过程，生成可重放向量。",
+    "layout": [
+      "AND/OR/NOT 的 singular cover",
+      "故障到观察点候选路径",
+      "未约束 PI 的补全与独立验证",
+      "逆向目标解释与赋值",
+      "前向蕴涵、冲突及回溯事件",
+      "成功或搜索耗尽结果"
+    ],
+    "scale": "只保留当前门类型所需的 D-cube 搜索；不为小电路加入工业学习、复杂启发式和全局缓存。",
+    "boundary": "这是简化 D-cube 路径搜索子集，不是完整工业 D/J-frontier 或 PODEM；SEARCH_EXHAUSTED 本身不构成通用不可测证明。",
+    "dependencies": [
+      "dft_tools/fault_sim.py",
+      "由 scripts/run_atpg.py 调用"
+    ],
+    "decision": "AND=0 保留0X与X0两种解释，使用局部字典分支撤销；每次 PI 赋值前向蕴涵并记录 X/D/D̅。",
+    "alternate": "直接枚举32个向量虽然能找到测试，但不能教会约束为何冲突；完整 D/J-frontier 更通用，当前以独立 oracle 限定正确性范围。",
+    "failure": "把 AND=0 写成两个输入必须都0会过度约束；把局部敏化当检测会漏掉重汇聚抵消。",
+    "lines": 114,
+    "path": "dft_tools/atpg.py",
+    "version": "v3 · 全流程"
+  },
+  "dft_tools/chain_balance.py": {
+    "path": "dft_tools/chain_balance.py",
+    "purpose": "在真实FF集合上均衡链长度并保持测试边沿和域次序",
+    "layout": [
+      "参数边界",
+      "均衡分配",
+      "边沿和域排序",
+      "位置编号"
+    ],
+    "boundary": "不声称基于物理坐标优化线长",
+    "dependencies": [
+      "dft_tools/scan_insert.py"
+    ],
+    "decision": "均衡后重新按N/P与域排序，使每个完整周期恰好推进一位",
+    "alternate": "按原cell名字直接串链容易把P放在N之前并增加域交叉",
+    "failure": "负沿下游可能吞掉同一周期刚进入正沿的位",
+    "lines": 23,
+    "scale": "实际23行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "v3 · 全流程"
+  },
+  "dft_tools/cost_timing.py": {
+    "purpose": "读取三版本真实叶单元数量，计算有明确假设的Setup/Hold与布线教学示例。",
+    "layout": [
+      "层次按实例统计",
+      "Setup/Hold预算",
+      "同域坐标重排",
+      "报告输出"
+    ],
+    "boundary": "无Liberty不报NAND2面积；无PVT/寄生不称STA；不改真实布局。",
+    "dependencies": [
+      "netlist/v0/design.json",
+      "netlist/v1/design.json",
+      "netlist/v2/design.json"
+    ],
+    "decision": "把实测结构与示例延迟分别标注，表达不确定性的来源。",
+    "alternate": "把所有cell按一门计面积很简单但物理含义错误；签核应走真实库与STA。",
+    "failure": "skew符号写反会误以为晚到capture同时改善Hold；降频也不能治同边沿Hold。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合",
+    "path": "dft_tools/cost_timing.py",
+    "lines": 107
+  },
+  "dft_tools/coverage.py": {
+    "purpose": "把真实向量序列转成固定分母的累计覆盖曲线，对比当前输出与新增 r 观察点的模型。",
+    "layout": [
+      "固定种子随机前缀",
+      "逐故障选择尚需的 ATPG 向量",
+      "原始/增强观察集合的累计集合",
+      "每点新增故障和百分比"
+    ],
+    "scale": "曲线只有一套累计逻辑，不单独维护网页硬编码数字；无需数据框架。",
+    "boundary": "不修改故障分母，不把 r 观察模型假装成 v2 已插入硬件，不加入全 DUT 未建模故障。",
+    "dependencies": [
+      "dft_tools/fault_sim.py",
+      "ATPG 实际结果",
+      "由 scripts/run_atpg.py 调用"
+    ],
+    "decision": "检测集合用故障身份去重；同一向量可检测多个故障，后续向量不能重复计数。",
+    "alternate": "可使用每个 pattern 的检出数量相加，但会重复计数；可剔除不可测故障算 test coverage，不过必须另命名而非改图表分母。",
+    "failure": "随向量数偷偷缩小分母会制造覆盖率跃升；新增观察点模型与真实 v2 端口混淆会夸大已完成能力。",
+    "lines": 40,
+    "path": "dft_tools/coverage.py",
+    "version": "v3 · 全流程"
+  },
+  "dft_tools/dft_report.py": {
+    "path": "dft_tools/dft_report.py",
+    "purpose": "独立保存真实触发器、时钟、复位、memory盘点，作为第3周证据",
+    "layout": [
+      "载入与flatten",
+      "inventory",
+      "写报告"
+    ],
+    "boundary": "不把逻辑单元数量换算成没有库依据的等效面积",
+    "dependencies": [
+      "dft_tools/netlist_model.py"
+    ],
+    "decision": "报告只读，不让分析步骤意外改写设计",
+    "alternate": "与插链混成一个脚本会难以保存修复前基线",
+    "failure": "时钟域或触发沿缺失会使链规划建立在错误前提上",
+    "lines": 22,
+    "scale": "实际22行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "v3 · 全流程"
+  },
+  "dft_tools/drc.py": {
+    "path": "dft_tools/drc.py",
+    "purpose": "检查单向网络驱动、测试控制/扫描拓扑，并以真实v0为参考核对逐FF功能连接和参数",
+    "layout": [
+      "收集全部驱动身份",
+      "逐FF功能保留审计",
+      "测试模式控制锥推导",
+      "链/边沿/lockup检查",
+      "memory隔离检查",
+      "真实报告输出"
+    ],
+    "boundary": "不把逐FF结构保留称为整芯片形式等价，不覆盖三态/模拟毛刺或物理setup/hold签核",
+    "dependencies": [
+      "dft_tools/netlist_model.py",
+      "netlist/v0/design.json",
+      "netlist/v1/design.json",
+      "netlist/v2/design.json",
+      "reports/scan_chains.json"
+    ],
+    "decision": "驱动必须保存为列表以拒绝争用；逐FF检查从真实v0读取参考而不是信任插链器产出的元数据",
+    "alternate": "只保留最后一个driver会漏掉争用；仅比较网表与mapping可能让同一生成错误在两处自洽",
+    "failure": "重复驱动被覆盖会假报可控；改变D/E/复位值/沿或功能MUX支路可能让扫描通过但原功能已破坏",
+    "lines": 232,
+    "scale": "实际232行；检查逻辑和回归各保持单一职责，错误类型按独立硬件后果组织，不新增无用配置。",
+    "version": "v3 · 全流程"
+  },
+  "dft_tools/fault_sim.py": {
+    "purpose": "从实际 Yosys JSON 读取 fault_cone，建立拓扑图并独立计算好/坏电路；删除它就失去 ATPG 的独立判定器。",
+    "layout": [
+      "Circuit 数据和 JSON 单bit门解析",
+      "拓扑排序与未折叠 stem 故障列表",
+      "三值 AND/OR/NOT 求值",
+      "单故障注入和确定差异判定",
+      "独立枚举 oracle 与 D 符号"
+    ],
+    "scale": "解析、注入和模拟属于同一份电路语义，放在一个短文件便于核对；没有抽象成面向任意工业单元的插件框架。",
+    "boundary": "不从名字猜表达式，不接受未支持的门，不把未知值算作检测，不把组合 cut 结果说成全芯片覆盖率。",
+    "dependencies": [
+      "netlist/v0/design.json",
+      "被 atpg.py、coverage.py、run_atpg.py 调用"
+    ],
+    "decision": "以唯一 bit 识别网线并按连接拓扑求值；别名不重复计故障，stem 注入影响所有扇出。",
+    "alternate": "可为示例手写布尔式，但会与实际综合结构脱节；可使用事件驱动队列，但本小 cut 拓扑求值更易审计。",
+    "failure": "若在门已传播后才覆盖故障值，下游看不到故障；若把 X 当作0，则会出现虚假覆盖率。",
+    "lines": 107,
+    "path": "dft_tools/fault_sim.py",
+    "version": "v3 · 全流程"
+  },
+  "dft_tools/netlist_model.py": {
+    "path": "dft_tools/netlist_model.py",
+    "purpose": "把实际层次Yosys网表展开为全局bit图，保留可读RTL别名",
+    "layout": [
+      "加载JSON",
+      "端口别名合并",
+      "递归展开",
+      "DFF语义解码",
+      "结构盘点"
+    ],
+    "boundary": "不能猜测未知库单元行为，也不能在这里插链",
+    "dependencies": [
+      "netlist/v0/design.json"
+    ],
+    "decision": "先绑定父子端口再重编号，否则不同module的bit会错误短接",
+    "alternate": "直接拼cells字典更短但局部bit编号相互冲突",
+    "failure": "cfg_ready别名丢失会让原40事务功能TB握手失败",
+    "lines": 130,
+    "scale": "实际130行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "v3 · 全流程"
+  },
+  "dft_tools/scan_insert.py": {
+    "path": "dft_tools/scan_insert.py",
+    "purpose": "将完整DUT的293DFF替换为保留功能语义的SDFF，生成单链和四链产物",
+    "layout": [
+      "安全cell命名",
+      "端口分配",
+      "clock/reset接管",
+      "memory隔离",
+      "链与lockup",
+      "Verilog输出",
+      "两个版本生成"
+    ],
+    "boundary": "不优化功能逻辑，不猜测未支持单元，不做工艺映射",
+    "dependencies": [
+      "dft_tools/netlist_model.py",
+      "dft_tools/chain_balance.py"
+    ],
+    "decision": "显式MUX和真实bit连接让DRC能追溯；JSON与Verilog来自同一模型",
+    "alternate": "手写独立移位寄存器链只能演示scan，不能验证原DUT的可测性",
+    "failure": "忽略DFFE使能或复位值会破坏功能；SI错接会逐位自检失败",
+    "lines": 199,
+    "scale": "实际199行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "v3 · 全流程"
+  },
+  "dft_tools/wave_annotation.py": {
+    "purpose": "从真实 VCD 提取指定信号变化，供网页展示实际扫描回放，不手工拼造波形。",
+    "layout": [
+      "VCD timescale 与层级栈",
+      "var 标识符到层级别名映射",
+      "时间与标量/向量变化读取",
+      "原始 bit 数据输出"
+    ],
+    "scale": "只支持本项目Icarus产生的数字VCD语法；没有不必要的通用波形数据库和格式转换层。",
+    "boundary": "不补造边沿，不把X变成0，不解析real/string，不把数值时间默认当ns，必须使用timescale。",
+    "dependencies": [
+      "build/atpg/scan_atpg.vcd",
+      "由 scripts/run_atpg.py 调用"
+    ],
+    "decision": "保留 VCD 时间单位和原始 bit 字符串，一个代码标识符可对应多个层级别名。",
+    "alternate": "可在TB中额外打印表格，比较直观，但会丢失边沿间变化；直接读VCD让页面与波形工具共享证据。",
+    "failure": "忽略timescale会把1ps当1ns；把同标识符的别名覆盖掉会漏信号。",
+    "lines": 44,
+    "path": "dft_tools/wave_annotation.py",
+    "version": "v3 · 全流程"
+  },
+  "docs/architecture.md": {
+    "purpose": "保存 docs/architecture.md 的工程解释与审读依据，帮助从结果追到代码、协议和知识来源。",
+    "layout": [
+      "范围与目标",
+      "分阶段解释及对照",
+      "验证依据与限制"
+    ],
+    "boundary": "不把文字声明当工具输出；实测数字以 reports 为准。",
+    "dependencies": [
+      "README.md",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "docs/architecture.md",
+    "lines": 55,
+    "version": "课程资料"
+  },
+  "docs/atpg_engine.md": {
+    "purpose": "解释第六周算法、真实数值、19例端到端回放、三项反例与工业边界，给报告字段提供阅读上下文。",
+    "layout": [
+      "输入与运行",
+      "建模范围",
+      "D-cube算法与回溯",
+      "独立证明",
+      "覆盖率与X",
+      "全DUT扫描回放",
+      "错误写法",
+      "产物和来源"
+    ],
+    "scale": "所有解释围绕同一fault_cone与真实扫描实验，避免复制商业工具手册或展开被排除的DFT方向。",
+    "boundary": "不把未实现算法说成完整D算法，不把模型观察点说成实际硬件，不把19/22说成芯片覆盖率。",
+    "dependencies": [
+      "reports/atpg/summary.json",
+      "reports/atpg/scan_replay.json",
+      "reports/coverage/coverage.json",
+      "Yosys官方源码",
+      "NPTEL原始课程"
+    ],
+    "decision": "每个数字说明分母、观察集合和验证方法；提供反例症状供学习者复现。",
+    "alternate": "只贴最终PASS日志更短，但无法解释为什么通过及哪里仍有限制。",
+    "failure": "省掉范围限定会使教学模型被误读为完整量产测试流程。",
+    "lines": 119,
+    "path": "docs/atpg_engine.md",
+    "version": "课程资料"
+  },
+  "docs/dft_concepts.md": {
+    "purpose": "保存 docs/dft_concepts.md 的工程解释与审读依据，帮助从结果追到代码、协议和知识来源。",
+    "layout": [
+      "范围与目标",
+      "分阶段解释及对照",
+      "验证依据与限制"
+    ],
+    "boundary": "不把文字声明当工具输出；实测数字以 reports 为准。",
+    "dependencies": [
+      "README.md",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "docs/dft_concepts.md",
+    "lines": 80,
+    "version": "课程资料"
+  },
+  "docs/final_review.md": {
+    "purpose": "保存 docs/final_review.md 的工程解释与审读依据，帮助从结果追到代码、协议和知识来源。",
+    "layout": [
+      "范围与目标",
+      "分阶段解释及对照",
+      "验证依据与限制"
+    ],
+    "boundary": "不把文字声明当工具输出；实测数字以 reports 为准。",
+    "dependencies": [
+      "README.md",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "docs/final_review.md",
+    "lines": 136,
+    "version": "课程资料"
+  },
+  "docs/industrial_mapping.md": {
+    "purpose": "保存 docs/industrial_mapping.md 的工程解释与审读依据，帮助从结果追到代码、协议和知识来源。",
+    "layout": [
+      "范围与目标",
+      "分阶段解释及对照",
+      "验证依据与限制"
+    ],
+    "boundary": "不把文字声明当工具输出；实测数字以 reports 为准。",
+    "dependencies": [
+      "README.md",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "docs/industrial_mapping.md",
+    "lines": 52,
+    "version": "课程资料"
+  },
+  "docs/scan_engine.md": {
+    "path": "docs/scan_engine.md",
+    "purpose": "解释真实网表到全DUT扫描链的接口、结果和未覆盖边界",
+    "layout": [
+      "文件关系",
+      "版本演进",
+      "测试协议",
+      "命令",
+      "证据",
+      "工程判断"
+    ],
+    "boundary": "不把示例时钟值包装为工业推荐值",
+    "dependencies": [
+      "reports/scan/validation.json",
+      "reports/scan_chains.json"
+    ],
+    "decision": "概念和实际文件一一对应，便于读者复现",
+    "alternate": "仅给流程图无法判断真实293FF有没有被处理",
+    "failure": "读者可能把演示链误认为实际DUT的扫描结果",
+    "lines": 88,
+    "scale": "实际80行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "docs/sources.md": {
+    "purpose": "保存 docs/sources.md 的工程解释与审读依据，帮助从结果追到代码、协议和知识来源。",
+    "layout": [
+      "范围与目标",
+      "分阶段解释及对照",
+      "验证依据与限制"
+    ],
+    "boundary": "不把文字声明当工具输出；实测数字以 reports 为准。",
+    "dependencies": [
+      "README.md",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "docs/sources.md",
+    "lines": 34,
+    "version": "课程资料"
+  },
+  "netlist/v0/design.v": {
+    "purpose": "保存 netlist/v0/design.v 的完整门级连接，供仿真和逐位追踪；可由综合/扫描插入重新生成。",
+    "layout": [
+      "生成来源与顶层端口",
+      "网络声明与别名",
+      "组合门及状态单元连接"
+    ],
+    "boundary": "不手改生成物；功能变化修改 RTL，测试结构变化修改 scan_insert.py，再重跑流水线。",
+    "dependencies": [
+      "scripts/synth_v0.ys",
+      "dft_tools/scan_insert.py",
+      "reports/scan_chains.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "netlist/v0/design.v",
+    "lines": 3337,
+    "version": "v0"
+  },
+  "netlist/v1/design.v": {
+    "purpose": "保存 netlist/v1/design.v 的完整门级连接，供仿真和逐位追踪；可由综合/扫描插入重新生成。",
+    "layout": [
+      "生成来源与顶层端口",
+      "网络声明与别名",
+      "组合门及状态单元连接"
+    ],
+    "boundary": "不手改生成物；功能变化修改 RTL，测试结构变化修改 scan_insert.py，再重跑流水线。",
+    "dependencies": [
+      "scripts/synth_v0.ys",
+      "dft_tools/scan_insert.py",
+      "reports/scan_chains.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "netlist/v1/design.v",
+    "lines": 1882,
+    "version": "v1"
+  },
+  "netlist/v2/design.v": {
+    "purpose": "保存 netlist/v2/design.v 的完整门级连接，供仿真和逐位追踪；可由综合/扫描插入重新生成。",
+    "layout": [
+      "生成来源与顶层端口",
+      "网络声明与别名",
+      "组合门及状态单元连接"
+    ],
+    "boundary": "不手改生成物；功能变化修改 RTL，测试结构变化修改 scan_insert.py，再重跑流水线。",
+    "dependencies": [
+      "scripts/synth_v0.ys",
+      "dft_tools/scan_insert.py",
+      "reports/scan_chains.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "netlist/v2/design.v",
+    "lines": 1927,
+    "version": "v2"
+  },
+  "rtl/v0/cfg_regfile.sv": {
+    "path": "rtl/v0/cfg_regfile.sv",
+    "purpose": "建立可重现的配置和状态观察协议。",
+    "layout": [
+      "地址映射与接口",
+      "配置写入",
+      "组合读回"
+    ],
+    "boundary": "不夹带 test_mode 或直接操作 scan 链；运行中改 key 的语义由课程明确禁止。",
+    "dependencies": [
+      "dft_demo_top.sv",
+      "tb/functional_tb.sv"
+    ],
+    "decision": "配置寄存器独立复位，soft_reset 能被软件解除。",
+    "alternate": "所有寄存器共用内部复位更省心，但可能让复位控制位自清除。",
+    "failure": "执行期间写 key 会改变当前事务结果；当前契约要求只在 idle 时修改。",
+    "version": "v0",
+    "lines": 39,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/clock_reset_mgr.sv": {
+    "path": "rtl/v0/clock_reset_mgr.sv",
+    "purpose": "集中暴露派生时钟与内部异步复位。",
+    "layout": [
+      "分频寄存器",
+      "派生时钟连线",
+      "内部复位组合锥"
+    ],
+    "boundary": "不把简单 MUX 当作任意时刻可切换的无毛刺时钟单元。",
+    "dependencies": [
+      "cfg_regfile.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "v0 故意保留问题，使后续 DRC 修复能对比。",
+    "alternate": "全用时钟使能可消除内部时钟，但会失去本课程的派生时钟 DRC 样本。",
+    "failure": "复位源也由自身复位时可能形成反馈振荡；当前 cfg 只受外部复位以避免该问题。",
+    "version": "v0",
+    "lines": 18,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/control_fsm.sv": {
+    "path": "rtl/v0/control_fsm.sv",
+    "purpose": "把接收、计算、提交分开，给波形提供明确的观察窗口。",
+    "layout": [
+      "状态与端口",
+      "输出译码",
+      "带非法状态恢复的状态转移"
+    ],
+    "boundary": "不存储输入数据，不定义测试时钟。",
+    "dependencies": [
+      "dft_demo_top.sv"
+    ],
+    "decision": "三态控制器让第几拍发生什么可以直接验证。",
+    "alternate": "单拍组合处理更快，但四路加法会拉长组合路径。",
+    "failure": "提前 commit 会把旧结果写入 memory；TB 的读回检查会捕获。",
+    "version": "v0",
+    "lines": 25,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/dft_demo_top.sv": {
+    "path": "rtl/v0/dft_demo_top.sv",
+    "purpose": "连接功能模块并集中呈现测试边界；不把业务逻辑塞进顶层。",
+    "layout": [
+      "顶层接口",
+      "内部信号与协议",
+      "模块例化",
+      "写指针/事件计数"
+    ],
+    "boundary": "不硬编码向量，不手写 scan 串链，不把 memory 面积算进逻辑门数。",
+    "dependencies": [
+      "rtl/v0/*.sv",
+      "tb/functional_tb.sv",
+      "scripts/synth_v0.ys"
+    ],
+    "decision": "只保留真实功能端口；DFT 端口随 v1 的实际实现加入。",
+    "alternate": "提前放空 scan 端口会制造已经实现 scan 的错觉。",
+    "failure": "漏接 core_rst_n 会导致部分寄存器保留旧状态；复位回归会发现。",
+    "version": "v0",
+    "lines": 73,
+    "scale": "完整顶层连接留在一个文件，跨模块协议可以顺序追踪；计算逻辑已放到各自模块。"
+  },
+  "rtl/v0/event_sync.sv": {
+    "path": "rtl/v0/event_sync.sv",
+    "purpose": "展示真正不同源时钟之间的控制事件同步。",
+    "layout": [
+      "aux 周期事件",
+      "toggle 编码",
+      "双级同步与边沿检测"
+    ],
+    "boundary": "不支持任意高速无损事件流，不声称 RTL 仿真能模拟模拟电路亚稳态。",
+    "dependencies": [
+      "dft_demo_top.sv"
+    ],
+    "decision": "慢事件用 toggle 同步，约束输入事件间隔。",
+    "alternate": "握手可支持更严格无损传输，但增加返回路径与延迟。",
+    "failure": "两个翻转发生在目标采样之间会互相抵消，目标漏事件。",
+    "version": "v0",
+    "lines": 31,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/fault_cone.sv": {
+    "path": "rtl/v0/fault_cone.sv",
+    "purpose": "让冲突与不可测故障拥有具体结构和网表节点。",
+    "layout": [
+      "重汇聚 p/q",
+      "吸收律冗余支路 r",
+      "可观察输出"
+    ],
+    "boundary": "不声称所有冗余支路故障都不可测，不给商业 ATPG 伪造日志。",
+    "dependencies": [
+      "dft_demo_top.sv",
+      "scripts/synth_v0.ys"
+    ],
+    "decision": "保留 r 并检查 JSON 的网名与驱动单元。",
+    "alternate": "自然 RTL 综合可能消除冗余，教学对象会消失。",
+    "failure": "只在 RTL 画图而不查门级对象，会把不存在的 fault 计入覆盖率。",
+    "version": "v0",
+    "lines": 20,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/gated_counter.sv": {
+    "path": "rtl/v0/gated_counter.sv",
+    "purpose": "给提交统计提供真实门控时钟结构。",
+    "layout": [
+      "低电平锁存门控使能",
+      "时钟 AND",
+      "计数寄存器"
+    ],
+    "boundary": "不能声称该模型拥有真实 ICG 的延迟、测试模型或签核特性。",
+    "dependencies": [
+      "control_fsm.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "低相位锁存使能，避免直连组合 AND 的高相位毛刺。",
+    "alternate": "直接用 if(enable) 时钟使能更简单，但无法演示 ICG 测试时钟阻断。",
+    "failure": "直接 clk & enable 时 enable 在高相位变化会产生窄脉冲；仿真可能多计一次。",
+    "version": "v0",
+    "lines": 19,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/memory_shadow.sv": {
+    "path": "rtl/v0/memory_shadow.sv",
+    "purpose": "让 memory 未知态确实传播到周边寄存器。",
+    "layout": [
+      "接口",
+      "寄存器化奇偶校验"
+    ],
+    "boundary": "不把 X 一律当作逻辑 0，不把 memory 内部故障纳入本课程 scan 分母。",
+    "dependencies": [
+      "packet_mem.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "保留真实的未知态传播，再在 v2 对照修复。",
+    "alternate": "简单 AND 屏蔽输出会遮住故障传播，无法替代可控/可观测设计。",
+    "failure": "X 当作 0 会制造虚假的可预测响应和虚高覆盖率。",
+    "version": "v0",
+    "lines": 14,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/neg_capture.sv": {
+    "path": "rtl/v0/neg_capture.sv",
+    "purpose": "提供少量负沿触发器和清晰可读的功能用途。",
+    "layout": [
+      "状态输入",
+      "负沿采样寄存器"
+    ],
+    "boundary": "不把某一串链顺序当作独立于波形的普适定律。",
+    "dependencies": [
+      "dft_demo_top.sv"
+    ],
+    "decision": "用 4 位状态采样保留负沿边界。",
+    "alternate": "全改正沿可简化 scan，但违背保留混边沿教学的目标。",
+    "failure": "上升沿段直接接下降沿段时可能在同一宏周期继续推进，ATE 的移位对应关系需重算。",
+    "version": "v0",
+    "lines": 14,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/packet_ingress.sv": {
+    "path": "rtl/v0/packet_ingress.sv",
+    "purpose": "冻结已接收的数据；删掉后上游变动会污染执行中的事务。",
+    "layout": [
+      "端口定义：接受完成握手的数据",
+      "时序寄存器：复位、使能、保持三个动作"
+    ],
+    "boundary": "不做协议解码、测试向量或 scan 串接。",
+    "dependencies": [
+      "control_fsm.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "用一个 32 位寄存器明确事务边界。",
+    "alternate": "可用 FIFO 提高吞吐，但当前单事务协议不需要队列。",
+    "failure": "用 valid 代替 accept 会在 busy 期间覆盖输入，功能比较器先失败。",
+    "version": "v0",
+    "lines": 15,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/packet_mem.sv": {
+    "path": "rtl/v0/packet_mem.sv",
+    "purpose": "分别定义仿真 memory 行为和综合黑盒边界。",
+    "layout": [
+      "SYNTHESIS 条件黑盒",
+      "公共接口",
+      "同步 read-first 数组模型"
+    ],
+    "boundary": "不将 SRAM 宏计入普通 scan DFF，也不伪造宏面积。",
+    "dependencies": [
+      "memory_shadow.sv",
+      "dft_demo_top.sv",
+      "scripts/synth_v0.ys"
+    ],
+    "decision": "综合与仿真共享接口，内容按工具上下文分离。",
+    "alternate": "直接综合数组会变成 FF/MUX，改变 memory 黑盒课程边界。",
+    "failure": "给未写数组强制清零会隐藏 X 污染；Shadow Logic 的问题就不再真实。",
+    "version": "v0",
+    "lines": 23,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/packet_mix.sv": {
+    "path": "rtl/v0/packet_mix.sv",
+    "purpose": "提供四路 32 位有状态数据通路；门数依靠实际综合测量。",
+    "layout": [
+      "接口与状态",
+      "旋转/异或/模加法",
+      "同步更新与异步复位"
+    ],
+    "boundary": "不把滚动签名称作 CRC 或加密算法，不包含 memory 行为。",
+    "dependencies": [
+      "packet_ingress.sv",
+      "cfg_regfile.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "使用有外部可观测作用的状态，避免为凑门数堆无用寄存器。",
+    "alternate": "查表或乘法器也能实现摘要，但引入新的 memory/算术黑盒边界。",
+    "failure": "阻塞赋值混用会引入仿真顺序依赖，状态和输出可能错一拍。",
+    "version": "v0",
+    "lines": 27,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/rate_counter.sv": {
+    "path": "rtl/v0/rate_counter.sv",
+    "purpose": "保留内部派生时钟域，并将状态导出为专用调试端口。",
+    "layout": [
+      "计数器接口",
+      "派生时钟触发寄存器"
+    ],
+    "boundary": "不把多位输出直接用于其他时钟域的控制判定。",
+    "dependencies": [
+      "clock_reset_mgr.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "单独提供监控端口，明确跨域采样责任。",
+    "alternate": "同步 enable 代替分频更利于 STA，但本样例要保留 DRC 障碍。",
+    "failure": "多位计数器直接跨域可能读到组合旧新位；两级同步单个 bit 无法修复总线一致性。",
+    "version": "v0",
+    "lines": 11,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v1/scan_dff.sv": {
+    "path": "rtl/v1/scan_dff.sv",
+    "purpose": "定义实际生成网表使用的SDFF、测试门控和原低透明latch行为",
+    "layout": [
+      "端口时序契约",
+      "正负沿SDFF",
+      "TE门控",
+      "原latch"
+    ],
+    "boundary": "不是Liberty时序/面积模型；不在这里存测试pattern",
+    "dependencies": [
+      "netlist/v1/design.v",
+      "netlist/v2/design.v"
+    ],
+    "decision": "SE在enable之前，使功能E=0时仍能移位；保留原复位值与沿",
+    "alternate": "把功能enable放在SE前面会让部分scan寄存器静止",
+    "failure": "扫描中某些位永远不更新，随机移位参考模型立即失败",
+    "lines": 33,
+    "scale": "实际33行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "v1"
+  },
+  "rtl/v2/lockup_latch.sv": {
+    "path": "rtl/v2/lockup_latch.sv",
+    "purpose": "在真实四链的main到aux边界保持上一位，避免迟到接收沿提前吞位",
+    "layout": [
+      "源时钟契约",
+      "低透明锁存器"
+    ],
+    "boundary": "不解决功能CDC亚稳态，也不是一拍寄存器",
+    "dependencies": [
+      "netlist/v2/design.v"
+    ],
+    "decision": "正沿launch后必须关闭，直到源时钟低相才允许新数据通过",
+    "alternate": "使用高透明latch会在源正沿之后立即让新位穿透",
+    "failure": "删lockup的完整DUT反例在chain1第55拍错误",
+    "lines": 8,
+    "scale": "实际8行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "v2"
+  },
+  "run.ps1": {
+    "purpose": "让Windows用户从PowerShell调用同一完整流程并保留失败码。",
+    "layout": [
+      "错误策略",
+      "固定工程目录",
+      "传递参数",
+      "恢复原目录"
+    ],
+    "boundary": "不硬编码本机工具目录，不吞掉非零退出码。",
+    "dependencies": [
+      "scripts/run_all.py"
+    ],
+    "decision": "进入工程根后转发参数，finally恢复调用者目录。",
+    "alternate": "用Shell重复实现算法会使验证结果和Python入口不一致。",
+    "failure": "忽略LASTEXITCODE会把失败显示成成功。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合",
+    "path": "run.ps1",
+    "lines": 12
+  },
+  "scripts/inspect_netlist.py": {
+    "path": "scripts/inspect_netlist.py",
+    "purpose": "验证故障靶点和 memory 黑盒在网表中确实存在。",
+    "layout": [
+      "JSON 读取",
+      "按实例统计",
+      "冗余门拓扑检查",
+      "黑盒检查与报告"
+    ],
+    "boundary": "不是 ATPG，不推断所有未覆盖故障，也不捏造标准单元面积。",
+    "dependencies": [
+      "scripts/synth_v0.ys",
+      "netlist/v0/design.json"
+    ],
+    "decision": "检查 AND 驱动和 OR 连接，而不是只搜索一个 r 网名。",
+    "alternate": "简单 grep r 可能命中已化简后的别名，会导致故障注入位置错误。",
+    "failure": "未按实例展开会低估被复用模块数量；memory 内部必须单独排除。",
+    "version": "v0",
+    "lines": 51,
+    "scale": "只检查本批故障靶点和黑盒；规模尚不需要泛化图框架，后续 DRC 独立实现。"
+  },
+  "scripts/run.py": {
+    "path": "scripts/run.py",
+    "purpose": "把跨平台执行和日志路径统一，删除后仍可手工执行底层命令。",
+    "layout": [
+      "工程根定位",
+      "命令执行与退出码",
+      "工具发现",
+      "sim / structures / synth 参数与产物"
+    ],
+    "boundary": "不硬编码本机绝对路径，不吞掉工具错误，不实现未来阶段空壳。",
+    "dependencies": [
+      "tb/functional_tb.sv",
+      "tb/structures_tb.sv",
+      "scripts/synth_v0.ys",
+      "scripts/inspect_netlist.py"
+    ],
+    "decision": "一个 Python 标准库入口兼顾 Windows/Linux，减少重复脚本。",
+    "alternate": "Makefile/PowerShell 各写一套容易使命令和日志约定漂移。",
+    "failure": "只看进程返回 0 而不查最后 PASS，可能把提前结束误当成功。",
+    "version": "v0",
+    "lines": 57,
+    "scale": "仿真与综合的进程执行/失败处理共用短入口，不维护两套平台脚本。"
+  },
+  "scripts/run_all.py": {
+    "purpose": "顺序复跑各阶段并记录真实结果与源码哈希；任何必要步骤失败即停止。",
+    "layout": [
+      "工具路径解析",
+      "子进程环境",
+      "13项检查的依赖顺序",
+      "日志/通过标志",
+      "源码哈希和总报告"
+    ],
+    "boundary": "不并发修改同一网表，不把浏览器模型当作硬件验证。",
+    "dependencies": [
+      "scripts/run.py",
+      "scripts/study_report.py",
+      "scripts/run_scan.py",
+      "scripts/run_atpg.py",
+      "dft_tools/cost_timing.py",
+      "tests/test_drc.py",
+      "tests/test_atpg_replay.py",
+      "tests/test_pipeline.py",
+      "tests/test_web_build.py"
+    ],
+    "decision": "工具发现前使旧PASS失效，退出码和最终标志同时核对；仅在全部检查完成后记录源码哈希与PASS。",
+    "alternate": "只看日志中任意PASS可能忽略后续失败；只看旧报告可能误用历史状态。",
+    "failure": "依赖顺序错误会让ATPG用过期chain map，移出比特位置错误。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合",
+    "path": "scripts/run_all.py",
+    "lines": 110
+  },
+  "scripts/run_atpg.py": {
+    "purpose": "组织真实网表搜索、32组合oracle、704组HDL交叉核对、coverage输出，以及全部19个可测cut故障的完整DUT扫描回放。",
+    "layout": [
+      "工具路径与可审计日志",
+      "从JSON导出独立HDL计算图",
+      "从原始网名追踪真实故障stem并按链映射序列化向量",
+      "19例完整DUT装载、捕获和全部SO位核对",
+      "无故障、错误输入、错误观察三项反例",
+      "逐故障搜索及oracle对照",
+      "JSON/CSV/向量与覆盖率输出"
+    ],
+    "scale": "运行器集中安排各项证据与失败传播，算法仍在dft_tools；多出的代码是独立验证，不是重复实现ATPG。",
+    "boundary": "不改原DUT，不依赖本机绝对路径，不虚构PASS，不把组合覆盖率升级为全芯片签核。",
+    "dependencies": [
+      "dft_tools/atpg.py",
+      "dft_tools/fault_sim.py",
+      "dft_tools/coverage.py",
+      "dft_tools/wave_annotation.py",
+      "reports/scan_chains.json",
+      "netlist/v2/design.json",
+      "Icarus Verilog"
+    ],
+    "decision": "ATPG先运行，oracle随后独立穷举；全DUT输入与观察位从aliases定位，各故障独立生成映射、输入及波形，故障只在Capture窗口生效。",
+    "alternate": "只检查生成向量能检测一个故障更省事，但会漏掉误报不可测；只测cut模块也无法确认链位序和Capture协议。",
+    "failure": "少一次移位、短链补位方向错误或遗漏scan_replay都会使端到端结果不成立；工具非零退出必须中止。",
+    "lines": 318,
+    "path": "scripts/run_atpg.py",
+    "version": "v3 · 全流程"
+  },
+  "scripts/run_scan.py": {
+    "path": "scripts/run_scan.py",
+    "purpose": "组织真实工具运行、原功能回归、逐位扫描与故意错误反例，并提取VCD",
+    "layout": [
+      "工具环境",
+      "功能TB适配",
+      "扫描参考模型",
+      "编译执行",
+      "三种变异",
+      "真实波形提取",
+      "JSON验收"
+    ],
+    "boundary": "不能手填PASS或用期望值替代波形；不能覆盖正确版VCD",
+    "dependencies": [
+      "dft_tools/dft_report.py",
+      "dft_tools/scan_insert.py",
+      "dft_tools/drc.py",
+      "tb/functional_tb.sv"
+    ],
+    "decision": "复用原完整参考模型检查功能，shift时用独立位序模型检查插链",
+    "alternate": "仅检查scan_out出现跳变无法证明293个状态都按正确次序扫描",
+    "failure": "遗漏负沿或跨域时序会出现逐拍state mismatch",
+    "lines": 276,
+    "scale": "实际272行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "v3 · 全流程"
+  },
+  "scripts/study_report.py": {
+    "purpose": "从真实日志与VCD抽取网页证据；删掉后无法重复生成19个快照及四态数据。",
+    "layout": [
+      "输入根目录",
+      "VCD层次与标识解析",
+      "同时间戳事件后取样",
+      "日志完成标记",
+      "信号路径与采样点",
+      "因果检查与JSON输出"
+    ],
+    "boundary": "只支持本项目1ps VCD，不假装通用波形库；不推导STA、亚稳态、全芯片覆盖率。",
+    "dependencies": [
+      "build/v0/functional.vcd",
+      "build/v0/structures.vcd",
+      "reports/structures.log",
+      "reports/week2.json"
+    ],
+    "decision": "保留x/z和位宽，并在下一个时间戳开始前取上一时刻最终值，避免漏掉非阻塞赋值更新。",
+    "alternate": "手填网页数值会与RTL漂移；完整通用VCD库对当前固定输入增加依赖，故使用带明确限制的短提取器。",
+    "failure": "把x转成0会遮住memory问题；提前取样会把旧值当作最终值；单位错配会偏移三个数量级。",
+    "version": "第二周 · v0证据提取",
+    "scale": "解析、取样、断言和输出服务于同一份证据；不拆成只被调用一次的配置或插件框架。",
+    "path": "scripts/study_report.py",
+    "lines": 125
+  },
+  "scripts/synth_v0.ys": {
+    "path": "scripts/synth_v0.ys",
+    "purpose": "固定可复现的教学综合流程，保留 blackbox 和冗余靶点。",
+    "layout": [
+      "读取 RTL",
+      "检查层次",
+      "通用门映射",
+      "检查与导出"
+    ],
+    "boundary": "不读取 SDC 冒充 STA，不把 generic cell count 等同 NAND2 面积。",
+    "dependencies": [
+      "rtl/v0/*.sv",
+      "scripts/run.py"
+    ],
+    "decision": "JSON 是后续脚本的事实输入；每一步检查而不是正则替换 Verilog。",
+    "alternate": "ABC 优化可得到更紧凑网表，但冗余教学结构可能不再存在。",
+    "failure": "flatten/opt 顺序改动可能删掉 fault_cone，需要重新检查 JSON 而非套旧故障名。",
+    "version": "v0",
+    "lines": 13,
+    "scale": "只承担当前阶段的一项文档或执行职责；不预留空配置和未实现目标。"
+  },
+  "scripts/synth_v1.ys": {
+    "path": "scripts/synth_v1.ys",
+    "purpose": "用真实Yosys复读生成的v1 Verilog并检查连接与综合语义",
+    "layout": [
+      "读取模型和网表",
+      "top链接",
+      "proc",
+      "check",
+      "stat"
+    ],
+    "boundary": "不重复实现scan插入、不声称工艺映射或STA",
+    "dependencies": [
+      "netlist/v1/design.v",
+      "rtl/v1/scan_dff.sv",
+      "rtl/v0/packet_mem.sv"
+    ],
+    "decision": "重新用综合工具解析可拦截Python输出器的语法和绑定错误",
+    "alternate": "仅Icarus编译不能证明综合工具同样接受生成结构",
+    "failure": "模块未定义或未驱动网络会在hierarchy/check失败",
+    "lines": 8,
+    "scale": "实际8行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "scripts/synth_v2.ys": {
+    "path": "scripts/synth_v2.ys",
+    "purpose": "用真实Yosys验证四链与lockup网表能重新展开",
+    "layout": [
+      "读取模型和网表",
+      "top链接",
+      "proc",
+      "check",
+      "stat"
+    ],
+    "boundary": "不能因为latch warning就删除设计需要的锁存器",
+    "dependencies": [
+      "netlist/v2/design.v",
+      "rtl/v1/scan_dff.sv",
+      "rtl/v2/lockup_latch.sv"
+    ],
+    "decision": "预期lockup/ICG会推断latch，核查具体信号而不盲目清警告",
+    "alternate": "把所有latch替换为FF会改变相位语义和pattern长度",
+    "failure": "错误清理会让shift吞位或移出序列错一拍",
+    "lines": 8,
+    "scale": "实际8行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "tb/atpg_pattern_tb.sv": {
+    "purpose": "在两颗完整 v2 DUT 上逐例加载19个可测故障的扫描向量，仅坏机注入当前stem故障，经Capture后从SO核对完整状态与独立预期差异。",
+    "layout": [
+      "真实映射include和测试端口",
+      "好/坏完整DUT实例",
+      "受控主/aux扫描时钟脉冲",
+      "293状态经四链装载并逐位核对",
+      "Capture窗口故障注入与无X快照",
+      "586次SO位比较及独立目标响应断言",
+      "独立VCD保存三种故意错误的反例",
+      "超时保护"
+    ],
+    "scale": "两实例共享同一激励即可定位故障差异；无需另建总线验证框架或强制内部寄存器值。",
+    "boundary": "不force寄存器绕过扫描，不在TB中实现综合约束，不把1ns示例skew当成工艺时序数据。",
+    "dependencies": [
+      "netlist/v2/design.v",
+      "rtl/v1/scan_dff.sv",
+      "rtl/v2/lockup_latch.sv",
+      "rtl/v0/packet_mem.sv",
+      "build/atpg/atpg_mapping.svh",
+      "build/atpg/atpg_checks.svh",
+      "build/atpg/scan_input.mem"
+    ],
+    "decision": "SE=1时所有状态走SI；SE=0时负沿寄存器捕获reconv或redundant。Capture后解除故障，通过SO核对整个快照，并另核对独立期望观察响应。",
+    "alternate": "内部快照能验证卸载位序，却不能独立证明检测成功；目标响应因此必须额外对照独立故障仿真期望值。",
+    "failure": "去掉注故障、翻转输入位、读错观察链必须各被对应断言拦截；若任一错误仍PASS，则检测证据不可信。",
+    "lines": 97,
+    "path": "tb/atpg_pattern_tb.sv",
+    "version": "课程资料"
+  },
+  "tb/dft_functional_v1_tb.sv": {
+    "path": "tb/dft_functional_v1_tb.sv",
+    "purpose": "复用原40事务参考模型验收扫描插入后的完整功能",
+    "layout": [
+      "端口与激励",
+      "参考模型",
+      "断言",
+      "PASS与超时"
+    ],
+    "boundary": "测试平台不可综合，不能把激励嵌入功能RTL",
+    "dependencies": [
+      "netlist/v1/design.v",
+      "scripts/run_scan.py"
+    ],
+    "decision": "由运行脚本按真实链映射生成，避免手写过期位序",
+    "alternate": "固定写死小链长度会漏验整个DUT",
+    "failure": "功能输出、SO或全体Q不符时fatal停止",
+    "lines": 100,
+    "scale": "实际100行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "tb/dft_functional_v2_tb.sv": {
+    "path": "tb/dft_functional_v2_tb.sv",
+    "purpose": "复用原40事务参考模型验收扫描插入后的完整功能",
+    "layout": [
+      "端口与激励",
+      "参考模型",
+      "断言",
+      "PASS与超时"
+    ],
+    "boundary": "测试平台不可综合，不能把激励嵌入功能RTL",
+    "dependencies": [
+      "netlist/v2/design.v",
+      "scripts/run_scan.py"
+    ],
+    "decision": "由运行脚本按真实链映射生成，避免手写过期位序",
+    "alternate": "固定写死小链长度会漏验整个DUT",
+    "failure": "功能输出、SO或全体Q不符时fatal停止",
+    "lines": 100,
+    "scale": "实际100行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "tb/functional_tb.sv": {
+    "path": "tb/functional_tb.sv",
+    "purpose": "证明 v0 功能闭环，同时断言 X 风险确实存在。",
+    "layout": [
+      "时钟与 DUT",
+      "配置事务任务",
+      "输入事务与独立参考状态",
+      "复位/数据/读回回归",
+      "超时"
+    ],
+    "boundary": "不加综合约束，不用 force 偷改 DUT 结果，不把 RTL PASS 当作 scan PASS。",
+    "dependencies": [
+      "rtl/v0/*.sv",
+      "scripts/run.py"
+    ],
+    "decision": "采用事务级参考模型、busy 扰动和内存环绕读回。",
+    "alternate": "只看波形容易遗漏重复接收或写错地址，因此增加自动断言。",
+    "failure": "在正沿同时驱动和读取会发生 race；故意分离驱动边沿和观察时间。",
+    "version": "v0",
+    "lines": 97,
+    "scale": "复位、握手、数据与 memory 读回共享同一事务场景，不拆成互相重复的测试平台。"
+  },
+  "tb/scan_v1_tb.sv": {
+    "path": "tb/scan_v1_tb.sv",
+    "purpose": "用独立位序参考模型验收全部293FF的移入、Capture和移出",
+    "layout": [
+      "端口与激励",
+      "参考模型",
+      "断言",
+      "PASS与超时"
+    ],
+    "boundary": "测试平台不可综合，不能把激励嵌入功能RTL",
+    "dependencies": [
+      "netlist/v1/design.v",
+      "scripts/run_scan.py"
+    ],
+    "decision": "由运行脚本按真实链映射生成，避免手写过期位序",
+    "alternate": "固定写死小链长度会漏验整个DUT",
+    "failure": "功能输出、SO或全体Q不符时fatal停止",
+    "lines": 62,
+    "scale": "实际62行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "tb/scan_v2_tb.sv": {
+    "path": "tb/scan_v2_tb.sv",
+    "purpose": "用独立位序参考模型验收全部293FF的移入、Capture和移出",
+    "layout": [
+      "端口与激励",
+      "参考模型",
+      "断言",
+      "PASS与超时"
+    ],
+    "boundary": "测试平台不可综合，不能把激励嵌入功能RTL",
+    "dependencies": [
+      "netlist/v2/design.v",
+      "scripts/run_scan.py"
+    ],
+    "decision": "由运行脚本按真实链映射生成，避免手写过期位序",
+    "alternate": "固定写死小链长度会漏验整个DUT",
+    "failure": "功能输出、SO或全体Q不符时fatal停止",
+    "lines": 80,
+    "scale": "实际80行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。",
+    "version": "课程资料"
+  },
+  "tb/structures_tb.sv": {
+    "purpose": "把五类结构风险变成独立、可失败的实验；删掉就只能依赖完整功能事务间接观察。",
+    "layout": [
+      "时钟、复位与被测模块",
+      "故障强制与32组合穷举",
+      "门控正确/错误对照",
+      "memory与shadow延迟",
+      "分频/负沿/内部复位",
+      "CDC计数与总验收"
+    ],
+    "boundary": "不改变功能RTL、不实现扫描链；force仅用于局部单故障实验，不能当作工业ATPG。",
+    "dependencies": [
+      "rtl/v0/*.sv",
+      "scripts/run.py structures",
+      "scripts/study_report.py"
+    ],
+    "decision": "直接例化交付的v0模块，在一个1μs场景内并行观察不同结构，每项独立完成后才输出总PASS。",
+    "alternate": "把结构检查塞入功能TB会混淆事务规格；为每条断言建一个TB则重复时钟、复位和构建入口。",
+    "failure": "高相位门控多出边沿、read-first被改写、内部复位失效或故障计数错误都会使仿真非零退出。",
+    "version": "第二周 · v0结构实验",
+    "scale": "五类现象共享时钟与复位，却有独立断言和完成标记；保持在一个文件方便对齐同一时间轴。",
+    "path": "tb/structures_tb.sv",
+    "lines": 147
+  },
+  "tests/test_atpg_replay.py": {
+    "purpose": "独立验收所有19个可测cut故障都有完整DUT回放证据，防止用单一代表波形替代全案例验证。",
+    "layout": [
+      "读取真实ATPG、扫描映射及回放报告",
+      "19例唯一性与3个不可测故障排除检查",
+      "按原RTL方程独立核对期望与实际SO日志",
+      "逐拍移位模型核对全部293个输入状态",
+      "三项负向日志和VCD隔离核对"
+    ],
+    "scale": "四项标准库unittest分别验证不同证据边界；不复制ATPG搜索实现，不引入测试框架依赖。",
+    "boundary": "不生成虚拟PASS，不复用fault_sim门求值，不把报告检查误称新的一次HDL执行；应先运行真实回放。",
+    "dependencies": [
+      "reports/atpg/summary.json",
+      "reports/atpg/scan_replay.json",
+      "reports/scan_chains.json",
+      "每例真实输入文件、日志及VCD"
+    ],
+    "decision": "用手写RTL布尔方程交叉检查响应，用正向逐拍移位核对生成器的反向序列化公式；要求实际日志与报告一致。",
+    "alternate": "只数19个PASS不能发现重复案例或错误响应；只读JSON不能确认对应日志确实完成全部装载和卸载检查。",
+    "failure": "漏回放一个故障、错误短链补位、错误响应或者负向案例仍成功都会使测试失败。",
+    "path": "tests/test_atpg_replay.py",
+    "lines": 114,
+    "version": "课程资料"
+  },
+  "tests/test_drc.py": {
+    "path": "tests/test_drc.py",
+    "purpose": "用正确网表与隔离的错误副本回归DRC增强，避免再次默默放过驱动争用和扫描后的功能破坏",
+    "layout": [
+      "加载真实v0/v1/v2",
+      "为每个测试复制网表",
+      "正确版本和合法别名",
+      "驱动争用反例",
+      "功能pin/参数/MUX反例",
+      "成功退出标记"
+    ],
+    "boundary": "不写交付网表，不用测试替代实际HDL回归、形式等价或STA",
+    "dependencies": [
+      "dft_tools/drc.py",
+      "dft_tools/netlist_model.py",
+      "netlist/v0/design.json",
+      "netlist/v1/design.json",
+      "netlist/v2/design.json",
+      "reports/scan_chains.json"
+    ],
+    "decision": "每种错误有独立硬件后果与期望规则，修改mapping元数据的反例保证参考来自v0",
+    "alternate": "仅测正确版会漏掉检查器总是PASS；在真实网表直接注错会污染后续交付",
+    "failure": "缺少负例时驱动覆盖、D/E错接或复位极性变化可能长期不被发现",
+    "version": "v3 · DRC增强",
+    "lines": 128,
+    "scale": "实际128行；检查逻辑和回归各保持单一职责，错误类型按独立硬件后果组织，不新增无用配置。"
+  },
+  "tests/test_learning_ui.py": {
+    "purpose": "用独立浏览器会话检查离线搜索、源码定位、学习记录合并和窄屏可用性。",
+    "layout": [
+      "学习状态快照与文件导入",
+      "搜索与键盘导航",
+      "导出/合并/无效数据回归",
+      "移动布局与离线检查",
+      "命令行入口及JSON报告"
+    ],
+    "boundary": "需要Playwright和兼容浏览器；不属于EDA主流程，不以网页交互通过代替硬件验收。",
+    "dependencies": [
+      "web/dft_course.html",
+      "web/assets/learning.js",
+      "rtl/v1/scan_dff.sv"
+    ],
+    "decision": "源码行号由磁盘源码独立计算；无效导入逐次比对完整学习状态，测试结果写入独立报告。",
+    "alternate": "只检查按钮存在不能证明搜索落点、数据合并和失败原子性正确。",
+    "failure": "搜索关闭抢走焦点、折叠答案未展开、导入半途写入或把笔记当HTML执行都会被拦截。",
+    "scale": "覆盖真实用户路径与边界，不依赖固定机器路径；默认检查已生成HTML，可通过命令行指定浏览器。",
+    "version": "v3 · 浏览器回归",
+    "path": "tests/test_learning_ui.py",
+    "lines": 257
+  },
+  "tests/test_pipeline.py": {
+    "purpose": "在临时工程中复现总流水线及 Scan/ATPG 独立入口的中断与失败，确保重新验收不会保留上一次的 PASS。",
+    "layout": [
+      "独立临时工程和旧 PASS",
+      "中断与失败返回码反例",
+      "缺标记与缺工具反例",
+      "回归任务顺序和源码/生成物哈希",
+      "独立入口首次执行或读取失败",
+      "结果及最终 PASS 标记"
+    ],
+    "scale": "实际行数由网页构建时计算。使用标准库 unittest 与 mock，仅生成最小报告和少量测试源码。",
+    "boundary": "不会启动 EDA 工具、递归执行流水线或改动交付报告；此处模拟 PASS 只验证流程控制，不代表硬件验收。",
+    "dependencies": [
+      "scripts/run_all.py",
+      "scripts/run_scan.py",
+      "scripts/run_atpg.py"
+    ],
+    "decision": "每个失败用例从旧 PASS 开始并核对失效；成功用例验证回归入口、源码与生成物原始字节哈希，以及总报告自身、UI 报告和编译缓存的排除。",
+    "alternate": "在真实工程中强行中断可能污染产物，且依赖本机 EDA 环境；临时目录和模拟执行可以稳定复现同一流程缺口。",
+    "failure": "若工具检查发生在旧 PASS 失效之前，缺失工具会留下历史成功报告，让网页误以为本轮验收已经完成。",
+    "version": "v3 · 流水线证据完整性增强",
+    "path": "tests/test_pipeline.py",
+    "lines": 197
+  },
+  "tests/test_web_build.py": {
+    "purpose": "验证网页发布使用当前已验源码、网表、向量、报告与波形；防止旧 PASS 被误用到新增或修改后的文件。",
+    "layout": [
+      "临时工程与源码/生成物快照",
+      "合法构建前提",
+      "新增、修改或删除文件的复现",
+      "状态仍 PASS 但内容改变的报告",
+      "独立网页报告排除规则",
+      "测试结果与最终标记"
+    ],
+    "scale": "实际行数由网页构建时计算。用例共享最小合法快照，每次只改变一个条件，避免复制真实工程或运行不相关 EDA 工具。",
+    "boundary": "只修改临时目录和内存报告，不修改交付网表；哈希一致性不是签名或物理签核，也不能代替真正的硬件测试。",
+    "dependencies": [
+      "web/build.py",
+      "scripts/run_all.py"
+    ],
+    "decision": "从已经 PASS 的快照制造源码集合变化、网表和报告内容变化、缺失向量及子报告失败，同时验证原始字节哈希与完整文件集合。",
+    "alternate": "只测试成功构建无法发现旧报告残留；直接改真实 RTL 会污染工程并可能误交付，因此用隔离副本复现。",
+    "failure": "若门禁失效，网页会展示当前源码却沿用旧版本 PASS，让学员复制未经验证的电路并误判验收。",
+    "version": "v3 · 证据完整性增强",
+    "path": "tests/test_web_build.py",
+    "lines": 165
+  },
+  "tests/test_web_ui.py": {
+    "purpose": "用真实浏览器核对离线课程的源码、报告、实验、全部故障回放、学习进度与手机交互。",
+    "layout": [
+      "命令行参数和独立浏览器",
+      "源码、档案、报告及哈希逐项核对",
+      "五个原始实验和真实链/VCD",
+      "19 例 ATPG 表格与不可测提示",
+      "代码下载、进度、移动端与网络检查",
+      "验证报告和可选截图"
+    ],
+    "scale": "实际行数由网页构建时计算。保留整套浏览器回归，用参数指定浏览器、HTML 与截图目录，无机器路径。",
+    "boundary": "需要事先安装 Playwright 及可用的 Chromium 系浏览器。浏览器验收只检查呈现与交互，不产生新的硬件或物理签核结论。",
+    "dependencies": [
+      "web/build.py",
+      "web/assets/advanced.js",
+      "scripts/run_all.py"
+    ],
+    "decision": "先使历史网页 PASS 失效，再验收真实生成网页；全部报告与源文件逐项对照，19 例表格核对每一行，失败写 FAIL 并非零退出。",
+    "alternate": "只看截图不能证明代码下载、行号和扫描响应准确；HTML 自身哈希又会与内嵌验证报告循环，因此仅记录网页构建器与 assets 源码哈希。",
+    "failure": "源码显示、故障分母、真实回放表或手机布局可能与交付内容脱节；缺 Playwright 或浏览器启动失败也必须使旧 PASS 失效。",
+    "version": "v3 · 可移植浏览器整体验收",
+    "path": "tests/test_web_ui.py",
+    "lines": 200
+  },
+  "web/assets/advanced.css": {
+    "purpose": "提供 web/assets/advanced.css 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/advanced.css",
+    "lines": 39,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/advanced.js": {
+    "purpose": "提供 web/assets/advanced.js 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/advanced.js",
+    "lines": 99,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/course-extra.js": {
+    "purpose": "提供 web/assets/course-extra.js 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/course-extra.js",
+    "lines": 125,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/course-main.js": {
+    "purpose": "提供 web/assets/course-main.js 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/course-main.js",
+    "lines": 123,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/course.css": {
+    "purpose": "提供 web/assets/course.css 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/course.css",
+    "lines": 3,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/course.template.html": {
+    "purpose": "提供 web/assets/course.template.html 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/course.template.html",
+    "lines": 91,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/learning.css": {
+    "purpose": "提供 web/assets/learning.css 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/learning.css",
+    "lines": 9,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/learning.js": {
+    "purpose": "提供 web/assets/learning.js 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/learning.js",
+    "lines": 90,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/polish.css": {
+    "purpose": "提供 web/assets/polish.css 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/polish.css",
+    "lines": 17,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/week2.css": {
+    "purpose": "提供 web/assets/week2.css 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/week2.css",
+    "lines": 3,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/week2.html": {
+    "purpose": "提供 web/assets/week2.html 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/week2.html",
+    "lines": 129,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/week2.js": {
+    "purpose": "提供 web/assets/week2.js 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/week2.js",
+    "lines": 94,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/weeks3-7.css": {
+    "purpose": "提供 web/assets/weeks3-7.css 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/weeks3-7.css",
+    "lines": 13,
+    "version": "v3 · 全流程"
+  },
+  "web/assets/weeks3-7.html": {
+    "purpose": "提供 web/assets/weeks3-7.html 对应的课程展示或构建逻辑；最终合并为无网络依赖的单个 HTML。",
+    "layout": [
+      "课程数据或样式定义",
+      "页面布局/交互实现",
+      "渲染或事件绑定"
+    ],
+    "boundary": "只展示教学模型与报告；不能在浏览器里伪造硬件验证通过。",
+    "dependencies": [
+      "web/build.py",
+      "docs/file_cards.json",
+      "reports/validation-full.json"
+    ],
+    "scale": "实际行数由当前文件计算。此文件保持一个可独立重建或审读的职责，生成数据不按行数硬拆。",
+    "decision": "源文件、生成物与展示分层，保留可追溯输入。",
+    "alternate": "把内容复制到各处会造成修改后版本不一致；这里在构建时从当前工程统一读取。",
+    "failure": "若脱离来源手改，页面、网表和真实运行记录会不一致，必须重建并核对。",
+    "path": "web/assets/weeks3-7.html",
+    "lines": 180,
+    "version": "v3 · 全流程"
+  },
+  "web/build.py": {
+    "purpose": "把当前源码、档案和真实报告合并为离线HTML；总报告或必要子报告失败、源码与已验哈希不同则拒绝构建。",
+    "layout": [
+      "读取逐文件档案",
+      "收集当前源码",
+      "核对源码哈希和必要子报告",
+      "转义并内嵌JSON",
+      "单文件输出"
+    ],
+    "boundary": "不手填证据，不把script结束标签原样嵌入数据，不读取机器私密目录。",
+    "dependencies": [
+      "docs/cards_baseline.json",
+      "docs/cards_scan.json",
+      "docs/cards_atpg.json",
+      "docs/cards_integration.json",
+      "web/assets/",
+      "reports/validation-full.json"
+    ],
+    "decision": "以交付工程内容为唯一来源，使展示代码与可运行代码完全一致。",
+    "alternate": "把代码另抄一份到HTML会出现注释/实现漂移；外部fetch破坏双击离线。",
+    "failure": "漏转义</script>可破坏页面；源码未重建会让学员复制旧版本。",
+    "scale": "行数按当前源码计算；保留一个完整、可独立解释的职责，不为凑蓝图预估行数拆分文件。",
+    "version": "v3 · 整合",
+    "path": "web/build.py",
+    "lines": 153
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-05",
+  "release": "batch-01-v0",
+  "tools": {
+    "iverilog": "13.0 (MSYS2 UCRT64)",
+    "yosys": "0.70 git 28ba3cb92 (YoWASP)",
+    "browser": "Microsoft Edge Chromium headless"
+  },
+  "functional": {
+    "status": "PASS",
+    "main_transactions": 40,
+    "post_soft_reset_transactions": 1,
+    "memory_readback_addresses": 32,
+    "log": "functional.log"
+  },
+  "synthesis": {
+    "status": "PASS",
+    "generic_cell_total": 1760,
+    "dff_count": 293,
+    "latch_count": 1,
+    "memory_blackbox_instances": 1,
+    "redundant_branch_independent": true,
+    "warning": "intentional low-level latch inferred in gated_counter"
+  },
+  "negative_regression": {
+    "extra_observation_path": "rejected by inspect_netlist.py, nonzero exit"
+  },
+  "waveform": {
+    "status": "PASS",
+    "times_ns": [
+      80,
+      85,
+      95,
+      105
+    ],
+    "first_result_hex": "8D60E266"
+  },
+  "browser": {
+    "scan_shift_capture_out": "passed: input order, capture, output 1010, play/pause/reset",
+    "fault_activation_propagation_observation": "passed: masking, node injection, SA0/SA1, capture",
+    "backtrack": "passed: expansion and reset; vector 100",
+    "lockup": "passed: numeric hold slack and animated playhead",
+    "coverage": "12/16 = 75.00% / 15/16 = 93.75%",
+    "coverage_model": {
+      "random": [
+        15,
+        8,
+        13,
+        13,
+        6,
+        14
+      ],
+      "final": [
+        15,
+        8,
+        13,
+        13,
+        6,
+        14,
+        3,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "undetectable": [
+        {
+          "node": "r",
+          "sa": 0
+        }
+      ]
+    },
+    "source_explorer": "passed: filter, selected file, lines, syntax, explanations, expansion, download",
+    "persistence": "passed",
+    "mobile_width": {
+      "viewport": 390,
+      "doc": 390
+    },
+    "mobile_navigation": "passed",
+    "javascript_errors": [],
+    "network_requests": []
+  },
+  "unmeasured": {
+    "nand2_equivalent_gates": null,
+    "sta": null,
+    "dut_scan_coverage": null
+  },
+  "scope": "v0 RTL and functional baseline; browser circuits are explicitly bounded educational models; v1/v2 not yet implemented",
+  "source_sha256": {
+    "rtl/v0/cfg_regfile.sv": "baa8dcba5b72e69cea955cfc188cadbb75c570d57e588c66c01a09e35279c130",
+    "rtl/v0/clock_reset_mgr.sv": "f15f018875a5f36c34c38e220b9d2f92e9bb03ca7ea6a9929bba403428643d84",
+    "rtl/v0/control_fsm.sv": "ca28351e2a4247231dda43d1c26a9505b8834364a6eb751162ed603be80edc23",
+    "rtl/v0/dft_demo_top.sv": "b2992a19bbf70209c0c28331eac92c43438e7e2c333ebe426f7e0f230c4ab4b9",
+    "rtl/v0/event_sync.sv": "3d55bdcb2a0b2e4e0a306ebb828df633d3b55db7a609cada6602ebef3cc6ebf1",
+    "rtl/v0/fault_cone.sv": "ad898a39c3a4b92a8d6e0b66c16e5628ebaadd81f3c998962ed4effbfb59d40e",
+    "rtl/v0/gated_counter.sv": "364a38c7307e7e3e3d3a0df78b08fdcdd7ee92d3315445c85c2b7545b12961b4",
+    "rtl/v0/memory_shadow.sv": "8a416040929f28ea277afd3715eab9f48fe6075d18c9dc26d1fdf310a7933a7f",
+    "rtl/v0/neg_capture.sv": "99d3655a075b53d1885cd8f417fd4929e12c5f3280eb4e0f1b88819000fe2686",
+    "rtl/v0/packet_ingress.sv": "ce5a9748148f544a2b05544b2bc7359c147c953000d6360869a7120c51b81403",
+    "rtl/v0/packet_mem.sv": "dfb5180d0552672e6655abe457919f3a72dbe84fd3edef6dd2e0a461a4352690",
+    "rtl/v0/packet_mix.sv": "8d05d2d4c39be9798c37d8f20e9fee2376b04d5e44f44654f413eb1dd2695a68",
+    "rtl/v0/rate_counter.sv": "aba15b50b7b29518d72f29dde397aab11de08554fc5607fc3893a6334c222b44",
+    "scripts/inspect_netlist.py": "4269267a7b3042ca05c3cf4d7435f5351395351b5cbe5638f9255f8b2807cbd4",
+    "scripts/run.py": "1bb58aa71a5c44251d9f0c59f03af405efb0aec5c0fc06741a2c091604e538d6",
+    "scripts/synth_v0.ys": "e97d3ff166a581f0541d84dc1f957cee3464a569fe6a23ff40ed685f955975c0",
+    "tb/functional_tb.sv": "837838d0bdee031230628fe0a31e728aa587e1b2c67a1150cff39e4bd7ae2b0d"
+  }
+}

@@ -1,0 +1,2 @@
+f47a50aca9ac594a853578007034bf09a6889acda5e27c598fc184927007a853  index.html
+d5a41f8ccc5b4076f047bb82e6a1ffb9a5d1f16e0998f78f46b24bd4da0257d4  downloads/dft-lab-complete.zip

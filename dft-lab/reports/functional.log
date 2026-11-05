@@ -1,0 +1,7 @@
+VCD info: dumpfile build/v0/functional.vcd opened for output.
+PASS RESET_AND_MEMORY_X
+PASS DATA_PATH_AND_BUSY_HANDSHAKE transactions=40
+PASS MEMORY_WRAP_GATING_AND_CDC
+PASS SOFT_RESET_RECOVERY
+PASS FUNCTIONAL_V0
+tb/functional_tb.sv:93: $finish called at 2306000 (1ps)

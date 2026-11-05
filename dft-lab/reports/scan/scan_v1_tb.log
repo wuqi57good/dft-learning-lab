@@ -1,0 +1,5 @@
+VCD info: dumpfile build/scan/v1.vcd opened for output.
+PASS SHIFT_V1 cells=293 cycles=586
+PASS CAPTURE_AND_SHIFT_OUT_V1
+PASS SCAN_V1
+tb/scan_v1_tb.sv:59: $finish called at 14080000 (1ps)

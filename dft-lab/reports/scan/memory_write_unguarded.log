@@ -1,0 +1,4 @@
+VCD info: dumpfile build/scan/memory_write_unguarded.vcd opened for output.
+PASS SHIFT_V2 cells=293 cycles=148
+FATAL: build/scan/memory_write_unguarded_tb.sv:75: test corrupted memory addr=0
+       Time: 3568000  Scope: scan_v2_tb

@@ -1,0 +1,458 @@
+{
+  "rtl/v0/packet_ingress.sv": {
+    "path": "rtl/v0/packet_ingress.sv",
+    "purpose": "冻结已接收的数据；删掉后上游变动会污染执行中的事务。",
+    "layout": [
+      "端口定义：接受完成握手的数据",
+      "时序寄存器：复位、使能、保持三个动作"
+    ],
+    "boundary": "不做协议解码、测试向量或 scan 串接。",
+    "dependencies": [
+      "control_fsm.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "用一个 32 位寄存器明确事务边界。",
+    "alternate": "可用 FIFO 提高吞吐，但当前单事务协议不需要队列。",
+    "failure": "用 valid 代替 accept 会在 busy 期间覆盖输入，功能比较器先失败。",
+    "version": "v0",
+    "lines": 15,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/control_fsm.sv": {
+    "path": "rtl/v0/control_fsm.sv",
+    "purpose": "把接收、计算、提交分开，给波形提供明确的观察窗口。",
+    "layout": [
+      "状态与端口",
+      "输出译码",
+      "带非法状态恢复的状态转移"
+    ],
+    "boundary": "不存储输入数据，不定义测试时钟。",
+    "dependencies": [
+      "dft_demo_top.sv"
+    ],
+    "decision": "三态控制器让第几拍发生什么可以直接验证。",
+    "alternate": "单拍组合处理更快，但四路加法会拉长组合路径。",
+    "failure": "提前 commit 会把旧结果写入 memory；TB 的读回检查会捕获。",
+    "version": "v0",
+    "lines": 25,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/packet_mix.sv": {
+    "path": "rtl/v0/packet_mix.sv",
+    "purpose": "提供四路 32 位有状态数据通路；门数依靠实际综合测量。",
+    "layout": [
+      "接口与状态",
+      "旋转/异或/模加法",
+      "同步更新与异步复位"
+    ],
+    "boundary": "不把滚动签名称作 CRC 或加密算法，不包含 memory 行为。",
+    "dependencies": [
+      "packet_ingress.sv",
+      "cfg_regfile.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "使用有外部可观测作用的状态，避免为凑门数堆无用寄存器。",
+    "alternate": "查表或乘法器也能实现摘要，但引入新的 memory/算术黑盒边界。",
+    "failure": "阻塞赋值混用会引入仿真顺序依赖，状态和输出可能错一拍。",
+    "version": "v0",
+    "lines": 27,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/fault_cone.sv": {
+    "path": "rtl/v0/fault_cone.sv",
+    "purpose": "让冲突与不可测故障拥有具体结构和网表节点。",
+    "layout": [
+      "重汇聚 p/q",
+      "吸收律冗余支路 r",
+      "可观察输出"
+    ],
+    "boundary": "不声称所有冗余支路故障都不可测，不给商业 ATPG 伪造日志。",
+    "dependencies": [
+      "dft_demo_top.sv",
+      "scripts/synth_v0.ys"
+    ],
+    "decision": "保留 r 并检查 JSON 的网名与驱动单元。",
+    "alternate": "自然 RTL 综合可能消除冗余，教学对象会消失。",
+    "failure": "只在 RTL 画图而不查门级对象，会把不存在的 fault 计入覆盖率。",
+    "version": "v0",
+    "lines": 20,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/clock_reset_mgr.sv": {
+    "path": "rtl/v0/clock_reset_mgr.sv",
+    "purpose": "集中暴露派生时钟与内部异步复位。",
+    "layout": [
+      "分频寄存器",
+      "派生时钟连线",
+      "内部复位组合锥"
+    ],
+    "boundary": "不把简单 MUX 当作任意时刻可切换的无毛刺时钟单元。",
+    "dependencies": [
+      "cfg_regfile.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "v0 故意保留问题，使后续 DRC 修复能对比。",
+    "alternate": "全用时钟使能可消除内部时钟，但会失去本课程的派生时钟 DRC 样本。",
+    "failure": "复位源也由自身复位时可能形成反馈振荡；当前 cfg 只受外部复位以避免该问题。",
+    "version": "v0",
+    "lines": 18,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/gated_counter.sv": {
+    "path": "rtl/v0/gated_counter.sv",
+    "purpose": "给提交统计提供真实门控时钟结构。",
+    "layout": [
+      "低电平锁存门控使能",
+      "时钟 AND",
+      "计数寄存器"
+    ],
+    "boundary": "不能声称该模型拥有真实 ICG 的延迟、测试模型或签核特性。",
+    "dependencies": [
+      "control_fsm.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "低相位锁存使能，避免直连组合 AND 的高相位毛刺。",
+    "alternate": "直接用 if(enable) 时钟使能更简单，但无法演示 ICG 测试时钟阻断。",
+    "failure": "直接 clk & enable 时 enable 在高相位变化会产生窄脉冲；仿真可能多计一次。",
+    "version": "v0",
+    "lines": 19,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/rate_counter.sv": {
+    "path": "rtl/v0/rate_counter.sv",
+    "purpose": "保留内部派生时钟域，并将状态导出为专用调试端口。",
+    "layout": [
+      "计数器接口",
+      "派生时钟触发寄存器"
+    ],
+    "boundary": "不把多位输出直接用于其他时钟域的控制判定。",
+    "dependencies": [
+      "clock_reset_mgr.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "单独提供监控端口，明确跨域采样责任。",
+    "alternate": "同步 enable 代替分频更利于 STA，但本样例要保留 DRC 障碍。",
+    "failure": "多位计数器直接跨域可能读到组合旧新位；两级同步单个 bit 无法修复总线一致性。",
+    "version": "v0",
+    "lines": 11,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/event_sync.sv": {
+    "path": "rtl/v0/event_sync.sv",
+    "purpose": "展示真正不同源时钟之间的控制事件同步。",
+    "layout": [
+      "aux 周期事件",
+      "toggle 编码",
+      "双级同步与边沿检测"
+    ],
+    "boundary": "不支持任意高速无损事件流，不声称 RTL 仿真能模拟模拟电路亚稳态。",
+    "dependencies": [
+      "dft_demo_top.sv"
+    ],
+    "decision": "慢事件用 toggle 同步，约束输入事件间隔。",
+    "alternate": "握手可支持更严格无损传输，但增加返回路径与延迟。",
+    "failure": "两个翻转发生在目标采样之间会互相抵消，目标漏事件。",
+    "version": "v0",
+    "lines": 31,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/neg_capture.sv": {
+    "path": "rtl/v0/neg_capture.sv",
+    "purpose": "提供少量负沿触发器和清晰可读的功能用途。",
+    "layout": [
+      "状态输入",
+      "负沿采样寄存器"
+    ],
+    "boundary": "不把某一串链顺序当作独立于波形的普适定律。",
+    "dependencies": [
+      "dft_demo_top.sv"
+    ],
+    "decision": "用 4 位状态采样保留负沿边界。",
+    "alternate": "全改正沿可简化 scan，但违背保留混边沿教学的目标。",
+    "failure": "上升沿段直接接下降沿段时可能在同一宏周期继续推进，ATE 的移位对应关系需重算。",
+    "version": "v0",
+    "lines": 14,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/packet_mem.sv": {
+    "path": "rtl/v0/packet_mem.sv",
+    "purpose": "分别定义仿真 memory 行为和综合黑盒边界。",
+    "layout": [
+      "SYNTHESIS 条件黑盒",
+      "公共接口",
+      "同步 read-first 数组模型"
+    ],
+    "boundary": "不将 SRAM 宏计入普通 scan DFF，也不伪造宏面积。",
+    "dependencies": [
+      "memory_shadow.sv",
+      "dft_demo_top.sv",
+      "scripts/synth_v0.ys"
+    ],
+    "decision": "综合与仿真共享接口，内容按工具上下文分离。",
+    "alternate": "直接综合数组会变成 FF/MUX，改变 memory 黑盒课程边界。",
+    "failure": "给未写数组强制清零会隐藏 X 污染；Shadow Logic 的问题就不再真实。",
+    "version": "v0",
+    "lines": 23,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/memory_shadow.sv": {
+    "path": "rtl/v0/memory_shadow.sv",
+    "purpose": "让 memory 未知态确实传播到周边寄存器。",
+    "layout": [
+      "接口",
+      "寄存器化奇偶校验"
+    ],
+    "boundary": "不把 X 一律当作逻辑 0，不把 memory 内部故障纳入本课程 scan 分母。",
+    "dependencies": [
+      "packet_mem.sv",
+      "dft_demo_top.sv"
+    ],
+    "decision": "保留真实的未知态传播，再在 v2 对照修复。",
+    "alternate": "简单 AND 屏蔽输出会遮住故障传播，无法替代可控/可观测设计。",
+    "failure": "X 当作 0 会制造虚假的可预测响应和虚高覆盖率。",
+    "version": "v0",
+    "lines": 14,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/cfg_regfile.sv": {
+    "path": "rtl/v0/cfg_regfile.sv",
+    "purpose": "建立可重现的配置和状态观察协议。",
+    "layout": [
+      "地址映射与接口",
+      "配置写入",
+      "组合读回"
+    ],
+    "boundary": "不夹带 test_mode 或直接操作 scan 链；运行中改 key 的语义由课程明确禁止。",
+    "dependencies": [
+      "dft_demo_top.sv",
+      "tb/functional_tb.sv"
+    ],
+    "decision": "配置寄存器独立复位，soft_reset 能被软件解除。",
+    "alternate": "所有寄存器共用内部复位更省心，但可能让复位控制位自清除。",
+    "failure": "执行期间写 key 会改变当前事务结果；当前契约要求只在 idle 时修改。",
+    "version": "v0",
+    "lines": 39,
+    "scale": "模块边界本身就是教学对象。保持独立便于检查时钟、复位与观察路径；不再拆出只有一条表达式的包装层。"
+  },
+  "rtl/v0/dft_demo_top.sv": {
+    "path": "rtl/v0/dft_demo_top.sv",
+    "purpose": "连接功能模块并集中呈现测试边界；不把业务逻辑塞进顶层。",
+    "layout": [
+      "顶层接口",
+      "内部信号与协议",
+      "模块例化",
+      "写指针/事件计数"
+    ],
+    "boundary": "不硬编码向量，不手写 scan 串链，不把 memory 面积算进逻辑门数。",
+    "dependencies": [
+      "rtl/v0/*.sv",
+      "tb/functional_tb.sv",
+      "scripts/synth_v0.ys"
+    ],
+    "decision": "只保留真实功能端口；DFT 端口随 v1 的实际实现加入。",
+    "alternate": "提前放空 scan 端口会制造已经实现 scan 的错觉。",
+    "failure": "漏接 core_rst_n 会导致部分寄存器保留旧状态；复位回归会发现。",
+    "version": "v0",
+    "lines": 73,
+    "scale": "完整顶层连接留在一个文件，跨模块协议可以顺序追踪；计算逻辑已放到各自模块。"
+  },
+  "tb/functional_tb.sv": {
+    "path": "tb/functional_tb.sv",
+    "purpose": "证明 v0 功能闭环，同时断言 X 风险确实存在。",
+    "layout": [
+      "时钟与 DUT",
+      "配置事务任务",
+      "输入事务与独立参考状态",
+      "复位/数据/读回回归",
+      "超时"
+    ],
+    "boundary": "不加综合约束，不用 force 偷改 DUT 结果，不把 RTL PASS 当作 scan PASS。",
+    "dependencies": [
+      "rtl/v0/*.sv",
+      "scripts/run.py"
+    ],
+    "decision": "采用事务级参考模型、busy 扰动和内存环绕读回。",
+    "alternate": "只看波形容易遗漏重复接收或写错地址，因此增加自动断言。",
+    "failure": "在正沿同时驱动和读取会发生 race；故意分离驱动边沿和观察时间。",
+    "version": "v0",
+    "lines": 97,
+    "scale": "复位、握手、数据与 memory 读回共享同一事务场景，不拆成互相重复的测试平台。"
+  },
+  "scripts/synth_v0.ys": {
+    "path": "scripts/synth_v0.ys",
+    "purpose": "固定可复现的教学综合流程，保留 blackbox 和冗余靶点。",
+    "layout": [
+      "读取 RTL",
+      "检查层次",
+      "通用门映射",
+      "检查与导出"
+    ],
+    "boundary": "不读取 SDC 冒充 STA，不把 generic cell count 等同 NAND2 面积。",
+    "dependencies": [
+      "rtl/v0/*.sv",
+      "scripts/run.py"
+    ],
+    "decision": "JSON 是后续脚本的事实输入；每一步检查而不是正则替换 Verilog。",
+    "alternate": "ABC 优化可得到更紧凑网表，但冗余教学结构可能不再存在。",
+    "failure": "flatten/opt 顺序改动可能删掉 fault_cone，需要重新检查 JSON 而非套旧故障名。",
+    "version": "v0",
+    "lines": 13,
+    "scale": "只承担当前阶段的一项文档或执行职责；不预留空配置和未实现目标。"
+  },
+  "scripts/run.py": {
+    "path": "scripts/run.py",
+    "purpose": "把跨平台执行和日志路径统一，删除后仍可手工执行底层命令。",
+    "layout": [
+      "工程根定位",
+      "命令执行与退出码",
+      "工具发现",
+      "sim / structures / synth 参数与产物"
+    ],
+    "boundary": "不硬编码本机绝对路径，不吞掉工具错误，不实现未来阶段空壳。",
+    "dependencies": [
+      "tb/functional_tb.sv",
+      "tb/structures_tb.sv",
+      "scripts/synth_v0.ys",
+      "scripts/inspect_netlist.py"
+    ],
+    "decision": "一个 Python 标准库入口兼顾 Windows/Linux，减少重复脚本。",
+    "alternate": "Makefile/PowerShell 各写一套容易使命令和日志约定漂移。",
+    "failure": "只看进程返回 0 而不查最后 PASS，可能把提前结束误当成功。",
+    "version": "v0",
+    "lines": 57,
+    "scale": "仿真与综合的进程执行/失败处理共用短入口，不维护两套平台脚本。"
+  },
+  "scripts/inspect_netlist.py": {
+    "path": "scripts/inspect_netlist.py",
+    "purpose": "验证故障靶点和 memory 黑盒在网表中确实存在。",
+    "layout": [
+      "JSON 读取",
+      "按实例统计",
+      "冗余门拓扑检查",
+      "黑盒检查与报告"
+    ],
+    "boundary": "不是 ATPG，不推断所有未覆盖故障，也不捏造标准单元面积。",
+    "dependencies": [
+      "scripts/synth_v0.ys",
+      "netlist/v0/design.json"
+    ],
+    "decision": "检查 AND 驱动和 OR 连接，而不是只搜索一个 r 网名。",
+    "alternate": "简单 grep r 可能命中已化简后的别名，会导致故障注入位置错误。",
+    "failure": "未按实例展开会低估被复用模块数量；memory 内部必须单独排除。",
+    "version": "v0",
+    "lines": 51,
+    "scale": "只检查本批故障靶点和黑盒；规模尚不需要泛化图框架，后续 DRC 独立实现。"
+  },
+  "Makefile": {
+    "path": "Makefile",
+    "purpose": "为Linux/WSL提供sim、synth、structures三个短入口，不重复实现Python执行流程。",
+    "layout": [
+      "Python可覆盖变量",
+      "三个真实构建目标"
+    ],
+    "boundary": "不增加破坏性 clean，不在这里复制综合命令。",
+    "dependencies": [
+      "scripts/run.py"
+    ],
+    "decision": "只保留必要薄入口。",
+    "alternate": "所有入口都写 Python 可行，make 只是常见工程习惯。",
+    "failure": "若硬编码 python 会在只提供 python3 的环境失败。",
+    "version": "v0",
+    "lines": 11,
+    "scale": "只承担当前阶段的一项文档或执行职责；不预留空配置和未实现目标。"
+  },
+  "README.md": {
+    "path": "README.md",
+    "purpose": "告诉新同事如何运行、边界是什么、验收证据在哪里。",
+    "layout": [
+      "累计交付范围",
+      "运行命令",
+      "行为契约",
+      "两周验收",
+      "职责分层与约束边界"
+    ],
+    "boundary": "不把未实现的 v1/v2 描述为可运行。",
+    "dependencies": [
+      "scripts/run.py",
+      "docs/file_cards.json"
+    ],
+    "decision": "文档与实际命令保持同源。",
+    "alternate": "把全部课程塞进 README 会影响工程入口的可读性。",
+    "failure": "混淆示例和实测会误导后续覆盖率比较。",
+    "version": "v0",
+    "lines": 49,
+    "scale": "只承担当前阶段的一项文档或执行职责；不预留空配置和未实现目标。"
+  },
+  "tb/structures_tb.sv": {
+    "purpose": "把五类结构风险变成独立、可失败的实验；删掉就只能依赖完整功能事务间接观察。",
+    "layout": [
+      "时钟、复位与被测模块",
+      "故障强制与32组合穷举",
+      "门控正确/错误对照",
+      "memory与shadow延迟",
+      "分频/负沿/内部复位",
+      "CDC计数与总验收"
+    ],
+    "boundary": "不改变功能RTL、不实现扫描链；force仅用于局部单故障实验，不能当作工业ATPG。",
+    "dependencies": [
+      "rtl/v0/*.sv",
+      "scripts/run.py structures",
+      "scripts/study_report.py"
+    ],
+    "decision": "直接例化交付的v0模块，在一个1μs场景内并行观察不同结构，每项独立完成后才输出总PASS。",
+    "alternate": "把结构检查塞入功能TB会混淆事务规格；为每条断言建一个TB则重复时钟、复位和构建入口。",
+    "failure": "高相位门控多出边沿、read-first被改写、内部复位失效或故障计数错误都会使仿真非零退出。",
+    "version": "第二周 · v0结构实验",
+    "scale": "五类现象共享时钟与复位，却有独立断言和完成标记；保持在一个文件方便对齐同一时间轴。",
+    "path": "tb/structures_tb.sv",
+    "lines": 147
+  },
+  "scripts/study_report.py": {
+    "purpose": "从真实日志与VCD抽取网页证据；删掉后无法重复生成19个快照及四态数据。",
+    "layout": [
+      "输入根目录",
+      "VCD层次与标识解析",
+      "同时间戳事件后取样",
+      "日志完成标记",
+      "信号路径与采样点",
+      "因果检查与JSON输出"
+    ],
+    "boundary": "只支持本项目1ps VCD，不假装通用波形库；不推导STA、亚稳态、全芯片覆盖率。",
+    "dependencies": [
+      "build/v0/functional.vcd",
+      "build/v0/structures.vcd",
+      "reports/structures.log",
+      "reports/week2.json"
+    ],
+    "decision": "保留x/z和位宽，并在下一个时间戳开始前取上一时刻最终值，避免漏掉非阻塞赋值更新。",
+    "alternate": "手填网页数值会与RTL漂移；完整通用VCD库对当前固定输入增加依赖，故使用带明确限制的短提取器。",
+    "failure": "把x转成0会遮住memory问题；提前取样会把旧值当作最终值；单位错配会偏移三个数量级。",
+    "version": "第二周 · v0证据提取",
+    "scale": "解析、取样、断言和输出服务于同一份证据；不拆成只被调用一次的配置或插件框架。",
+    "path": "scripts/study_report.py",
+    "lines": 125
+  },
+  "constraints/v0.sdc": {
+    "purpose": "记录两个根时钟的功能意图与尚缺的STA条件；删掉会失去时钟周期/波形的明确入口。",
+    "layout": [
+      "用途、单位与未验证边界",
+      "检查两个根端口",
+      "定义SYS/AUX时钟",
+      "派生/门控/负沿意图",
+      "缺项与真实环境验证路径"
+    ],
+    "boundary": "这是未执行的时钟意图草案，不作为完整约束或STA通过证据；不编造映射后引脚路径。",
+    "dependencies": [
+      "已link的dft_demo_top网表",
+      "支持SDC的STA环境",
+      "真实工艺库和最终时钟引脚待补"
+    ],
+    "decision": "只约束稳定顶层端口，显式报告缺少端口；派生关系待真实映射结构确认后编写。",
+    "alternate": "先猜generated-clock引脚会产生空集合或错误关系；直接false-path两域可能掩盖未审核的CDC。",
+    "failure": "单位、波形或派生关系写错会使STA分析对象错误，即使工具读入成功也不能视为签核。",
+    "version": "第二周 · SDC意图草案",
+    "scale": "只有两个已知根时钟定义；其余保留说明与验收方法，不增加未验证的约束命令。",
+    "path": "constraints/v0.sdc",
+    "lines": 23
+  }
+}

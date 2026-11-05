@@ -1,0 +1,3 @@
+VCD info: dumpfile build/scan/missing_lockup.vcd opened for output.
+FATAL: build/scan/missing_lockup_tb.sv:49: state mismatch chain=1 step=55
+       Time: 676000  Scope: scan_v2_tb.shift_once

@@ -1,0 +1,15 @@
+{
+  "version": "v2",
+  "pass": true,
+  "counts": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "violations": [],
+  "scope": "本课程单向端口连接级规则；不等价商业DFT DRC或物理setup/hold签核",
+  "functional_preservation": {
+    "reference": "netlist/v0/design.json",
+    "register_count": 293,
+    "scope": "逐FF核对Q/D/E、复位值、触发沿与功能时钟/复位MUX；非整芯片形式等价证明"
+  }
+}

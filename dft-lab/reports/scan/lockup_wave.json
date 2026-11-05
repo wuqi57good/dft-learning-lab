@@ -1,0 +1,206 @@
+{
+  "source": "Icarus full-DUT VCD; sampled after delta cycles",
+  "chain": 1,
+  "step": 55,
+  "scope": "同一293FF DUT，aux晚2ns的教学shift协议；不是物理STA时序余量",
+  "lockup": {
+    "name": "dft_lockup_1_72_cell",
+    "chain": 1,
+    "before_position": 72,
+    "source_q": 159,
+    "held_q": 1975,
+    "source_clock": 1888
+  },
+  "destination": "sdff_1_72",
+  "signals": {
+    "source_clock": "scan_v2_tb.scan_clk",
+    "destination_clock": "scan_v2_tb.scan_clk_aux",
+    "source_q": "scan_v2_tb.dut.n159",
+    "held_q": "scan_v2_tb.dut.n1975",
+    "destination_q": "scan_v2_tb.dut.n334"
+  },
+  "with_lockup": [
+    {
+      "ns": 664,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "0",
+        "source_q": "0",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 666,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "0",
+        "source_q": "0",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 667,
+      "signals": {
+        "source_clock": "1",
+        "destination_clock": "0",
+        "source_q": "1",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 668,
+      "signals": {
+        "source_clock": "1",
+        "destination_clock": "0",
+        "source_q": "1",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 669,
+      "signals": {
+        "source_clock": "1",
+        "destination_clock": "1",
+        "source_q": "1",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 670,
+      "signals": {
+        "source_clock": "1",
+        "destination_clock": "1",
+        "source_q": "1",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 672,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "1",
+        "source_q": "1",
+        "held_q": "1",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 674,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "0",
+        "source_q": "1",
+        "held_q": "1",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 676,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "0",
+        "source_q": "1",
+        "held_q": "1",
+        "destination_q": "0"
+      }
+    }
+  ],
+  "without_lockup": [
+    {
+      "ns": 664,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "0",
+        "source_q": "0",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 666,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "0",
+        "source_q": "0",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 667,
+      "signals": {
+        "source_clock": "1",
+        "destination_clock": "0",
+        "source_q": "1",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 668,
+      "signals": {
+        "source_clock": "1",
+        "destination_clock": "0",
+        "source_q": "1",
+        "held_q": "0",
+        "destination_q": "0"
+      }
+    },
+    {
+      "ns": 669,
+      "signals": {
+        "source_clock": "1",
+        "destination_clock": "1",
+        "source_q": "1",
+        "held_q": "0",
+        "destination_q": "1"
+      }
+    },
+    {
+      "ns": 670,
+      "signals": {
+        "source_clock": "1",
+        "destination_clock": "1",
+        "source_q": "1",
+        "held_q": "0",
+        "destination_q": "1"
+      }
+    },
+    {
+      "ns": 672,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "1",
+        "source_q": "1",
+        "held_q": "1",
+        "destination_q": "1"
+      }
+    },
+    {
+      "ns": 674,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "0",
+        "source_q": "1",
+        "held_q": "1",
+        "destination_q": "1"
+      }
+    },
+    {
+      "ns": 676,
+      "signals": {
+        "source_clock": "0",
+        "destination_clock": "0",
+        "source_q": "1",
+        "held_q": "1",
+        "destination_q": "1"
+      }
+    }
+  ]
+}

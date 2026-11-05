@@ -1,0 +1,7 @@
+// 自动取真实链与cut映射；参数用于一个故障的一次完整DUT回放。
+localparam SCAN_CYCLES=74, OBS_CHAIN=2, OBS_CYCLE=72;
+localparam EXPECTED_GOOD=1'b1, EXPECTED_BAD=1'b0, FAULT_VALUE=1'b0;
+localparam INPUT_CORRUPT_CHAIN=0, INPUT_CORRUPT_CYCLE=54;
+`define FAULT_NET n299
+`define INPUT_FILE "build/atpg/cases/redundant_SA0/scan_input.mem"
+`define WAVE_FILE "build/atpg/cases/redundant_SA0/scan_atpg.vcd"

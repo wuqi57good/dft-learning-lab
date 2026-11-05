@@ -1,0 +1,164 @@
+{
+  "schema": "dft-lab.coverage.v3",
+  "scope": "实际 DUT 的 fault_cone 组合 cut；不是全芯片覆盖率",
+  "denominator": 22,
+  "testable": 19,
+  "points": [
+    {
+      "index": 0,
+      "phase": "initial",
+      "pattern": null,
+      "detected": 0,
+      "with_observe": 0,
+      "denominator": 22,
+      "percent": 0
+    },
+    {
+      "index": 1,
+      "phase": "seeded_random",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "e": 0
+      },
+      "new_faults": [
+        "c/SA1",
+        "d/SA0",
+        "reconv/SA1",
+        "redundant/SA0",
+        "p/SA1",
+        "q/SA1"
+      ],
+      "detected": 6,
+      "with_observe": 8,
+      "denominator": 22,
+      "percent": 27.272727272727273
+    },
+    {
+      "index": 2,
+      "phase": "seeded_random",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 1,
+        "e": 1
+      },
+      "new_faults": [
+        "a/SA0",
+        "b/SA0",
+        "reconv/SA0",
+        "p/SA0"
+      ],
+      "detected": 10,
+      "with_observe": 14,
+      "denominator": 22,
+      "percent": 45.45454545454545
+    },
+    {
+      "index": 3,
+      "phase": "seeded_random",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "e": 1
+      },
+      "new_faults": [],
+      "detected": 10,
+      "with_observe": 14,
+      "denominator": 22,
+      "percent": 45.45454545454545
+    },
+    {
+      "index": 4,
+      "phase": "seeded_random",
+      "pattern": {
+        "a": 1,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 1
+      },
+      "new_faults": [
+        "b/SA1",
+        "d/SA1",
+        "redundant/SA1",
+        "net_10/SA1",
+        "r/SA1"
+      ],
+      "detected": 15,
+      "with_observe": 18,
+      "denominator": 22,
+      "percent": 68.18181818181819
+    },
+    {
+      "index": 5,
+      "phase": "seeded_random",
+      "pattern": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 1,
+        "e": 0
+      },
+      "new_faults": [
+        "a/SA1"
+      ],
+      "detected": 16,
+      "with_observe": 19,
+      "denominator": 22,
+      "percent": 72.72727272727273
+    },
+    {
+      "index": 6,
+      "phase": "seeded_random",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 1,
+        "d": 0,
+        "e": 1
+      },
+      "new_faults": [],
+      "detected": 16,
+      "with_observe": 19,
+      "denominator": 22,
+      "percent": 72.72727272727273
+    },
+    {
+      "index": 7,
+      "phase": "deterministic_atpg",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      },
+      "new_faults": [
+        "c/SA0",
+        "net_10/SA0",
+        "q/SA0"
+      ],
+      "detected": 19,
+      "with_observe": 22,
+      "denominator": 22,
+      "percent": 86.36363636363636
+    }
+  ],
+  "fault_coverage": 86.36363636363636,
+  "test_coverage": 100.0,
+  "observe_point": "新增观察 r 的组合模型对照；不把此值冒充已有 v2 输出端的覆盖率",
+  "with_r_observe_testable": 22,
+  "with_r_observe_final": 22,
+  "uncovered": [
+    "e/SA0",
+    "e/SA1",
+    "r/SA0"
+  ],
+  "random_seed": 20261105
+}

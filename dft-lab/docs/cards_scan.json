@@ -1,0 +1,379 @@
+{
+  "dft_tools/netlist_model.py": {
+    "path": "dft_tools/netlist_model.py",
+    "purpose": "把实际层次Yosys网表展开为全局bit图，保留可读RTL别名",
+    "layout": [
+      "加载JSON",
+      "端口别名合并",
+      "递归展开",
+      "DFF语义解码",
+      "结构盘点"
+    ],
+    "boundary": "不能猜测未知库单元行为，也不能在这里插链",
+    "dependencies": [
+      "netlist/v0/design.json"
+    ],
+    "decision": "先绑定父子端口再重编号，否则不同module的bit会错误短接",
+    "alternate": "直接拼cells字典更短但局部bit编号相互冲突",
+    "failure": "cfg_ready别名丢失会让原40事务功能TB握手失败",
+    "lines": 130,
+    "scale": "实际130行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "dft_tools/dft_report.py": {
+    "path": "dft_tools/dft_report.py",
+    "purpose": "独立保存真实触发器、时钟、复位、memory盘点，作为第3周证据",
+    "layout": [
+      "载入与flatten",
+      "inventory",
+      "写报告"
+    ],
+    "boundary": "不把逻辑单元数量换算成没有库依据的等效面积",
+    "dependencies": [
+      "dft_tools/netlist_model.py"
+    ],
+    "decision": "报告只读，不让分析步骤意外改写设计",
+    "alternate": "与插链混成一个脚本会难以保存修复前基线",
+    "failure": "时钟域或触发沿缺失会使链规划建立在错误前提上",
+    "lines": 22,
+    "scale": "实际22行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "dft_tools/chain_balance.py": {
+    "path": "dft_tools/chain_balance.py",
+    "purpose": "在真实FF集合上均衡链长度并保持测试边沿和域次序",
+    "layout": [
+      "参数边界",
+      "均衡分配",
+      "边沿和域排序",
+      "位置编号"
+    ],
+    "boundary": "不声称基于物理坐标优化线长",
+    "dependencies": [
+      "dft_tools/scan_insert.py"
+    ],
+    "decision": "均衡后重新按N/P与域排序，使每个完整周期恰好推进一位",
+    "alternate": "按原cell名字直接串链容易把P放在N之前并增加域交叉",
+    "failure": "负沿下游可能吞掉同一周期刚进入正沿的位",
+    "lines": 23,
+    "scale": "实际23行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "dft_tools/scan_insert.py": {
+    "path": "dft_tools/scan_insert.py",
+    "purpose": "将完整DUT的293DFF替换为保留功能语义的SDFF，生成单链和四链产物",
+    "layout": [
+      "安全cell命名",
+      "端口分配",
+      "clock/reset接管",
+      "memory隔离",
+      "链与lockup",
+      "Verilog输出",
+      "两个版本生成"
+    ],
+    "boundary": "不优化功能逻辑，不猜测未支持单元，不做工艺映射",
+    "dependencies": [
+      "dft_tools/netlist_model.py",
+      "dft_tools/chain_balance.py"
+    ],
+    "decision": "显式MUX和真实bit连接让DRC能追溯；JSON与Verilog来自同一模型",
+    "alternate": "手写独立移位寄存器链只能演示scan，不能验证原DUT的可测性",
+    "failure": "忽略DFFE使能或复位值会破坏功能；SI错接会逐位自检失败",
+    "lines": 199,
+    "scale": "实际199行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "dft_tools/drc.py": {
+    "path": "dft_tools/drc.py",
+    "purpose": "检查单向网络驱动、测试控制/扫描拓扑，并以真实v0为参考核对逐FF功能连接和参数",
+    "layout": [
+      "收集全部驱动身份",
+      "逐FF功能保留审计",
+      "测试模式控制锥推导",
+      "链/边沿/lockup检查",
+      "memory隔离检查",
+      "真实报告输出"
+    ],
+    "boundary": "不把逐FF结构保留称为整芯片形式等价，不覆盖三态/模拟毛刺或物理setup/hold签核",
+    "dependencies": [
+      "dft_tools/netlist_model.py",
+      "netlist/v0/design.json",
+      "netlist/v1/design.json",
+      "netlist/v2/design.json",
+      "reports/scan_chains.json"
+    ],
+    "decision": "驱动必须保存为列表以拒绝争用；逐FF检查从真实v0读取参考而不是信任插链器产出的元数据",
+    "alternate": "只保留最后一个driver会漏掉争用；仅比较网表与mapping可能让同一生成错误在两处自洽",
+    "failure": "重复驱动被覆盖会假报可控；改变D/E/复位值/沿或功能MUX支路可能让扫描通过但原功能已破坏",
+    "lines": 232,
+    "scale": "实际232行；检查逻辑和回归各保持单一职责，错误类型按独立硬件后果组织，不新增无用配置。"
+  },
+  "scripts/run_scan.py": {
+    "path": "scripts/run_scan.py",
+    "purpose": "组织真实工具运行、原功能回归、逐位扫描与故意错误反例，并提取VCD",
+    "layout": [
+      "工具环境",
+      "功能TB适配",
+      "扫描参考模型",
+      "编译执行",
+      "三种变异",
+      "真实波形提取",
+      "JSON验收"
+    ],
+    "boundary": "不能手填PASS或用期望值替代波形；不能覆盖正确版VCD",
+    "dependencies": [
+      "dft_tools/dft_report.py",
+      "dft_tools/scan_insert.py",
+      "dft_tools/drc.py",
+      "tb/functional_tb.sv"
+    ],
+    "decision": "复用原完整参考模型检查功能，shift时用独立位序模型检查插链",
+    "alternate": "仅检查scan_out出现跳变无法证明293个状态都按正确次序扫描",
+    "failure": "遗漏负沿或跨域时序会出现逐拍state mismatch",
+    "lines": 272,
+    "scale": "实际272行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "rtl/v1/scan_dff.sv": {
+    "path": "rtl/v1/scan_dff.sv",
+    "purpose": "定义实际生成网表使用的SDFF、测试门控和原低透明latch行为",
+    "layout": [
+      "端口时序契约",
+      "正负沿SDFF",
+      "TE门控",
+      "原latch"
+    ],
+    "boundary": "不是Liberty时序/面积模型；不在这里存测试pattern",
+    "dependencies": [
+      "netlist/v1/design.v",
+      "netlist/v2/design.v"
+    ],
+    "decision": "SE在enable之前，使功能E=0时仍能移位；保留原复位值与沿",
+    "alternate": "把功能enable放在SE前面会让部分scan寄存器静止",
+    "failure": "扫描中某些位永远不更新，随机移位参考模型立即失败",
+    "lines": 33,
+    "scale": "实际33行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "rtl/v2/lockup_latch.sv": {
+    "path": "rtl/v2/lockup_latch.sv",
+    "purpose": "在真实四链的main到aux边界保持上一位，避免迟到接收沿提前吞位",
+    "layout": [
+      "源时钟契约",
+      "低透明锁存器"
+    ],
+    "boundary": "不解决功能CDC亚稳态，也不是一拍寄存器",
+    "dependencies": [
+      "netlist/v2/design.v"
+    ],
+    "decision": "正沿launch后必须关闭，直到源时钟低相才允许新数据通过",
+    "alternate": "使用高透明latch会在源正沿之后立即让新位穿透",
+    "failure": "删lockup的完整DUT反例在chain1第55拍错误",
+    "lines": 8,
+    "scale": "实际8行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "constraints/v1.sdc": {
+    "path": "constraints/v1.sdc",
+    "purpose": "记录v1单测试时钟移位模式的时钟和case analysis意图",
+    "layout": [
+      "边界说明",
+      "示例clock",
+      "模式控制",
+      "待补物理条件"
+    ],
+    "boundary": "未运行OpenSTA，不能把意图草案称为完整约束",
+    "dependencies": [
+      "netlist/v1/design.v"
+    ],
+    "decision": "扫描模式单独建立约束，不用功能模式报告解释shift",
+    "alternate": "在未给库和ATE I/O条件时填一组延迟会制造虚假的确定性",
+    "failure": "漏约束端点可能让报告看似无违例但根本没分析",
+    "lines": 13,
+    "scale": "实际13行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "constraints/v2.sdc": {
+    "path": "constraints/v2.sdc",
+    "purpose": "记录v2两个有确定相位关系的测试时钟意图",
+    "layout": [
+      "相位示例",
+      "模式控制",
+      "跨域和物理边界"
+    ],
+    "boundary": "不能用异步false path掩盖实际shift hold路径",
+    "dependencies": [
+      "netlist/v2/design.v"
+    ],
+    "decision": "shift的main/aux有测试协议关系，需要检查跨域数据路径",
+    "alternate": "把它们当功能异步域会跳过lockup需要保护的路径",
+    "failure": "错误false path可能隐藏真实链错位",
+    "lines": 13,
+    "scale": "实际13行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "scripts/synth_v1.ys": {
+    "path": "scripts/synth_v1.ys",
+    "purpose": "用真实Yosys复读生成的v1 Verilog并检查连接与综合语义",
+    "layout": [
+      "读取模型和网表",
+      "top链接",
+      "proc",
+      "check",
+      "stat"
+    ],
+    "boundary": "不重复实现scan插入、不声称工艺映射或STA",
+    "dependencies": [
+      "netlist/v1/design.v",
+      "rtl/v1/scan_dff.sv",
+      "rtl/v0/packet_mem.sv"
+    ],
+    "decision": "重新用综合工具解析可拦截Python输出器的语法和绑定错误",
+    "alternate": "仅Icarus编译不能证明综合工具同样接受生成结构",
+    "failure": "模块未定义或未驱动网络会在hierarchy/check失败",
+    "lines": 8,
+    "scale": "实际8行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "scripts/synth_v2.ys": {
+    "path": "scripts/synth_v2.ys",
+    "purpose": "用真实Yosys验证四链与lockup网表能重新展开",
+    "layout": [
+      "读取模型和网表",
+      "top链接",
+      "proc",
+      "check",
+      "stat"
+    ],
+    "boundary": "不能因为latch warning就删除设计需要的锁存器",
+    "dependencies": [
+      "netlist/v2/design.v",
+      "rtl/v1/scan_dff.sv",
+      "rtl/v2/lockup_latch.sv"
+    ],
+    "decision": "预期lockup/ICG会推断latch，核查具体信号而不盲目清警告",
+    "alternate": "把所有latch替换为FF会改变相位语义和pattern长度",
+    "failure": "错误清理会让shift吞位或移出序列错一拍",
+    "lines": 8,
+    "scale": "实际8行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "docs/scan_engine.md": {
+    "path": "docs/scan_engine.md",
+    "purpose": "解释真实网表到全DUT扫描链的接口、结果和未覆盖边界",
+    "layout": [
+      "文件关系",
+      "版本演进",
+      "测试协议",
+      "命令",
+      "证据",
+      "工程判断"
+    ],
+    "boundary": "不把示例时钟值包装为工业推荐值",
+    "dependencies": [
+      "reports/scan/validation.json",
+      "reports/scan_chains.json"
+    ],
+    "decision": "概念和实际文件一一对应，便于读者复现",
+    "alternate": "仅给流程图无法判断真实293FF有没有被处理",
+    "failure": "读者可能把演示链误认为实际DUT的扫描结果",
+    "lines": 80,
+    "scale": "实际80行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "tb/dft_functional_v1_tb.sv": {
+    "path": "tb/dft_functional_v1_tb.sv",
+    "purpose": "复用原40事务参考模型验收扫描插入后的完整功能",
+    "layout": [
+      "端口与激励",
+      "参考模型",
+      "断言",
+      "PASS与超时"
+    ],
+    "boundary": "测试平台不可综合，不能把激励嵌入功能RTL",
+    "dependencies": [
+      "netlist/v1/design.v",
+      "scripts/run_scan.py"
+    ],
+    "decision": "由运行脚本按真实链映射生成，避免手写过期位序",
+    "alternate": "固定写死小链长度会漏验整个DUT",
+    "failure": "功能输出、SO或全体Q不符时fatal停止",
+    "lines": 100,
+    "scale": "实际100行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "tb/scan_v1_tb.sv": {
+    "path": "tb/scan_v1_tb.sv",
+    "purpose": "用独立位序参考模型验收全部293FF的移入、Capture和移出",
+    "layout": [
+      "端口与激励",
+      "参考模型",
+      "断言",
+      "PASS与超时"
+    ],
+    "boundary": "测试平台不可综合，不能把激励嵌入功能RTL",
+    "dependencies": [
+      "netlist/v1/design.v",
+      "scripts/run_scan.py"
+    ],
+    "decision": "由运行脚本按真实链映射生成，避免手写过期位序",
+    "alternate": "固定写死小链长度会漏验整个DUT",
+    "failure": "功能输出、SO或全体Q不符时fatal停止",
+    "lines": 62,
+    "scale": "实际62行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "tb/dft_functional_v2_tb.sv": {
+    "path": "tb/dft_functional_v2_tb.sv",
+    "purpose": "复用原40事务参考模型验收扫描插入后的完整功能",
+    "layout": [
+      "端口与激励",
+      "参考模型",
+      "断言",
+      "PASS与超时"
+    ],
+    "boundary": "测试平台不可综合，不能把激励嵌入功能RTL",
+    "dependencies": [
+      "netlist/v2/design.v",
+      "scripts/run_scan.py"
+    ],
+    "decision": "由运行脚本按真实链映射生成，避免手写过期位序",
+    "alternate": "固定写死小链长度会漏验整个DUT",
+    "failure": "功能输出、SO或全体Q不符时fatal停止",
+    "lines": 100,
+    "scale": "实际100行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "tb/scan_v2_tb.sv": {
+    "path": "tb/scan_v2_tb.sv",
+    "purpose": "用独立位序参考模型验收全部293FF的移入、Capture和移出",
+    "layout": [
+      "端口与激励",
+      "参考模型",
+      "断言",
+      "PASS与超时"
+    ],
+    "boundary": "测试平台不可综合，不能把激励嵌入功能RTL",
+    "dependencies": [
+      "netlist/v2/design.v",
+      "scripts/run_scan.py"
+    ],
+    "decision": "由运行脚本按真实链映射生成，避免手写过期位序",
+    "alternate": "固定写死小链长度会漏验整个DUT",
+    "failure": "功能输出、SO或全体Q不符时fatal停止",
+    "lines": 80,
+    "scale": "实际80行；围绕单一职责保留完整可追溯流程，不为少量一次性逻辑新增抽象。"
+  },
+  "tests/test_drc.py": {
+    "path": "tests/test_drc.py",
+    "purpose": "用正确网表与隔离的错误副本回归DRC增强，避免再次默默放过驱动争用和扫描后的功能破坏",
+    "layout": [
+      "加载真实v0/v1/v2",
+      "为每个测试复制网表",
+      "正确版本和合法别名",
+      "驱动争用反例",
+      "功能pin/参数/MUX反例",
+      "成功退出标记"
+    ],
+    "boundary": "不写交付网表，不用测试替代实际HDL回归、形式等价或STA",
+    "dependencies": [
+      "dft_tools/drc.py",
+      "dft_tools/netlist_model.py",
+      "netlist/v0/design.json",
+      "netlist/v1/design.json",
+      "netlist/v2/design.json",
+      "reports/scan_chains.json"
+    ],
+    "decision": "每种错误有独立硬件后果与期望规则，修改mapping元数据的反例保证参考来自v0",
+    "alternate": "仅测正确版会漏掉检查器总是PASS；在真实网表直接注错会污染后续交付",
+    "failure": "缺少负例时驱动覆盖、D/E错接或复位极性变化可能长期不被发现",
+    "version": "v3 · DRC增强",
+    "lines": 128,
+    "scale": "实际128行；检查逻辑和回归各保持单一职责，错误类型按独立硬件后果组织，不新增无用配置。"
+  }
+}

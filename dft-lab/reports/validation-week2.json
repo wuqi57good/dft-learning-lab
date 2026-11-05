@@ -1,0 +1,221 @@
+{
+  "date": "2026-11-05",
+  "release": "batch-02-v0-week2",
+  "scope": "第一、二周累计版；本批完成v0结构审读，不含v1/v2实现",
+  "tools": {
+    "iverilog": "13.0 (MSYS2 UCRT64)",
+    "browser": "122.0.2365.92",
+    "python": "3.12.14"
+  },
+  "functional": {
+    "status": "PASS",
+    "main_transactions": 40,
+    "post_soft_reset_transactions": 1,
+    "memory_readback_addresses": 32
+  },
+  "structures": {
+    "status": "PASS",
+    "log": "structures.log",
+    "waveform": "../build/v0/structures.vcd",
+    "fault_detection_input_counts": {
+      "vectors": 32,
+      "r_sa0": 0,
+      "r_sa1": 16,
+      "q_sa1": 16
+    },
+    "snapshot_count": 19
+  },
+  "baseline_unchanged": [
+    "rtl/v0/cfg_regfile.sv",
+    "rtl/v0/clock_reset_mgr.sv",
+    "rtl/v0/control_fsm.sv",
+    "rtl/v0/dft_demo_top.sv",
+    "rtl/v0/event_sync.sv",
+    "rtl/v0/fault_cone.sv",
+    "rtl/v0/gated_counter.sv",
+    "rtl/v0/memory_shadow.sv",
+    "rtl/v0/neg_capture.sv",
+    "rtl/v0/packet_ingress.sv",
+    "rtl/v0/packet_mem.sv",
+    "rtl/v0/packet_mix.sv",
+    "rtl/v0/rate_counter.sv",
+    "tb/functional_tb.sv",
+    "scripts/synth_v0.ys",
+    "scripts/inspect_netlist.py",
+    "netlist/v0/design.v",
+    "netlist/v0/design.json",
+    "reports/netlist_inventory.json"
+  ],
+  "synthesis": {
+    "source": "batch-01 verified evidence; not rerun in batch-02",
+    "inventory": "netlist_inventory.json"
+  },
+  "negative_regression": {
+    "rtl_mutations": [
+      {
+        "case": "direct_gate",
+        "file": "gated_counter.sv",
+        "replace": [
+          "assign gated_clk = clk & enable_latched;",
+          "assign gated_clk = clk & enable;"
+        ],
+        "exit_code": 1,
+        "expected_failure": "gate did not isolate high-phase enable",
+        "passed": true
+      },
+      {
+        "case": "write_first",
+        "file": "packet_mem.sv",
+        "replace": [
+          "rdata <= storage[raddr];",
+          "rdata <= (we && waddr == raddr) ? wdata : storage[raddr];"
+        ],
+        "exit_code": 1,
+        "expected_failure": "memory must be read-first",
+        "passed": true
+      },
+      {
+        "case": "hide_shadow_x",
+        "file": "memory_shadow.sv",
+        "replace": [
+          "else parity_q <= ^rdata;",
+          "else parity_q <= 1'b0;"
+        ],
+        "exit_code": 1,
+        "expected_failure": "expected memory X before write",
+        "passed": true
+      },
+      {
+        "case": "ignore_soft_reset",
+        "file": "clock_reset_mgr.sv",
+        "replace": [
+          "rst_n_ext & ~soft_reset",
+          "rst_n_ext"
+        ],
+        "exit_code": 1,
+        "expected_failure": "asynchronous reset not effective",
+        "passed": true
+      },
+      {
+        "case": "break_absorption",
+        "file": "fault_cone.sv",
+        "replace": [
+          "d | r",
+          "d ^ r"
+        ],
+        "exit_code": 1,
+        "expected_failure": "redundant identity mismatch",
+        "passed": true
+      }
+    ],
+    "vcd_parser": "same-timestamp final value, aliases, X/Z width preservation passed",
+    "invalid_vcd_rejected": [
+      "unsupported_timescale",
+      "missing_signal",
+      "outside_waveform"
+    ],
+    "incomplete_simulation_rejected": true
+  },
+  "week1_browser_regression": {
+    "scan_shift_capture_out": "passed: input order, capture, output 1010, play/pause/reset",
+    "fault_activation_propagation_observation": "passed: masking, node injection, SA0/SA1, capture",
+    "backtrack": "passed: expansion and reset; vector 100",
+    "lockup": "passed: numeric hold slack and animated playhead",
+    "coverage": "12/16 = 75.00% / 15/16 = 93.75%",
+    "coverage_model": {
+      "random": [
+        15,
+        8,
+        13,
+        13,
+        6,
+        14
+      ],
+      "final": [
+        15,
+        8,
+        13,
+        13,
+        6,
+        14,
+        3,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "undetectable": [
+        {
+          "node": "r",
+          "sa": 0
+        }
+      ]
+    },
+    "source_explorer": "passed: filter, selected file, lines, syntax, explanations, expansion, download",
+    "persistence": "passed",
+    "mobile_width": {
+      "viewport": 390,
+      "doc": 390
+    },
+    "mobile_navigation": "passed",
+    "javascript_errors": [],
+    "network_requests": []
+  },
+  "week2_browser": {
+    "embedded_sources": "22 files exactly match delivered files and line counts",
+    "atlas": "13 module choices and 13 source links passed",
+    "replay": "all 5 routes / 19 snapshots, values, unknown styles, next/previous/reset/timeline passed",
+    "new_source_downloads": "3 files match delivery byte content after text decoding; stage labels passed",
+    "quiz": "unanswered, 8 correct, 1 wrong, reset passed",
+    "persistence_exports": "9 checks, correct two-week weighting, note reload, Markdown and evidence JSON downloads passed",
+    "mobile": "390px no horizontal overflow; navigation, atlas, and replay passed",
+    "javascript_errors": [],
+    "network_requests": []
+  },
+  "final_build_content_match": true,
+  "unmeasured": [
+    "完整DUT scan coverage",
+    "NAND2等效面积",
+    "STA",
+    "OpenSTA执行与完整SDC",
+    "模拟亚稳态/MTBF"
+  ],
+  "source_sha256": {
+    "Makefile": "7bd23034afd171c5eea3cd2784d3aa81bc42f8f20ce34a88a00945eef3028560",
+    "README.md": "98f903e9646596f12e003ff37016bd29e7ff0d490d4c6f758e5ee0e85c921bfa",
+    "constraints/v0.sdc": "c795817eba192b46c61d50fd66e342849066ad2b15b198f1b3c95889d25253e6",
+    "rtl/v0/cfg_regfile.sv": "baa8dcba5b72e69cea955cfc188cadbb75c570d57e588c66c01a09e35279c130",
+    "rtl/v0/clock_reset_mgr.sv": "f15f018875a5f36c34c38e220b9d2f92e9bb03ca7ea6a9929bba403428643d84",
+    "rtl/v0/control_fsm.sv": "ca28351e2a4247231dda43d1c26a9505b8834364a6eb751162ed603be80edc23",
+    "rtl/v0/dft_demo_top.sv": "b2992a19bbf70209c0c28331eac92c43438e7e2c333ebe426f7e0f230c4ab4b9",
+    "rtl/v0/event_sync.sv": "3d55bdcb2a0b2e4e0a306ebb828df633d3b55db7a609cada6602ebef3cc6ebf1",
+    "rtl/v0/fault_cone.sv": "ad898a39c3a4b92a8d6e0b66c16e5628ebaadd81f3c998962ed4effbfb59d40e",
+    "rtl/v0/gated_counter.sv": "364a38c7307e7e3e3d3a0df78b08fdcdd7ee92d3315445c85c2b7545b12961b4",
+    "rtl/v0/memory_shadow.sv": "8a416040929f28ea277afd3715eab9f48fe6075d18c9dc26d1fdf310a7933a7f",
+    "rtl/v0/neg_capture.sv": "99d3655a075b53d1885cd8f417fd4929e12c5f3280eb4e0f1b88819000fe2686",
+    "rtl/v0/packet_ingress.sv": "ce5a9748148f544a2b05544b2bc7359c147c953000d6360869a7120c51b81403",
+    "rtl/v0/packet_mem.sv": "dfb5180d0552672e6655abe457919f3a72dbe84fd3edef6dd2e0a461a4352690",
+    "rtl/v0/packet_mix.sv": "8d05d2d4c39be9798c37d8f20e9fee2376b04d5e44f44654f413eb1dd2695a68",
+    "rtl/v0/rate_counter.sv": "aba15b50b7b29518d72f29dde397aab11de08554fc5607fc3893a6334c222b44",
+    "scripts/inspect_netlist.py": "4269267a7b3042ca05c3cf4d7435f5351395351b5cbe5638f9255f8b2807cbd4",
+    "scripts/run.py": "8bf7c6bf4e11b737730355bef2a13c3e32c1a191d4eda2aff8e249608f81b225",
+    "scripts/study_report.py": "5976432fcffbd63fd2fbc5deb541b4cacb247ea5915b7a53471b74e4e157d3f7",
+    "scripts/synth_v0.ys": "e97d3ff166a581f0541d84dc1f957cee3464a569fe6a23ff40ed685f955975c0",
+    "tb/functional_tb.sv": "837838d0bdee031230628fe0a31e728aa587e1b2c67a1150cff39e4bd7ae2b0d",
+    "tb/structures_tb.sv": "1b2ac2346c4037d05d4b4f154e9bcb459f440a5e477d23e6def4cf5aa99bd0a8"
+  },
+  "evidence_sha256": {
+    "reports/functional.log": "33d69fc019819a1579a50f0fb4f8af2192791c056bf6ec4529c0a3e6936fa6c9",
+    "reports/structures.log": "1f6f5134dea0ac2f69c456316c36eeb2bc1cec40a8486e8a61eb5566b8a8f4d9",
+    "reports/week2.json": "4eca8f2ebe1c7939788f6619b51ed6f8a08bec7d195879185d50231375e95f0f",
+    "build/v0/functional.vcd": "be2745744f9081cec593142c26244e7bfd427b5fee915c211ab9e190a4a602f1",
+    "build/v0/structures.vcd": "53d78dcb7c5d999bc9c6b883b009c8d44f954e897d96a1bd4a237d3a1d0a5ef0",
+    "docs/file_cards.json": "102ca0cf74691ed1aad111bbb7a4cd033b8e4428ff5355c225bcd80db6ceffa8"
+  },
+  "html_sha256": "a50833743e667c62f585018bbf49f4055c580af19ab99924acf04a71e770a463"
+}

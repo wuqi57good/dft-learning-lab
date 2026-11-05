@@ -1,0 +1,193 @@
+{
+  "dft_tools/fault_sim.py": {
+    "purpose": "从实际 Yosys JSON 读取 fault_cone，建立拓扑图并独立计算好/坏电路；删除它就失去 ATPG 的独立判定器。",
+    "layout": [
+      "Circuit 数据和 JSON 单bit门解析",
+      "拓扑排序与未折叠 stem 故障列表",
+      "三值 AND/OR/NOT 求值",
+      "单故障注入和确定差异判定",
+      "独立枚举 oracle 与 D 符号"
+    ],
+    "scale": "解析、注入和模拟属于同一份电路语义，放在一个短文件便于核对；没有抽象成面向任意工业单元的插件框架。",
+    "boundary": "不从名字猜表达式，不接受未支持的门，不把未知值算作检测，不把组合 cut 结果说成全芯片覆盖率。",
+    "dependencies": [
+      "netlist/v0/design.json",
+      "被 atpg.py、coverage.py、run_atpg.py 调用"
+    ],
+    "decision": "以唯一 bit 识别网线并按连接拓扑求值；别名不重复计故障，stem 注入影响所有扇出。",
+    "alternate": "可为示例手写布尔式，但会与实际综合结构脱节；可使用事件驱动队列，但本小 cut 拓扑求值更易审计。",
+    "failure": "若在门已传播后才覆盖故障值，下游看不到故障；若把 X 当作0，则会出现虚假覆盖率。",
+    "lines": 107,
+    "path": "dft_tools/fault_sim.py"
+  },
+  "dft_tools/atpg.py": {
+    "purpose": "让学员看到从故障激活到路径敏化、门 cube 解释和冲突撤销的真实算法过程，生成可重放向量。",
+    "layout": [
+      "AND/OR/NOT 的 singular cover",
+      "故障到观察点候选路径",
+      "未约束 PI 的补全与独立验证",
+      "逆向目标解释与赋值",
+      "前向蕴涵、冲突及回溯事件",
+      "成功或搜索耗尽结果"
+    ],
+    "scale": "只保留当前门类型所需的 D-cube 搜索；不为小电路加入工业学习、复杂启发式和全局缓存。",
+    "boundary": "这是简化 D-cube 路径搜索子集，不是完整工业 D/J-frontier 或 PODEM；SEARCH_EXHAUSTED 本身不构成通用不可测证明。",
+    "dependencies": [
+      "dft_tools/fault_sim.py",
+      "由 scripts/run_atpg.py 调用"
+    ],
+    "decision": "AND=0 保留0X与X0两种解释，使用局部字典分支撤销；每次 PI 赋值前向蕴涵并记录 X/D/D̅。",
+    "alternate": "直接枚举32个向量虽然能找到测试，但不能教会约束为何冲突；完整 D/J-frontier 更通用，当前以独立 oracle 限定正确性范围。",
+    "failure": "把 AND=0 写成两个输入必须都0会过度约束；把局部敏化当检测会漏掉重汇聚抵消。",
+    "lines": 114,
+    "path": "dft_tools/atpg.py"
+  },
+  "dft_tools/coverage.py": {
+    "purpose": "把真实向量序列转成固定分母的累计覆盖曲线，对比当前输出与新增 r 观察点的模型。",
+    "layout": [
+      "固定种子随机前缀",
+      "逐故障选择尚需的 ATPG 向量",
+      "原始/增强观察集合的累计集合",
+      "每点新增故障和百分比"
+    ],
+    "scale": "曲线只有一套累计逻辑，不单独维护网页硬编码数字；无需数据框架。",
+    "boundary": "不修改故障分母，不把 r 观察模型假装成 v2 已插入硬件，不加入全 DUT 未建模故障。",
+    "dependencies": [
+      "dft_tools/fault_sim.py",
+      "ATPG 实际结果",
+      "由 scripts/run_atpg.py 调用"
+    ],
+    "decision": "检测集合用故障身份去重；同一向量可检测多个故障，后续向量不能重复计数。",
+    "alternate": "可使用每个 pattern 的检出数量相加，但会重复计数；可剔除不可测故障算 test coverage，不过必须另命名而非改图表分母。",
+    "failure": "随向量数偷偷缩小分母会制造覆盖率跃升；新增观察点模型与真实 v2 端口混淆会夸大已完成能力。",
+    "lines": 40,
+    "path": "dft_tools/coverage.py"
+  },
+  "dft_tools/wave_annotation.py": {
+    "purpose": "从真实 VCD 提取指定信号变化，供网页展示实际扫描回放，不手工拼造波形。",
+    "layout": [
+      "VCD timescale 与层级栈",
+      "var 标识符到层级别名映射",
+      "时间与标量/向量变化读取",
+      "原始 bit 数据输出"
+    ],
+    "scale": "只支持本项目Icarus产生的数字VCD语法；没有不必要的通用波形数据库和格式转换层。",
+    "boundary": "不补造边沿，不把X变成0，不解析real/string，不把数值时间默认当ns，必须使用timescale。",
+    "dependencies": [
+      "build/atpg/scan_atpg.vcd",
+      "由 scripts/run_atpg.py 调用"
+    ],
+    "decision": "保留 VCD 时间单位和原始 bit 字符串，一个代码标识符可对应多个层级别名。",
+    "alternate": "可在TB中额外打印表格，比较直观，但会丢失边沿间变化；直接读VCD让页面与波形工具共享证据。",
+    "failure": "忽略timescale会把1ps当1ns；把同标识符的别名覆盖掉会漏信号。",
+    "lines": 44,
+    "path": "dft_tools/wave_annotation.py"
+  },
+  "scripts/run_atpg.py": {
+    "purpose": "组织真实网表搜索、32组合oracle、704组HDL交叉核对、coverage输出，以及全部19个可测cut故障的完整DUT扫描回放。",
+    "layout": [
+      "工具路径与可审计日志",
+      "从JSON导出独立HDL计算图",
+      "从原始网名追踪真实故障stem并按链映射序列化向量",
+      "19例完整DUT装载、捕获和全部SO位核对",
+      "无故障、错误输入、错误观察三项反例",
+      "逐故障搜索及oracle对照",
+      "JSON/CSV/向量与覆盖率输出"
+    ],
+    "scale": "运行器集中安排各项证据与失败传播，算法仍在dft_tools；多出的代码是独立验证，不是重复实现ATPG。",
+    "boundary": "不改原DUT，不依赖本机绝对路径，不虚构PASS，不把组合覆盖率升级为全芯片签核。",
+    "dependencies": [
+      "dft_tools/atpg.py",
+      "dft_tools/fault_sim.py",
+      "dft_tools/coverage.py",
+      "dft_tools/wave_annotation.py",
+      "reports/scan_chains.json",
+      "netlist/v2/design.json",
+      "Icarus Verilog"
+    ],
+    "decision": "ATPG先运行，oracle随后独立穷举；全DUT输入与观察位从aliases定位，各故障独立生成映射、输入及波形，故障只在Capture窗口生效。",
+    "alternate": "只检查生成向量能检测一个故障更省事，但会漏掉误报不可测；只测cut模块也无法确认链位序和Capture协议。",
+    "failure": "少一次移位、短链补位方向错误或遗漏scan_replay都会使端到端结果不成立；工具非零退出必须中止。",
+    "lines": 314,
+    "path": "scripts/run_atpg.py"
+  },
+  "tb/atpg_pattern_tb.sv": {
+    "purpose": "在两颗完整 v2 DUT 上逐例加载19个可测故障的扫描向量，仅坏机注入当前stem故障，经Capture后从SO核对完整状态与独立预期差异。",
+    "layout": [
+      "真实映射include和测试端口",
+      "好/坏完整DUT实例",
+      "受控主/aux扫描时钟脉冲",
+      "293状态经四链装载并逐位核对",
+      "Capture窗口故障注入与无X快照",
+      "586次SO位比较及独立目标响应断言",
+      "独立VCD保存三种故意错误的反例",
+      "超时保护"
+    ],
+    "scale": "两实例共享同一激励即可定位故障差异；无需另建总线验证框架或强制内部寄存器值。",
+    "boundary": "不force寄存器绕过扫描，不在TB中实现综合约束，不把1ns示例skew当成工艺时序数据。",
+    "dependencies": [
+      "netlist/v2/design.v",
+      "rtl/v1/scan_dff.sv",
+      "rtl/v2/lockup_latch.sv",
+      "rtl/v0/packet_mem.sv",
+      "build/atpg/atpg_mapping.svh",
+      "build/atpg/atpg_checks.svh",
+      "build/atpg/scan_input.mem"
+    ],
+    "decision": "SE=1时所有状态走SI；SE=0时负沿寄存器捕获reconv或redundant。Capture后解除故障，通过SO核对整个快照，并另核对独立期望观察响应。",
+    "alternate": "内部快照能验证卸载位序，却不能独立证明检测成功；目标响应因此必须额外对照独立故障仿真期望值。",
+    "failure": "去掉注故障、翻转输入位、读错观察链必须各被对应断言拦截；若任一错误仍PASS，则检测证据不可信。",
+    "lines": 97,
+    "path": "tb/atpg_pattern_tb.sv"
+  },
+  "docs/atpg_engine.md": {
+    "purpose": "解释第六周算法、真实数值、19例端到端回放、三项反例与工业边界，给报告字段提供阅读上下文。",
+    "layout": [
+      "输入与运行",
+      "建模范围",
+      "D-cube算法与回溯",
+      "独立证明",
+      "覆盖率与X",
+      "全DUT扫描回放",
+      "错误写法",
+      "产物和来源"
+    ],
+    "scale": "所有解释围绕同一fault_cone与真实扫描实验，避免复制商业工具手册或展开被排除的DFT方向。",
+    "boundary": "不把未实现算法说成完整D算法，不把模型观察点说成实际硬件，不把19/22说成芯片覆盖率。",
+    "dependencies": [
+      "reports/atpg/summary.json",
+      "reports/atpg/scan_replay.json",
+      "reports/coverage/coverage.json",
+      "Yosys官方源码",
+      "NPTEL原始课程"
+    ],
+    "decision": "每个数字说明分母、观察集合和验证方法；提供反例症状供学习者复现。",
+    "alternate": "只贴最终PASS日志更短，但无法解释为什么通过及哪里仍有限制。",
+    "failure": "省掉范围限定会使教学模型被误读为完整量产测试流程。",
+    "lines": 119,
+    "path": "docs/atpg_engine.md"
+  },
+  "tests/test_atpg_replay.py": {
+    "purpose": "独立验收所有19个可测cut故障都有完整DUT回放证据，防止用单一代表波形替代全案例验证。",
+    "layout": [
+      "读取真实ATPG、扫描映射及回放报告",
+      "19例唯一性与3个不可测故障排除检查",
+      "按原RTL方程独立核对期望与实际SO日志",
+      "逐拍移位模型核对全部293个输入状态",
+      "三项负向日志和VCD隔离核对"
+    ],
+    "scale": "四项标准库unittest分别验证不同证据边界；不复制ATPG搜索实现，不引入测试框架依赖。",
+    "boundary": "不生成虚拟PASS，不复用fault_sim门求值，不把报告检查误称新的一次HDL执行；应先运行真实回放。",
+    "dependencies": [
+      "reports/atpg/summary.json",
+      "reports/atpg/scan_replay.json",
+      "reports/scan_chains.json",
+      "每例真实输入文件、日志及VCD"
+    ],
+    "decision": "用手写RTL布尔方程交叉检查响应，用正向逐拍移位核对生成器的反向序列化公式；要求实际日志与报告一致。",
+    "alternate": "只数19个PASS不能发现重复案例或错误响应；只读JSON不能确认对应日志确实完成全部装载和卸载检查。",
+    "failure": "漏回放一个故障、错误短链补位、错误响应或者负向案例仍成功都会使测试失败。",
+    "path": "tests/test_atpg_replay.py",
+    "lines": 114
+  }
+}

@@ -1,0 +1,13 @@
+/* 第三至七周沿用既有暖色组件；只补充公式、实操与长章节的阅读间距。 */
+.advanced-week .section-intro{max-width:900px}
+.advanced-week .lesson p{overflow-wrap:anywhere}
+.advanced-week .reference-link{font-size:.9em;color:var(--clay-dark);text-underline-offset:3px}
+.advanced-week .step-list,.advanced-week .practice-list ol{padding-left:1.5rem}
+.advanced-week .step-list li,.advanced-week .practice-list li{padding:5px 0}
+.advanced-week .formula-note{padding:14px 20px;margin:20px 0;background:var(--sage-bg);border-radius:12px;font-family:"Cascadia Code",Consolas,"Microsoft YaHei",monospace;font-size:1.125rem;overflow-x:auto}
+.advanced-week .formula-note p{margin:6px 0;white-space:normal}
+.advanced-week .final-exam,.advanced-week .industry-map{margin:32px 0}
+.advanced-week .practice-list{margin-top:25px;padding-top:10px;border-top:1px solid var(--line)}
+.advanced-week .evidence-panel:empty{display:none}
+.advanced-week a:focus-visible,.advanced-week summary:focus-visible{outline:2px solid var(--clay);outline-offset:4px}
+@media(max-width:650px){.advanced-week .formula-note{padding:12px;font-size:0.9375rem}.advanced-week .lesson h3{line-height:1.6}.advanced-week .final-exam .section-heading{align-items:flex-start;flex-direction:column}}

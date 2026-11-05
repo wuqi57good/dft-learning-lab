@@ -1,0 +1,1042 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+
+-- Running command `read_json netlist/v2/design.json; read_verilog -sv -DSYNTHESIS rtl/v1/scan_dff.sv rtl/v2/lockup_latch.sv rtl/v0/packet_mem.sv; hierarchy -check -top dft_demo_top_v2; proc; check -assert' --
+
+1. Executing JSON frontend.
+Importing module dft_demo_top_v2 from JSON tree.
+
+2. Executing Verilog-2005 frontend: rtl/v1/scan_dff.sv
+Parsing SystemVerilog input from `rtl/v1/scan_dff.sv' to AST representation.
+Generating RTLIL representation for module `\dft_scan_dff'.
+Generating RTLIL representation for module `\dft_test_gate'.
+Generating RTLIL representation for module `\dft_level_latch'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/v2/lockup_latch.sv
+Parsing SystemVerilog input from `rtl/v2/lockup_latch.sv' to AST representation.
+Generating RTLIL representation for module `\dft_lockup_latch'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/v0/packet_mem.sv
+Parsing SystemVerilog input from `rtl/v0/packet_mem.sv' to AST representation.
+Generating RTLIL representation for module `\packet_mem'.
+Successfully finished Verilog frontend.
+
+5. Executing HIERARCHY pass (managing design hierarchy).
+
+5.1. Analyzing design hierarchy..
+Top module:  \dft_demo_top_v2
+Used module:     \dft_test_gate
+Used module:     \dft_scan_dff
+Used module:     \dft_lockup_latch
+Parameter \NEGATIVE = 1
+Parameter \RESET_VALUE = 0
+
+5.2. Executing AST frontend in derive mode using pre-parsed AST for module `\dft_scan_dff'.
+Parameter \NEGATIVE = 1
+Parameter \RESET_VALUE = 0
+Generating RTLIL representation for module `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+
+5.3. Executing AST frontend in derive mode using pre-parsed AST for module `\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Generating RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 1
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 1
+
+5.4. Executing AST frontend in derive mode using pre-parsed AST for module `\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 1
+Generating RTLIL representation for module `$paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 1
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 1
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+Parameter \NEGATIVE = 0
+Parameter \RESET_VALUE = 0
+Found cached RTLIL representation for module `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff'.
+
+5.5. Analyzing design hierarchy..
+Top module:  \dft_demo_top_v2
+Used module:     \dft_test_gate
+Used module:     $paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff
+Used module:     $paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff
+Used module:     \dft_lockup_latch
+Used module:     $paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff
+
+5.6. Analyzing design hierarchy..
+Top module:  \dft_demo_top_v2
+Used module:     \dft_test_gate
+Used module:     $paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff
+Used module:     $paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff
+Used module:     \dft_lockup_latch
+Used module:     $paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff
+Removing unused module `\dft_level_latch'.
+Removing unused module `\dft_scan_dff'.
+Removed 2 unused modules.
+
+6. Executing PROC pass (convert processes to netlists).
+
+6.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+6.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$rtl/v1/scan_dff.sv:9$1516 in module $paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff.
+Marked 1 switch rules as full_case in process $proc$rtl/v2/lockup_latch.sv:7$1514 in module dft_lockup_latch.
+Marked 2 switch rules as full_case in process $proc$rtl/v1/scan_dff.sv:14$1520 in module $paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff.
+Marked 1 switch rules as full_case in process $proc$rtl/v1/scan_dff.sv:26$1509 in module dft_test_gate.
+Marked 2 switch rules as full_case in process $proc$rtl/v1/scan_dff.sv:14$1518 in module $paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff.
+Removed a total of 0 dead cases.
+
+6.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 2 assignments to connections.
+
+6.4. Executing PROC_INIT pass (extract init attributes).
+
+6.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \R in `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:9$1516'.
+Found async reset \R in `$paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1520'.
+Found async reset \R in `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1518'.
+
+6.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~8 debug messages>
+
+6.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:9$1516'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\dft_lockup_latch.$proc$rtl/v2/lockup_latch.sv:7$1514'.
+     1/1: $1\Q[0:0]
+Creating decoders for process `$paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1520'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\dft_test_gate.$proc$rtl/v1/scan_dff.sv:26$1509'.
+     1/1: $1\latched_te[0:0]
+Creating decoders for process `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1518'.
+     1/1: $0\Q[0:0]
+
+6.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+Warning: Latch inferred for signal `\dft_lockup_latch.\Q' from process `\dft_lockup_latch.$proc$rtl/v2/lockup_latch.sv:7$1514': $auto$proc_dlatch.cc:559:proc_dlatch$1553
+Warning: Latch inferred for signal `\dft_test_gate.\latched_te' from process `\dft_test_gate.$proc$rtl/v1/scan_dff.sv:26$1509': $auto$proc_dlatch.cc:559:proc_dlatch$1564
+
+6.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff.\Q' using process `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:9$1516'.
+  created $adff cell `$procdff$1569' with negative edge clock and positive level reset.
+Creating register for signal `$paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff.\Q' using process `$paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1520'.
+  created $adff cell `$procdff$1574' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff.\Q' using process `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1518'.
+  created $adff cell `$procdff$1579' with positive edge clock and positive level reset.
+
+6.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+6.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 2 empty switches in `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:9$1516'.
+Removing empty process `$paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:9$1516'.
+Found and cleaned up 1 empty switch in `\dft_lockup_latch.$proc$rtl/v2/lockup_latch.sv:7$1514'.
+Removing empty process `dft_lockup_latch.$proc$rtl/v2/lockup_latch.sv:7$1514'.
+Found and cleaned up 2 empty switches in `$paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1520'.
+Removing empty process `$paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1520'.
+Found and cleaned up 1 empty switch in `\dft_test_gate.$proc$rtl/v1/scan_dff.sv:26$1509'.
+Removing empty process `dft_test_gate.$proc$rtl/v1/scan_dff.sv:26$1509'.
+Found and cleaned up 2 empty switches in `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1518'.
+Removing empty process `$paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff.$proc$rtl/v1/scan_dff.sv:14$1518'.
+Cleaned up 8 empty switches.
+
+6.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff.
+<suppressed ~2 debug messages>
+Optimizing module dft_lockup_latch.
+<suppressed ~7 debug messages>
+Optimizing module $paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff.
+<suppressed ~2 debug messages>
+Optimizing module dft_test_gate.
+<suppressed ~7 debug messages>
+Optimizing module $paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff.
+<suppressed ~2 debug messages>
+Optimizing module dft_demo_top_v2.
+<suppressed ~32 debug messages>
+
+7. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$65977b7cd4b6d46913cf66f4f003845e94aba1d0\dft_scan_dff...
+Checking module dft_lockup_latch...
+Checking module $paramod$657b29fd025a9a98a2605d369a2ac066e53e89c1\dft_scan_dff...
+Checking module dft_test_gate...
+Checking module $paramod$7ea88be2993f33c07bd25fc4ca93f6d0e58020f4\dft_scan_dff...
+Checking module dft_demo_top_v2...
+Found and reported 0 problems.
+
+Warnings: 2 unique messages, 2 total
+End of script. Logfile hash: 017664a78f, time: 0.11s, user: 0.11s, system: 0.00s
+Yosys 0.70 (git sha1 28ba3cb92, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+Time spent: 66% 2x read_json (0 sec), 13% 1x opt_expr (0 sec), ...

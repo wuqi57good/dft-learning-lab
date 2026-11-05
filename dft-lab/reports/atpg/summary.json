@@ -1,0 +1,3788 @@
+{
+  "schema": "dft-lab.atpg.v3",
+  "scope": "实际 DUT 的 fault_cone 组合 cut；不是全芯片覆盖率",
+  "algorithm": "简化 D-cube 路径敏化与逆向 justification；非完整工业 D/J-frontier",
+  "input_order": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e"
+  ],
+  "gate_count": 6,
+  "fault_model": "全部唯一 PI/门输出 stem 的 SA0/SA1，未折叠，不含 branch/延迟/scan cell 故障",
+  "fault_count": 22,
+  "testable": 19,
+  "oracle_vectors": 32,
+  "references": [
+    {
+      "title": "Yosys JSON backend source",
+      "url": "https://github.com/YosysHQ/yosys/blob/main/backends/json/json.cc",
+      "checked": "2026-11-05"
+    },
+    {
+      "title": "NPTEL D-Algorithm: singular cover and D-frontier",
+      "url": "https://archive.nptel.ac.in/content/storage2/courses/106103016/module9/lec2/1.html",
+      "checked": "2026-11-05"
+    },
+    {
+      "title": "J. Paul Roth, Diagnosis of Automata Failures, 1966",
+      "doi": "10.1147/rd.104.0278"
+    }
+  ],
+  "results": [
+    {
+      "fault": "a/SA0",
+      "fault_bits": [
+        2,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "a",
+            "p",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "D",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "D̅"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "assign",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "imply",
+          "values": {
+            "a": "D",
+            "b": "1",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "D",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "D̅"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 7,
+          "action": "objective",
+          "node": "q",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "detect",
+          "vector": {
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "a/SA1",
+      "fault_bits": [
+        2,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "a",
+            "p",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "D̅",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "D"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "assign",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "imply",
+          "values": {
+            "a": "D̅",
+            "b": "1",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "D̅",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "D"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 7,
+          "action": "objective",
+          "node": "q",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "conflict",
+          "node": "a",
+          "existing": 0,
+          "requested": 1,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 12,
+          "action": "backtrack",
+          "node": "net_10",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 13,
+          "action": "backtrack",
+          "node": "q",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 14,
+          "action": "justify",
+          "node": "q",
+          "cube": 1,
+          "requirements": [
+            {
+              "node": "c",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 15,
+          "action": "objective",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 16,
+          "action": "assign",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 17,
+          "action": "imply",
+          "values": {
+            "a": "D̅",
+            "b": "1",
+            "c": "0",
+            "d": "X",
+            "e": "X",
+            "p": "D̅",
+            "q": "0",
+            "r": "X",
+            "reconv": "D̅",
+            "redundant": "X",
+            "net_10": "D"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 18,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 19,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 20,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "b/SA0",
+      "fault_bits": [
+        3,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "b",
+            "p",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "D",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "assign",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "D",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "D",
+            "q": "0",
+            "r": "X",
+            "reconv": "D",
+            "redundant": "X",
+            "net_10": "0"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 7,
+          "action": "objective",
+          "node": "q",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "detect",
+          "vector": {
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "b/SA1",
+      "fault_bits": [
+        3,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "b",
+            "p",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "D̅",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "assign",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "D̅",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "D̅",
+            "q": "0",
+            "r": "X",
+            "reconv": "D̅",
+            "redundant": "X",
+            "net_10": "0"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 7,
+          "action": "objective",
+          "node": "q",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "detect",
+          "vector": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "c/SA0",
+      "fault_bits": [
+        4,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "c",
+            "q",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "c",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "c",
+          "value": 1
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "D",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "net_10",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 6,
+          "action": "objective",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 7,
+          "action": "assign",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "D",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "D",
+            "r": "X",
+            "reconv": "D",
+            "redundant": "X",
+            "net_10": "1"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "p",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 1,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "c/SA1",
+      "fault_bits": [
+        4,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "c",
+            "q",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "D̅",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "net_10",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 6,
+          "action": "objective",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 7,
+          "action": "assign",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "D̅",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "D̅",
+            "r": "X",
+            "reconv": "D̅",
+            "redundant": "X",
+            "net_10": "1"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "p",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "d/SA0",
+      "fault_bits": [
+        5,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "e": 0
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "d",
+            "r",
+            "redundant"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "D",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "D",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "e",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "assign",
+          "node": "e",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "D",
+            "e": "1",
+            "p": "X",
+            "q": "X",
+            "r": "D",
+            "reconv": "X",
+            "redundant": "D",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 7,
+          "action": "conflict",
+          "node": "d",
+          "existing": 1,
+          "requested": 0,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 8,
+          "action": "path",
+          "nodes": [
+            "d",
+            "redundant"
+          ]
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 10,
+          "action": "assign",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 11,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "D",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "D",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 12,
+          "action": "objective",
+          "node": "r",
+          "value": 0
+        },
+        {
+          "step": 13,
+          "action": "justify",
+          "node": "r",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "d",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 14,
+          "action": "conflict",
+          "node": "d",
+          "existing": 1,
+          "requested": 0,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 15,
+          "action": "backtrack",
+          "node": "r",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 16,
+          "action": "justify",
+          "node": "r",
+          "cube": 1,
+          "requirements": [
+            {
+              "node": "e",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 17,
+          "action": "objective",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 18,
+          "action": "assign",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 19,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "D",
+            "e": "0",
+            "p": "X",
+            "q": "X",
+            "r": "0",
+            "reconv": "X",
+            "redundant": "D",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 20,
+          "action": "fill",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 21,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 22,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 23,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "d/SA1",
+      "fault_bits": [
+        5,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 1
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "d",
+            "r",
+            "redundant"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "D̅",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "D̅",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "e",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "assign",
+          "node": "e",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "D̅",
+            "e": "1",
+            "p": "X",
+            "q": "X",
+            "r": "D̅",
+            "reconv": "X",
+            "redundant": "D̅",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 7,
+          "action": "fill",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 9,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 1
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "e/SA0",
+      "fault_bits": [
+        6,
+        0
+      ],
+      "status": "PROVEN_UNTESTABLE_IN_CUT",
+      "pattern": null,
+      "detecting_vectors": 0,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "e",
+            "r",
+            "redundant"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "e",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "e",
+          "value": 1
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "D",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "assign",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "1",
+            "e": "D",
+            "p": "X",
+            "q": "X",
+            "r": "D",
+            "reconv": "X",
+            "redundant": "1",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 7,
+          "action": "conflict",
+          "node": "d",
+          "existing": 1,
+          "requested": 0,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 8,
+          "action": "exhausted",
+          "reason": "当前路径/cube 搜索范围已耗尽；需独立证明才能称为不可测"
+        }
+      ]
+    },
+    {
+      "fault": "e/SA1",
+      "fault_bits": [
+        6,
+        1
+      ],
+      "status": "PROVEN_UNTESTABLE_IN_CUT",
+      "pattern": null,
+      "detecting_vectors": 0,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "e",
+            "r",
+            "redundant"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "assign",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 3,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "D̅",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 4,
+          "action": "objective",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "assign",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "1",
+            "e": "D̅",
+            "p": "X",
+            "q": "X",
+            "r": "D̅",
+            "reconv": "X",
+            "redundant": "1",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 7,
+          "action": "conflict",
+          "node": "d",
+          "existing": 1,
+          "requested": 0,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 8,
+          "action": "exhausted",
+          "reason": "当前路径/cube 搜索范围已耗尽；需独立证明才能称为不可测"
+        }
+      ]
+    },
+    {
+      "fault": "reconv/SA0",
+      "fault_bits": [
+        7,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "reconv",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "reconv",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "p",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "p",
+          "value": 1
+        },
+        {
+          "step": 4,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            },
+            {
+              "node": "b",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 5,
+          "action": "objective",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "assign",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 7,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "0",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "0"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 8,
+          "action": "objective",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 9,
+          "action": "assign",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 10,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "1",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "1",
+            "q": "0",
+            "r": "X",
+            "reconv": "D",
+            "redundant": "X",
+            "net_10": "0"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 11,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "detect",
+          "vector": {
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "reconv/SA1",
+      "fault_bits": [
+        7,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "reconv",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "reconv",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "p",
+              "value": 0
+            },
+            {
+              "node": "q",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "p",
+          "value": 0
+        },
+        {
+          "step": 4,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 5,
+          "action": "objective",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 6,
+          "action": "assign",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 7,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "1"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 8,
+          "action": "objective",
+          "node": "q",
+          "value": 0
+        },
+        {
+          "step": 9,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 10,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 11,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 12,
+          "action": "conflict",
+          "node": "a",
+          "existing": 0,
+          "requested": 1,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 13,
+          "action": "backtrack",
+          "node": "net_10",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 14,
+          "action": "backtrack",
+          "node": "q",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 15,
+          "action": "justify",
+          "node": "q",
+          "cube": 1,
+          "requirements": [
+            {
+              "node": "c",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 16,
+          "action": "objective",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 17,
+          "action": "assign",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 18,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "0",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "0",
+            "r": "X",
+            "reconv": "D̅",
+            "redundant": "X",
+            "net_10": "1"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 19,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 20,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 21,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 22,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "redundant/SA0",
+      "fault_bits": [
+        8,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "e": 0
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "redundant"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "redundant",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "redundant",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "d",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 4,
+          "action": "assign",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "1",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "D",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 6,
+          "action": "fill",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 7,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 9,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 1,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "redundant/SA1",
+      "fault_bits": [
+        8,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "redundant"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "redundant",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "redundant",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "d",
+              "value": 0
+            },
+            {
+              "node": "r",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 4,
+          "action": "assign",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 5,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "0",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "0",
+            "reconv": "X",
+            "redundant": "D̅",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 6,
+          "action": "objective",
+          "node": "r",
+          "value": 0
+        },
+        {
+          "step": 7,
+          "action": "justify",
+          "node": "r",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "d",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 8,
+          "action": "fill",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 9,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 11,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "p/SA0",
+      "fault_bits": [
+        9,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 1,
+        "b": 1,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "p",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "p",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            },
+            {
+              "node": "b",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 4,
+          "action": "assign",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "0",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "0"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 6,
+          "action": "objective",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 7,
+          "action": "assign",
+          "node": "b",
+          "value": 1
+        },
+        {
+          "step": 8,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "1",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "D",
+            "q": "0",
+            "r": "X",
+            "reconv": "D",
+            "redundant": "X",
+            "net_10": "0"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "q",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 15,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 16,
+          "action": "detect",
+          "vector": {
+            "a": 1,
+            "b": 1,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "p/SA1",
+      "fault_bits": [
+        9,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "p",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "p",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 4,
+          "action": "assign",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 5,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "D̅",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "1"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 6,
+          "action": "objective",
+          "node": "q",
+          "value": 0
+        },
+        {
+          "step": 7,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 8,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 9,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 10,
+          "action": "conflict",
+          "node": "a",
+          "existing": 0,
+          "requested": 1,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 11,
+          "action": "backtrack",
+          "node": "net_10",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 12,
+          "action": "backtrack",
+          "node": "q",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 13,
+          "action": "justify",
+          "node": "q",
+          "cube": 1,
+          "requirements": [
+            {
+              "node": "c",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 14,
+          "action": "objective",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 15,
+          "action": "assign",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 16,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "0",
+            "d": "X",
+            "e": "X",
+            "p": "D̅",
+            "q": "0",
+            "r": "X",
+            "reconv": "D̅",
+            "redundant": "X",
+            "net_10": "1"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 17,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 18,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 19,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 20,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "net_10/SA0",
+      "fault_bits": [
+        10,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "net_10",
+            "q",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "net_10",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 4,
+          "action": "assign",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 5,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "D"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 6,
+          "action": "objective",
+          "node": "c",
+          "value": 1
+        },
+        {
+          "step": 7,
+          "action": "assign",
+          "node": "c",
+          "value": 1
+        },
+        {
+          "step": 8,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "1",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "D",
+            "r": "X",
+            "reconv": "D",
+            "redundant": "X",
+            "net_10": "D"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "p",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 1,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "net_10/SA1",
+      "fault_bits": [
+        10,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 1,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 4,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "net_10",
+            "q",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 4,
+          "action": "assign",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "D̅"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 6,
+          "action": "objective",
+          "node": "c",
+          "value": 1
+        },
+        {
+          "step": 7,
+          "action": "assign",
+          "node": "c",
+          "value": 1
+        },
+        {
+          "step": 8,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "X",
+            "c": "1",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "D̅",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "D̅"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 9,
+          "action": "objective",
+          "node": "p",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 11,
+          "action": "conflict",
+          "node": "a",
+          "existing": 1,
+          "requested": 0,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 12,
+          "action": "backtrack",
+          "node": "p",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 13,
+          "action": "justify",
+          "node": "p",
+          "cube": 1,
+          "requirements": [
+            {
+              "node": "b",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 14,
+          "action": "objective",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 15,
+          "action": "assign",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 16,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "0",
+            "c": "1",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "D̅",
+            "r": "X",
+            "reconv": "D̅",
+            "redundant": "X",
+            "net_10": "D̅"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 17,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 18,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 19,
+          "action": "detect",
+          "vector": {
+            "a": 1,
+            "b": 0,
+            "c": 1,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "q/SA0",
+      "fault_bits": [
+        11,
+        0
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 1,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 8,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "q",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "q",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 1
+            },
+            {
+              "node": "c",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "net_10",
+          "value": 1
+        },
+        {
+          "step": 4,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 5,
+          "action": "objective",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 6,
+          "action": "assign",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 7,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "1"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 8,
+          "action": "objective",
+          "node": "c",
+          "value": 1
+        },
+        {
+          "step": 9,
+          "action": "assign",
+          "node": "c",
+          "value": 1
+        },
+        {
+          "step": 10,
+          "action": "imply",
+          "values": {
+            "a": "0",
+            "b": "X",
+            "c": "1",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "D",
+            "r": "X",
+            "reconv": "D",
+            "redundant": "X",
+            "net_10": "1"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 11,
+          "action": "objective",
+          "node": "p",
+          "value": 0
+        },
+        {
+          "step": 12,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 13,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 15,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 16,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 1,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    },
+    {
+      "fault": "q/SA1",
+      "fault_bits": [
+        11,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "q",
+            "reconv"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "q",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "q",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "net_10",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "net_10",
+          "value": 0
+        },
+        {
+          "step": 4,
+          "action": "justify",
+          "node": "net_10",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 5,
+          "action": "objective",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 6,
+          "action": "assign",
+          "node": "a",
+          "value": 1
+        },
+        {
+          "step": 7,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "X",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "X",
+            "q": "D̅",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "X",
+            "net_10": "0"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 8,
+          "action": "objective",
+          "node": "p",
+          "value": 0
+        },
+        {
+          "step": 9,
+          "action": "justify",
+          "node": "p",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "a",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 10,
+          "action": "conflict",
+          "node": "a",
+          "existing": 1,
+          "requested": 0,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 11,
+          "action": "backtrack",
+          "node": "p",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 12,
+          "action": "justify",
+          "node": "p",
+          "cube": 1,
+          "requirements": [
+            {
+              "node": "b",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 13,
+          "action": "objective",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 14,
+          "action": "assign",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 15,
+          "action": "imply",
+          "values": {
+            "a": "1",
+            "b": "0",
+            "c": "X",
+            "d": "X",
+            "e": "X",
+            "p": "0",
+            "q": "D̅",
+            "r": "X",
+            "reconv": "D̅",
+            "redundant": "X",
+            "net_10": "0"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 16,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 17,
+          "action": "fill",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 18,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 19,
+          "action": "detect",
+          "vector": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ],
+      "wave_symbols": {
+        "a": "1",
+        "b": "0",
+        "c": "0",
+        "d": "0",
+        "e": "0",
+        "p": "0",
+        "q": "D̅",
+        "r": "0",
+        "reconv": "D̅",
+        "redundant": "0",
+        "net_10": "0"
+      }
+    },
+    {
+      "fault": "r/SA0",
+      "fault_bits": [
+        12,
+        0
+      ],
+      "status": "PROVEN_UNTESTABLE_IN_CUT",
+      "pattern": null,
+      "detecting_vectors": 0,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "r",
+            "redundant"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "r",
+          "value": 1
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "r",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "d",
+              "value": 1
+            },
+            {
+              "node": "e",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 4,
+          "action": "assign",
+          "node": "d",
+          "value": 1
+        },
+        {
+          "step": 5,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "1",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "X",
+            "reconv": "X",
+            "redundant": "1",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 6,
+          "action": "objective",
+          "node": "e",
+          "value": 1
+        },
+        {
+          "step": 7,
+          "action": "assign",
+          "node": "e",
+          "value": 1
+        },
+        {
+          "step": 8,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "1",
+            "e": "1",
+            "p": "X",
+            "q": "X",
+            "r": "D",
+            "reconv": "X",
+            "redundant": "1",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 9,
+          "action": "conflict",
+          "node": "d",
+          "existing": 1,
+          "requested": 0,
+          "reason": "同一条物理网线不能同时等于 0 和 1"
+        },
+        {
+          "step": 10,
+          "action": "backtrack",
+          "node": "r",
+          "cube": 0,
+          "reason": "撤销此分支产生的赋值，改试另一输入解释"
+        },
+        {
+          "step": 11,
+          "action": "exhausted",
+          "reason": "当前路径/cube 搜索范围已耗尽；需独立证明才能称为不可测"
+        }
+      ]
+    },
+    {
+      "fault": "r/SA1",
+      "fault_bits": [
+        12,
+        1
+      ],
+      "status": "DETECTED",
+      "pattern": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0,
+        "e": 0
+      },
+      "detecting_vectors": 16,
+      "observation": "primary_outputs",
+      "trace": [
+        {
+          "step": 0,
+          "action": "path",
+          "nodes": [
+            "r",
+            "redundant"
+          ]
+        },
+        {
+          "step": 1,
+          "action": "objective",
+          "node": "r",
+          "value": 0
+        },
+        {
+          "step": 2,
+          "action": "justify",
+          "node": "r",
+          "cube": 0,
+          "requirements": [
+            {
+              "node": "d",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "action": "objective",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 4,
+          "action": "assign",
+          "node": "d",
+          "value": 0
+        },
+        {
+          "step": 5,
+          "action": "imply",
+          "values": {
+            "a": "X",
+            "b": "X",
+            "c": "X",
+            "d": "0",
+            "e": "X",
+            "p": "X",
+            "q": "X",
+            "r": "D̅",
+            "reconv": "X",
+            "redundant": "D̅",
+            "net_10": "X"
+          },
+          "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+        },
+        {
+          "step": 6,
+          "action": "fill",
+          "node": "a",
+          "value": 0
+        },
+        {
+          "step": 7,
+          "action": "fill",
+          "node": "b",
+          "value": 0
+        },
+        {
+          "step": 8,
+          "action": "fill",
+          "node": "c",
+          "value": 0
+        },
+        {
+          "step": 9,
+          "action": "fill",
+          "node": "e",
+          "value": 0
+        },
+        {
+          "step": 10,
+          "action": "detect",
+          "vector": {
+            "a": 0,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 0
+          },
+          "reason": "好/坏电路在观察点产生确定差异"
+        }
+      ]
+    }
+  ],
+  "trace_demo": {
+    "fault": "q/SA1",
+    "fault_bits": [
+      11,
+      1
+    ],
+    "status": "DETECTED",
+    "pattern": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 0,
+      "e": 0
+    },
+    "detecting_vectors": 16,
+    "observation": "primary_outputs",
+    "trace": [
+      {
+        "step": 0,
+        "action": "path",
+        "nodes": [
+          "q",
+          "reconv"
+        ]
+      },
+      {
+        "step": 1,
+        "action": "objective",
+        "node": "q",
+        "value": 0
+      },
+      {
+        "step": 2,
+        "action": "justify",
+        "node": "q",
+        "cube": 0,
+        "requirements": [
+          {
+            "node": "net_10",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "action": "objective",
+        "node": "net_10",
+        "value": 0
+      },
+      {
+        "step": 4,
+        "action": "justify",
+        "node": "net_10",
+        "cube": 0,
+        "requirements": [
+          {
+            "node": "a",
+            "value": 1
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "action": "objective",
+        "node": "a",
+        "value": 1
+      },
+      {
+        "step": 6,
+        "action": "assign",
+        "node": "a",
+        "value": 1
+      },
+      {
+        "step": 7,
+        "action": "imply",
+        "values": {
+          "a": "1",
+          "b": "X",
+          "c": "X",
+          "d": "X",
+          "e": "X",
+          "p": "X",
+          "q": "D̅",
+          "r": "X",
+          "reconv": "X",
+          "redundant": "X",
+          "net_10": "0"
+        },
+        "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+      },
+      {
+        "step": 8,
+        "action": "objective",
+        "node": "p",
+        "value": 0
+      },
+      {
+        "step": 9,
+        "action": "justify",
+        "node": "p",
+        "cube": 0,
+        "requirements": [
+          {
+            "node": "a",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "action": "conflict",
+        "node": "a",
+        "existing": 1,
+        "requested": 0,
+        "reason": "同一条物理网线不能同时等于 0 和 1"
+      },
+      {
+        "step": 11,
+        "action": "backtrack",
+        "node": "p",
+        "cube": 0,
+        "reason": "撤销此分支产生的赋值，改试另一输入解释"
+      },
+      {
+        "step": 12,
+        "action": "justify",
+        "node": "p",
+        "cube": 1,
+        "requirements": [
+          {
+            "node": "b",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "step": 13,
+        "action": "objective",
+        "node": "b",
+        "value": 0
+      },
+      {
+        "step": 14,
+        "action": "assign",
+        "node": "b",
+        "value": 0
+      },
+      {
+        "step": 15,
+        "action": "imply",
+        "values": {
+          "a": "1",
+          "b": "0",
+          "c": "X",
+          "d": "X",
+          "e": "X",
+          "p": "0",
+          "q": "D̅",
+          "r": "X",
+          "reconv": "D̅",
+          "redundant": "X",
+          "net_10": "0"
+        },
+        "reason": "根据当前 PI 前向蕴涵；仍未知的节点保留 X"
+      },
+      {
+        "step": 16,
+        "action": "fill",
+        "node": "c",
+        "value": 0
+      },
+      {
+        "step": 17,
+        "action": "fill",
+        "node": "d",
+        "value": 0
+      },
+      {
+        "step": 18,
+        "action": "fill",
+        "node": "e",
+        "value": 0
+      },
+      {
+        "step": 19,
+        "action": "detect",
+        "vector": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 0,
+          "e": 0
+        },
+        "reason": "好/坏电路在观察点产生确定差异"
+      }
+    ],
+    "wave_symbols": {
+      "a": "1",
+      "b": "0",
+      "c": "0",
+      "d": "0",
+      "e": "0",
+      "p": "0",
+      "q": "D̅",
+      "r": "0",
+      "reconv": "D̅",
+      "redundant": "0",
+      "net_10": "0"
+    }
+  },
+  "uncovered": [
+    "e/SA0",
+    "e/SA1",
+    "r/SA0"
+  ],
+  "x_boundary": {
+    "unknown_vector": {
+      "a": null,
+      "b": 1,
+      "c": 0,
+      "d": 0,
+      "e": 0
+    },
+    "fault": "p/SA0",
+    "unknown_detected": false,
+    "known_bypass_detected": true,
+    "scope": "同一 cut 的三值边界对照；非 memory 故障覆盖率"
+  },
+  "hdl_crosscheck": {
+    "status": "PASS",
+    "vectors": 32,
+    "faults": 22,
+    "comparisons": 704
+  },
+  "negative_checks": {
+    "activated_but_masked": "PASS",
+    "unknown_not_counted_as_detected": "PASS",
+    "oracle_agreement_all_faults": "PASS",
+    "fixed_denominator": "PASS"
+  }
+}

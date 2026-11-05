@@ -1,0 +1,4 @@
+DRC v0 {'errors': 278, 'warnings': 1}
+DRC v1 {'errors': 0, 'warnings': 1}
+DRC v2 {'errors': 0, 'warnings': 0}
+PASS DFT_DRC

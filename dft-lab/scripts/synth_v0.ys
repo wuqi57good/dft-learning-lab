@@ -1,0 +1,13 @@
+# 用途：生成保留教学结构的通用门级网表；不声称完成工艺映射或 STA。
+# 输入：rtl/v0/*.sv；输出：netlist/v0/design.v/json 和 reports/synth.log。
+# 依赖：Yosys；运行目录必须是工程根，scripts/run.py 会设置 cwd。
+# v0：保留 fault_cone 层次，memory 在 SYNTHESIS 下保持黑盒。
+read_verilog -sv -DSYNTHESIS rtl/v0/*.sv
+hierarchy -check -top dft_demo_top
+# -noabc 避免布尔映射抹掉特意保留的冗余门；这是教学网表，不是面积最优版本。
+synth -top dft_demo_top -noabc
+check
+stat
+write_verilog -noattr netlist/v0/design.v
+# JSON 保留属性与连接，供后续 DRC/scan 插入检查真实 bit/cell 对象。
+write_json netlist/v0/design.json
